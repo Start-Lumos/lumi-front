@@ -8,7 +8,6 @@ import styles from "./CardUser.module.css";
 import {
   Form,
   LeftColumn,
-  MiddleColumn,
   RightColumn,
   Row,
   ProfileInput,
@@ -32,12 +31,6 @@ export const CardUser = () => {
     userDTNasc: "2001-10-12",
     userPhone: "81984527891",
     userToggleOption: "true",
-    userCEP: "50610-246",
-    userStreet: "Rua Mandacaru",
-    userHouseNumber: "248",
-    userBairro: "Casa Amarela",
-    userCity: "Recife",
-    userState: "PE"
   });
   
 
@@ -64,6 +57,7 @@ export const CardUser = () => {
   const DesactivateData = (e) => {
     e.preventDefault();
     setEditData ("none");
+    console.log(dadosUser);
   }
 
   return (
@@ -166,7 +160,7 @@ export const CardUser = () => {
           </div>
         </Row>
       </LeftColumn>
-      <MiddleColumn>
+      <RightColumn>
         <Row>
           <div className={styles.userPhone}>
             <div className={styles.labelSVG}>
@@ -209,99 +203,8 @@ export const CardUser = () => {
 
 
 
-      </MiddleColumn>
-      <RightColumn>
-        <Row>
-          <div className={styles.userCEP}>
-            <div className={styles.labelSVG}>
-              <Label htmlFor="useruserCEP">Código Postal</Label>
-            </div>
-            <ProfileInput
-              className={styles.userInput}
-              type="text"
-              name="userCEP"
-              id="userCEP"
-              value={dadosUser.userCEP}
-              editData={editData}
-              onChange={(e) => {setDadosUser({...dadosUser, userCEP: e.target.value})}}
-            />
-          </div>
-          <div className={styles.userStreet}>
-            <div className={styles.labelSVG}>
-              <Label htmlFor="userStreet">Rua</Label>
-            </div>
-            <ProfileInput
-              className={styles.userInput}
-              type="text"
-              name="userStreet"
-              id="userStreet"
-              value={dadosUser.userStreet}
-              editData={editData}
-              onChange={(e) => {setDadosUser({...dadosUser, userStreet: e.target.value})}}
-            />
-          </div>
-        </Row>
-        <Row>
-          <div className={styles.userHouseNumber}>
-            <div className={styles.labelSVG}>
-              <Label htmlFor="useruserCEP">Número</Label>
-            </div>
-            <ProfileInput
-              className={styles.userInput}
-              type="text"
-              name="userHouseNumber"
-              id="userHouseNumber"
-              value={dadosUser.userHouseNumber}
-              editData={editData}
-              onChange={(e) => {setDadosUser({...dadosUser, userHouseNumber: e.target.value})}}
-            />
-          </div>
-          <div className={styles.userBairro}>
-            <div className={styles.labelSVG}>
-              <Label htmlFor="userBairro">Bairro</Label>
-            </div>
-            <ProfileInput
-              className={styles.userInput}
-              type="text"
-              name="userBairro"
-              id="userBairro"
-              value={dadosUser.userBairro}
-              editData={editData}
-              onChange={(e) => {setDadosUser({...dadosUser, userBairro: e.target.value})}}
-            />
-          </div>
-        </Row>
-        <Row>
-          <div className={styles.userCity}>
-            <div className={styles.labelSVG}>
-              <Label htmlFor="userCity">Cidade</Label>
-            </div>
-            <ProfileInput
-              className={styles.userInput}
-              type="text"
-              name="userCity"
-              id="userCity"
-              value={dadosUser.userCity}
-              editData={editData}
-              onChange={(e) => {setDadosUser({...dadosUser, userCity: e.target.value})}}
-            />
-          </div>
-          <div className={styles.userState}>
-            <div className={styles.labelSVG}>
-              <Label htmlFor="userState">Estado</Label>
-            </div>
-            <ProfileInput
-              className={styles.userInput}
-              type="text"
-              name="userState"
-              id="userState"
-              value={dadosUser.userState}
-              editData={editData}
-              onChange={(e) => {setDadosUser({...dadosUser, userState: e.target.value})}}
-            />
-          </div>
-        </Row>
       </RightColumn>
+      
     </Form>
   );
 };

@@ -10,16 +10,7 @@ export const Form = styled.form`
 `;
 
 export const LeftColumn = styled.aside`
-  width: 40%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export const MiddleColumn = styled.aside`
-  width: 20%;
+  width: 60%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -94,6 +85,7 @@ export const Span = styled.span`
   color: ${({ theme }) => theme.purpleOP};
   margin-left: 0.8rem;
   transition: all 0.5s ease;
+  cursor: pointer;
 `;
 
 export const LabelToggle = styled.label`
@@ -108,3 +100,5 @@ export const LabelToggle = styled.label`
   align-items: center;
   justify-content: space-around;
 `;
+
+

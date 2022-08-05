@@ -2,7 +2,7 @@ import { useState } from "react";
 import {InputToggle} from "../../../../ToggleButton/ToggleButton"
 import { InputGroup, Toggle } from "../../../Styles.Modal";
 
-const FormInput = (props) => {
+const InputFieldReg = (props) => {
   
 
   const [focused, setFocused] = useState(false);
@@ -122,4 +122,4 @@ const FormInput = (props) => {
   );
 };
 
-export default FormInput;
+export default InputFieldReg;
