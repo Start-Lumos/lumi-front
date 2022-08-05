@@ -20,23 +20,27 @@ import {
 import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
 
 
-//Dados
-const userFirstName = "João";
-const userLastName = "Medeiros da Silva";
-const userEmail = "joaomedeirossilva@gmail.com";
-const userPassword = "Etf#226994";
-const userCPF = "12345678945";
-const userDTNasc = "2001-10-12";
-const userPhone = "81984527891";
-const userToggleOption = "true";
-const userCEP = "50610-246";
-const userStreet = "Rua Mandacaru";
-const userHouseNumber = "248";
-const userBairro = "Casa Amarela";
-const userCity = "Recife";
-const userState = "PE";
-
 export const CardUser = () => {
+  
+  //Dados
+  const [dadosUser, setDadosUser] = useState({
+    userFirstName: "João",
+    userLastName: "Medeiros da Silva",
+    userEmail: "joaomedeirossilva@gmail.com",
+    userPassword: "Etf#226994",
+    userCPF: "12345678945",
+    userDTNasc: "2001-10-12",
+    userPhone: "81984527891",
+    userToggleOption: "true",
+    userCEP: "50610-246",
+    userStreet: "Rua Mandacaru",
+    userHouseNumber: "248",
+    userBairro: "Casa Amarela",
+    userCity: "Recife",
+    userState: "PE"
+  });
+  
+
   //Abertura e fechamento da mudançade senha
 
   const [isModalChangePass, setModalChangePass] = useState(false); //Estado inicial do modal, false, pois inicia-se fechado
@@ -52,9 +56,14 @@ export const CardUser = () => {
     setModalChangePass(false);
   }
 
-  const editarDados = (e) => {
+  const ActivateData = (e) => {
     e.preventDefault();
     setEditData ("auto");
+  }
+
+  const DesactivateData = (e) => {
+    e.preventDefault();
+    setEditData ("none");
   }
 
   return (
@@ -74,7 +83,9 @@ export const CardUser = () => {
               type="text"
               name="userFirstName"
               id="userFirstName"
+              value={dadosUser.userFirstName}
               editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userFirstName: e.target.value})}}
             />
           </div>
           <div className={styles.userLastName}>
@@ -86,8 +97,10 @@ export const CardUser = () => {
               type="text"
               name="userLastName"
               id="userLastName"
-              value={userLastName}
-              readOnly
+              value={dadosUser.userLastName}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userLastName: e.target.value})}}
+              
             />
           </div>
         </Row>
@@ -101,8 +114,9 @@ export const CardUser = () => {
               type="email"
               name="userEmail"
               id="userEmail"
-              value={userEmail}
-              readOnly
+              value={dadosUser.userEmail}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userEmail: e.target.value})}}
             />
           </div>
           <div className={styles.userPassword}>
@@ -115,8 +129,9 @@ export const CardUser = () => {
               type="password"
               name="userPassword"
               id="userPassword"
-              value={userPassword}
-              readOnly
+              value={dadosUser.userPassword}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userPassword: e.target.value})}}
             />
           </div>
         </Row>
@@ -130,8 +145,9 @@ export const CardUser = () => {
               type="text"
               name="userCPF"
               id="userCPF"
-              value={userCPF}
-              readOnly
+              value={dadosUser.userCPF}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userCPF: e.target.value})}}
             />
           </div>
           <div className={styles.userDTNasc}>
@@ -143,8 +159,9 @@ export const CardUser = () => {
               type="date"
               name="userDTNasc"
               id="userDTNasc"
-              value={userDTNasc}
-              readOnly
+              value={dadosUser.userDTNasc}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userDTNasc: e.target.value})}}
             />
           </div>
         </Row>
@@ -160,24 +177,38 @@ export const CardUser = () => {
               type="text"
               name="userPhone"
               id="userPhone"
-              value={userPhone}
-              readOnly
+              value={dadosUser.userPhone}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userPhone: e.target.value})}}
             />
           </div>
         </Row>
         <Row>
           <div className={styles.userServ}>
             <Label htmlFor="userOption">Prestar serviço?</Label>
-            {userToggleOption === "true" ? (
+            {dadosUser.userToggleOption === "true" ? (
               <LabelToggle>Sim</LabelToggle>
             ) : (
               <LabelToggle>Não</LabelToggle>
             )}
           </div>
         </Row>
+
+
+
+
         <Row>
-          <Submit onClick={editarDados}>Editar</Submit>
+          {editData === "none" ? (
+            <Submit onClick={ActivateData}>Editar</Submit>
+          ) : (
+            <Submit onClick={DesactivateData}>Salvar</Submit>
+          )} 
         </Row>
+
+
+
+
+
       </MiddleColumn>
       <RightColumn>
         <Row>
@@ -190,8 +221,9 @@ export const CardUser = () => {
               type="text"
               name="userCEP"
               id="userCEP"
-              value={userCEP}
-              readOnly
+              value={dadosUser.userCEP}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userCEP: e.target.value})}}
             />
           </div>
           <div className={styles.userStreet}>
@@ -203,8 +235,9 @@ export const CardUser = () => {
               type="text"
               name="userStreet"
               id="userStreet"
-              value={userStreet}
-              readOnly
+              value={dadosUser.userStreet}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userStreet: e.target.value})}}
             />
           </div>
         </Row>
@@ -218,8 +251,9 @@ export const CardUser = () => {
               type="text"
               name="userHouseNumber"
               id="userHouseNumber"
-              value={userHouseNumber}
-              readOnly
+              value={dadosUser.userHouseNumber}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userHouseNumber: e.target.value})}}
             />
           </div>
           <div className={styles.userBairro}>
@@ -231,8 +265,9 @@ export const CardUser = () => {
               type="text"
               name="userBairro"
               id="userBairro"
-              value={userBairro}
-              readOnly
+              value={dadosUser.userBairro}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userBairro: e.target.value})}}
             />
           </div>
         </Row>
@@ -246,8 +281,9 @@ export const CardUser = () => {
               type="text"
               name="userCity"
               id="userCity"
-              value={userCity}
-              readOnly
+              value={dadosUser.userCity}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userCity: e.target.value})}}
             />
           </div>
           <div className={styles.userState}>
@@ -259,8 +295,9 @@ export const CardUser = () => {
               type="text"
               name="userState"
               id="userState"
-              value={userState}
-              readOnly
+              value={dadosUser.userState}
+              editData={editData}
+              onChange={(e) => {setDadosUser({...dadosUser, userState: e.target.value})}}
             />
           </div>
         </Row>
