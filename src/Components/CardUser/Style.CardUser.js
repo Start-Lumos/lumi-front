@@ -66,7 +66,7 @@ export const Submit = styled.button`
     transition: 0.5s ease;
   }
 `;
-
+  
 export const ProfileInput = styled.input`
   border: none;
   border-radius: 12px;
@@ -79,6 +79,7 @@ export const ProfileInput = styled.input`
     outline: none;
   }
   text-align: center;
+  pointer-events: ${(props) => (props.editData)};
 `;
 
 export const Label = styled.label`

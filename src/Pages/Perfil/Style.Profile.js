@@ -33,7 +33,7 @@ export const ProfileSectionBG = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   transition: all 0.5s ease;
   box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.135);
   @media (max-width: 1600px) and (min-width: 1161px) {

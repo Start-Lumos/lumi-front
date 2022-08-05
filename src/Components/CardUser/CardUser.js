@@ -40,6 +40,7 @@ export const CardUser = () => {
   //Abertura e fechamento da mudançade senha
 
   const [isModalChangePass, setModalChangePass] = useState(false); //Estado inicial do modal, false, pois inicia-se fechado
+  const [editData, setEditData] = useState("none");
 
   //Função para abertura e fechamento do modal Mudar Senha, Função enviada para o componente navbar
   function openModalCP() {
@@ -49,6 +50,11 @@ export const CardUser = () => {
   //Função enviada para o componente modal
   function closeModalCP() {
     setModalChangePass(false);
+  }
+
+  const editarDados = (e) => {
+    e.preventDefault();
+    setEditData ("auto");
   }
 
   return (
@@ -68,8 +74,7 @@ export const CardUser = () => {
               type="text"
               name="userFirstName"
               id="userFirstName"
-              value={userFirstName}
-              readOnly
+              editData={editData}
             />
           </div>
           <div className={styles.userLastName}>
@@ -171,7 +176,7 @@ export const CardUser = () => {
           </div>
         </Row>
         <Row>
-          <Submit>Editar</Submit>
+          <Submit onClick={editarDados}>Editar</Submit>
         </Row>
       </MiddleColumn>
       <RightColumn>
