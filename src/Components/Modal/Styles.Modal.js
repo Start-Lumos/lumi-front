@@ -235,14 +235,14 @@ export const CloseButton = styled.div`
 export const Submit = styled.button`
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 8rem;
+  width: 9rem;
   border-radius: 12px;
   border: none;
   background-color: ${({ theme }) => theme.purpleVariant};
   color: #e8f1f2;
   padding: 1rem;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.15rem;
   cursor: pointer;
   display: flex;
@@ -275,6 +275,7 @@ export const InputGroup = styled.div`
     flex-direction: column;
     background: ${({ theme }) => theme.user_input};
     color: ${({ theme }) => theme.gray};
+    transition: 0.5s ease;
     margin: 1rem 0;
     width: 100%;
     border: none;
@@ -302,6 +303,7 @@ export const InputGroup = styled.div`
   > span {
     font-size: 0.8rem;
     background-color: ${({ theme }) => theme.purpleVariant};
+    transition: 0.5s ease;
     border-radius: 12px;
     padding: 0.5rem;
     color: white;
@@ -355,8 +357,7 @@ export const Toggle = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 1rem;
-
+  margin: 0.4rem;
   label {
     margin-bottom: 0.8rem;
     text-align: center;
@@ -373,8 +374,10 @@ export const Toggle = styled.div`
     margin-left: 0.8rem;
     border-radius: 12px;
     text-align: center;
+    padding: 0.3rem;
     width: 3.5rem;
     background: ${({ theme }) => theme.user_input};
     color: ${({ theme }) => theme.gray};
+    transition: 0.5s ease;
   }
 `;

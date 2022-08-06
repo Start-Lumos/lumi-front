@@ -14,9 +14,8 @@ function Perfil(){
             <ProfileBG>
                 <RiUser3Fill/>
             </ProfileBG>
-            <ProfileSectionBG>
-                <Card/>
-            </ProfileSectionBG>
+            <Card/>
+                
         </ProfileContainer>      
     )
 }

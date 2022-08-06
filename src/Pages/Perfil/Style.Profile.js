@@ -11,8 +11,8 @@ export const ProfileContainer = styled.div`
 
 export const ProfileBG = styled.div`
   margin-top: 2rem;
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
   background: ${({ theme }) => theme.grayOp};
   border-radius: 100%;
   cursor: pointer;
@@ -25,7 +25,7 @@ export const ProfileBG = styled.div`
 
 export const ProfileSectionBG = styled.div`
   width: 80rem;
-  height: 30rem;
+  height: ${(props) => (props.sizeP)};
   margin-top: 2rem;
   margin-bottom: 4rem;
   background: ${({ theme }) => theme.grayOp};
@@ -38,22 +38,22 @@ export const ProfileSectionBG = styled.div`
   box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.135);
   @media (max-width: 1600px) and (min-width: 1161px) {
     width: 60rem;
-    height: 20rem;
+    height: ${(props) => (props.sizeS)};
   }
   @media (max-width: 1160px) and (min-width: 951px) {
     width: 50rem;
-    height: 20rem;
+    height: ${(props) => (props.sizeS)};
   }
   @media (max-width: 950px) and (min-width: 751px) {
     width: 40rem;
-    height: 20rem;
+    height: ${(props) => (props.sizeS)};
   }
   @media (max-width: 750px) and (min-width: 551px) {
     width: 30rem;
-    height: 20rem;
+    height: ${(props) => (props.sizeS)};
   }
   @media (max-width: 550px) {
     width: 20rem;
-    height: 40rem;
+    height: ${(props) => (props.sizeM)};
   }
 `;

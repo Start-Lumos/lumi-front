@@ -12,7 +12,7 @@ export const InputToggle = styled.input`
   position: relative;
   
   &:before {
-    background: ${({ theme }) => theme.grayOp};
+    background: #ffffff;
     content: '';
     width: 1.5rem;
     height: 1.5rem;

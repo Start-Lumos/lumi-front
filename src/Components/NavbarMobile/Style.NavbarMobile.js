@@ -15,7 +15,7 @@ export const Container = styled.section`
   justify-content: center;
 
   background: rgb(86,74,255);
-  background: linear-gradient(90deg, rgba(86,74,255,0.8033478039653361) 45%, rgba(127,117,255,0.8117511653098739) 70%);
+  background: ${({ theme }) => theme.background_mobile};
   transition: all 0.5s ease;
 
   > svg {

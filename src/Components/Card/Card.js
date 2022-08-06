@@ -15,12 +15,24 @@ import {
   Span,
   LabelToggle,
   Submit,
+  ServicesUser,
+  DadosUser,
+  Column,
 } from "./Style.CardUser";
 
 import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
+import { ProfileSectionBG } from "../../Pages/Perfil/Style.Profile";
+import { BrazilianStates } from "../BrazilianStates/BrazilianStates";
+import { BrazilianCities } from "../BrazilianCities/BrazilianCities";
+import { Select } from "../StyleList/Style.List";
 
 function Card() {
   const [toggleButtonOption, setToggleButtonOption] = useState("false");
+
+  const [sizeP, SetSizeP] = useState("30rem");
+  const [sizeS, SetSizeS] = useState("20rem");
+  const [sizeM, SetSizeM] = useState("40rem");
+  const [dadosSize, SetdadosSize] = useState("100%");
 
   function ChangeToggleButton(e) {
     if (toggleButtonOption === "true") {
@@ -29,12 +41,20 @@ function Card() {
         ...values,
         [e.target.toggleButton]: (e.target.value = "false"),
       });
+      SetSizeP("30rem");
+      SetSizeS("20rem");
+      SetSizeM("40rem");
+      SetdadosSize("100%");
     } else {
       setToggleButtonOption("true");
       setValues({
         ...values,
         [e.target.toggleButton]: (e.target.value = "true"),
       });
+      SetSizeP("60rem");
+      SetSizeS("40rem");
+      SetSizeM("80rem");
+      SetdadosSize("50%");
     }
   }
 
@@ -51,6 +71,11 @@ function Card() {
     userCPF: "12345678945",
     userDTNasc: "2001-10-12",
     userPhone: "81984527891",
+  });
+
+  const [dadosServ, setDadosServ] = useState({
+    descricao: "",
+    modalidade: "",
   });
 
   const [values, setValues] = useState({
@@ -81,8 +106,7 @@ function Card() {
     e.preventDefault();
     setEditData("none");
 
-    console.log(values);
-    console.log(dadosUser);
+    console.log(values, dadosUser, formValues, dadosServ);
   };
 
   // -----------------------------------------------------------------------
@@ -116,178 +140,266 @@ function Card() {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  // -----------------------------------------------------------------------
+  // ----------------------------------------------------------------------
+
+  const [formValues, setFormValues] = useState({});
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
 
   return (
     /* CSS da página: localStyles.css */
 
-    <>
+    <ProfileSectionBG sizeP={sizeP} sizeS={sizeS} sizeM={sizeM}>
       <Form>
-        {isModalChangePass ? (
-          <ChangePassword closeModalCP={closeModalCP} />
-        ) : null}
+        <DadosUser dadosSize={dadosSize}>
+          {isModalChangePass ? (
+            <ChangePassword closeModalCP={closeModalCP} />
+          ) : null}
 
-        <LeftColumn>
-          <Row>
-            <div className={styles.userFirstName}>
-              <div className={styles.labelSVG}>
-                <Label htmlFor="userFirstName">Nome</Label>
+          <LeftColumn>
+            <Row>
+              <div className={styles.userFirstName}>
+                <div className={styles.labelSVG}>
+                  <Label htmlFor="userFirstName">Nome</Label>
+                </div>
+                <ProfileInput
+                  className={styles.userInput}
+                  type="text"
+                  name="userFirstName"
+                  id="userFirstName"
+                  value={dadosUser.userFirstName}
+                  editData={editData}
+                  onChange={(e) => {
+                    setDadosUser({
+                      ...dadosUser,
+                      userFirstName: e.target.value,
+                    });
+                  }}
+                />
               </div>
-              <ProfileInput
-                className={styles.userInput}
-                type="text"
-                name="userFirstName"
-                id="userFirstName"
-                value={dadosUser.userFirstName}
-                editData={editData}
-                onChange={(e) => {
-                  setDadosUser({ ...dadosUser, userFirstName: e.target.value });
-                }}
-              />
-            </div>
-            <div className={styles.userLastName}>
-              <div className={styles.labelSVG}>
-                <Label htmlFor="userLastName">Sobrenome</Label>
+              <div className={styles.userLastName}>
+                <div className={styles.labelSVG}>
+                  <Label htmlFor="userLastName">Sobrenome</Label>
+                </div>
+                <ProfileInput
+                  className={styles.userInput}
+                  type="text"
+                  name="userLastName"
+                  id="userLastName"
+                  value={dadosUser.userLastName}
+                  editData={editData}
+                  onChange={(e) => {
+                    setDadosUser({
+                      ...dadosUser,
+                      userLastName: e.target.value,
+                    });
+                  }}
+                />
               </div>
-              <ProfileInput
-                className={styles.userInput}
-                type="text"
-                name="userLastName"
-                id="userLastName"
-                value={dadosUser.userLastName}
-                editData={editData}
-                onChange={(e) => {
-                  setDadosUser({ ...dadosUser, userLastName: e.target.value });
-                }}
-              />
-            </div>
-          </Row>
-          <Row>
-            <div className={styles.userEmail}>
-              <div className={styles.labelSVG}>
-                <Label htmlFor="userEmail">Email</Label>
+            </Row>
+            <Row>
+              <div className={styles.userEmail}>
+                <div className={styles.labelSVG}>
+                  <Label htmlFor="userEmail">Email</Label>
+                </div>
+                <ProfileInput
+                  className={styles.userInput}
+                  type="email"
+                  name="userEmail"
+                  id="userEmail"
+                  value={dadosUser.userEmail}
+                  editData={editData}
+                  onChange={(e) => {
+                    setDadosUser({ ...dadosUser, userEmail: e.target.value });
+                  }}
+                />
               </div>
-              <ProfileInput
-                className={styles.userInput}
-                type="email"
-                name="userEmail"
-                id="userEmail"
-                value={dadosUser.userEmail}
-                editData={editData}
-                onChange={(e) => {
-                  setDadosUser({ ...dadosUser, userEmail: e.target.value });
-                }}
-              />
-            </div>
-            <div className={styles.userPassword}>
-              <div className={styles.labelSVG}>
-                <Label htmlFor="userPassword">Senha</Label>
-                <Span onClick={openModalCP}>Mudar</Span>
+              <div className={styles.userPassword}>
+                <div className={styles.labelSVG}>
+                  <Label htmlFor="userPassword">Senha</Label>
+                  <Span onClick={openModalCP}>Alterar</Span>
+                </div>
+                <ProfileInput
+                  className={styles.userInput}
+                  type="password"
+                  name="userPassword"
+                  id="userPassword"
+                  value={dadosUser.userPassword}
+                  readOnly
+                  onChange={(e) => {
+                    setDadosUser({
+                      ...dadosUser,
+                      userPassword: e.target.value,
+                    });
+                  }}
+                />
               </div>
-              <ProfileInput
-                className={styles.userInput}
-                type="password"
-                name="userPassword"
-                id="userPassword"
-                value={dadosUser.userPassword}
-                readOnly
-                onChange={(e) => {
-                  setDadosUser({ ...dadosUser, userPassword: e.target.value });
-                }}
-              />
-            </div>
-          </Row>
-          <Row>
-            <div className={styles.userCPF}>
-              <div className={styles.labelSVG}>
-                <Label htmlFor="userCPF">CPF</Label>
+            </Row>
+            <Row>
+              <div className={styles.userCPF}>
+                <div className={styles.labelSVG}>
+                  <Label htmlFor="userCPF">CPF</Label>
+                </div>
+                <ProfileInput
+                  className={styles.userInput}
+                  type="text"
+                  name="userCPF"
+                  id="userCPF"
+                  value={dadosUser.userCPF}
+                  editData={editData}
+                  onChange={(e) => {
+                    setDadosUser({ ...dadosUser, userCPF: e.target.value });
+                  }}
+                />
               </div>
-              <ProfileInput
-                className={styles.userInput}
-                type="text"
-                name="userCPF"
-                id="userCPF"
-                value={dadosUser.userCPF}
-                editData={editData}
-                onChange={(e) => {
-                  setDadosUser({ ...dadosUser, userCPF: e.target.value });
-                }}
-              />
-            </div>
-            <div className={styles.userDTNasc}>
-              <div className={styles.labelSVG}>
-                <Label htmlFor="userDTNasc">Data de Nascimento</Label>
+              <div className={styles.userDTNasc}>
+                <div className={styles.labelSVG}>
+                  <Label htmlFor="userDTNasc">Data de Nascimento</Label>
+                </div>
+                <ProfileInput
+                  className={styles.userInput}
+                  type="date"
+                  name="userDTNasc"
+                  id="userDTNasc"
+                  value={dadosUser.userDTNasc}
+                  editData={editData}
+                  onChange={(e) => {
+                    setDadosUser({ ...dadosUser, userDTNasc: e.target.value });
+                  }}
+                />
               </div>
-              <ProfileInput
-                className={styles.userInput}
-                type="date"
-                name="userDTNasc"
-                id="userDTNasc"
-                value={dadosUser.userDTNasc}
-                editData={editData}
-                onChange={(e) => {
-                  setDadosUser({ ...dadosUser, userDTNasc: e.target.value });
-                }}
-              />
-            </div>
-          </Row>
-        </LeftColumn>
-        <RightColumn>
-          <Row>
-            <div className={styles.userPhone}>
-              <div className={styles.labelSVG}>
-                <Label htmlFor="userPhone">Telefone</Label>
+            </Row>
+          </LeftColumn>
+          <RightColumn>
+            <Row>
+              <div className={styles.userPhone}>
+                <div className={styles.labelSVG}>
+                  <Label htmlFor="userPhone">Telefone</Label>
+                </div>
+                <ProfileInput
+                  className={styles.userInput}
+                  type="text"
+                  name="userPhone"
+                  id="userPhone"
+                  value={dadosUser.userPhone}
+                  editData={editData}
+                  onChange={(e) => {
+                    setDadosUser({ ...dadosUser, userPhone: e.target.value });
+                  }}
+                />
               </div>
-              <ProfileInput
-                className={styles.userInput}
-                type="text"
-                name="userPhone"
-                id="userPhone"
-                value={dadosUser.userPhone}
-                editData={editData}
-                onChange={(e) => {
-                  setDadosUser({ ...dadosUser, userPhone: e.target.value });
-                }}
-              />
-            </div>
-          </Row>
+            </Row>
 
-          <Row>
-            <div className={styles.userServ}>
-              <Label htmlFor="userOption">Prestar serviço?</Label>
-              {editData === "none" ? (
-                toggleButtonOption === "true" ? (
-                  <LabelToggle>Sim</LabelToggle>
+            <Row>
+              <div className={styles.userServ}>
+                <Label htmlFor="userOption">Prestar serviço?</Label>
+                {editData === "none" ? (
+                  toggleButtonOption === "true" ? (
+                    <LabelToggle>Sim</LabelToggle>
+                  ) : (
+                    <LabelToggle>Não</LabelToggle>
+                  )
                 ) : (
-                  <LabelToggle>Não</LabelToggle>
-                )
-              ) : (
-                <aside>
-                  {inputs.map((input) => (
-                    <CardInput
-                      key={input.id}
-                      {...input}
-                      value={values[input.name]}
-                      onChange={onChange}
-                      ChangeToggleButton={ChangeToggleButton}
-                      toggleButtonOption={toggleButtonOption}
-                    />
-                  ))}
-                </aside>
-              )}
-            </div>
-          </Row>
+                  <aside>
+                    {inputs.map((input) => (
+                      <CardInput
+                        key={input.id}
+                        {...input}
+                        value={values[input.name]}
+                        onChange={onChange}
+                        ChangeToggleButton={ChangeToggleButton}
+                        toggleButtonOption={toggleButtonOption}
+                      />
+                    ))}
+                  </aside>
+                )}
+              </div>
+            </Row>
 
-          <Row>
-            {editData === "none" ? (
-              <Submit onClick={ActivateData}>Editar</Submit>
-            ) : (
-              <Submit onClick={DesactivateData}>Salvar</Submit>
-            )}
-          </Row>
-        </RightColumn>
+            <Row>
+              {editData === "none" ? (
+                <Submit onClick={ActivateData}>Editar</Submit>
+              ) : (
+                <Submit onClick={DesactivateData}>Salvar</Submit>
+              )}
+            </Row>
+          </RightColumn>
+        </DadosUser>
+
+        {toggleButtonOption === "true" ? (
+          <ServicesUser>
+            <LeftColumn>
+              <Column>
+                <div className={styles.labelSVG}>
+                    <Label htmlFor="descricao">Forma de serviço</Label>
+                </div>
+                <Row>
+                  <Select name="modalidade" id="modalidade" required>
+                    <option value="Online">Online</option>
+                    <option value="Presencial">Presencial</option>
+                    <option value="Híbrido">Híbrido</option>
+                  </Select>
+                  <BrazilianStates onChange={handleInputChange} />
+                  <BrazilianCities
+                    state={formValues.state}
+                    onChange={handleInputChange}
+                  />
+                </Row>
+              </Column>
+              <Column>
+                <Row>
+                  <div className={styles.userDesc}>
+                    <div className={styles.labelSVG}>
+                      <Label htmlFor="descricao">Descreva seu serviço</Label>
+                    </div>
+                    <ProfileInput
+                      className={styles.userInput}
+                      style={{ height: "10rem" }}
+                      type="text"
+                      name="descricao"
+                      id="descricao"
+                      value={dadosServ.descricao}
+                      editData={editData}
+                      onChange={(e) => {
+                        setDadosServ({
+                          ...dadosServ,
+                          descricao: e.target.value,
+                        });
+                      }}
+                    />
+                  </div>
+                </Row>
+              </Column>
+            </LeftColumn>
+
+            <RightColumn>
+              <Row>
+                <div className={styles.userPhone}>
+                  <div className={styles.labelSVG}>
+                    <Label htmlFor="userPhone">Telefone</Label>
+                  </div>
+                  <ProfileInput
+                    className={styles.userInput}
+                    type="text"
+                    name="userPhone"
+                    id="userPhone"
+                    value={dadosUser.userPhone}
+                    editData={editData}
+                    onChange={(e) => {
+                      setDadosUser({ ...dadosUser, userPhone: e.target.value });
+                    }}
+                  />
+                </div>
+              </Row>
+            </RightColumn>
+          </ServicesUser>
+        ) : null}
       </Form>
-    </>
+    </ProfileSectionBG>
   );
 }
 

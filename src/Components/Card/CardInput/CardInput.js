@@ -79,7 +79,7 @@ const CardInput = (props) => {
           onClick={ChangeToggleButton}
 
         />
-        <span className="regSpanOption">Não</span>
+        <span>Não</span>
         </div>
         /*
           Essa verificação ocorre para seja mostrado na tela, o mesmo como foi enviado.

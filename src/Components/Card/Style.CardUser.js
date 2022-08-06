@@ -6,7 +6,7 @@ export const Form = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 `;
 
 export const LeftColumn = styled.aside`
@@ -45,7 +45,7 @@ export const Submit = styled.button`
   color: #e8f1f2;
   padding: 1rem;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.15rem;
   cursor: pointer;
   display: flex;
@@ -92,8 +92,8 @@ export const LabelToggle = styled.label`
   background-color: ${({ theme }) => theme.user_input};
   color: ${({ theme }) => theme.gray};
   transition: all 0.5s ease;
-  margin-left: 0.8rem;
   border-radius: 12px;
+  padding: 0.3rem;
   text-align: center;
   width: 4rem;
   display: flex;
@@ -101,4 +101,28 @@ export const LabelToggle = styled.label`
   justify-content: space-around;
 `;
 
+export const ServicesUser = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+`
 
+export const DadosUser = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: ${(props) => (props.dadosSize)};
+`
+
+export const Column = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+  flex-direction: column;
+`
