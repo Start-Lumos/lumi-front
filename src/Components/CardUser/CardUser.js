@@ -20,6 +20,7 @@ import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
 
 
 export const CardUser = () => {
+
   
   //Dados
   const [dadosUser, setDadosUser] = useState({
@@ -30,7 +31,7 @@ export const CardUser = () => {
     userCPF: "12345678945",
     userDTNasc: "2001-10-12",
     userPhone: "81984527891",
-    userToggleOption: "true",
+    userToggleOption: "Sim",
   });
   
 
@@ -124,7 +125,7 @@ export const CardUser = () => {
               name="userPassword"
               id="userPassword"
               value={dadosUser.userPassword}
-              editData={editData}
+              readOnly
               onChange={(e) => {setDadosUser({...dadosUser, userPassword: e.target.value})}}
             />
           </div>
@@ -185,6 +186,7 @@ export const CardUser = () => {
             ) : (
               <LabelToggle>Não</LabelToggle>
             )}
+
           </div>
         </Row>
 
