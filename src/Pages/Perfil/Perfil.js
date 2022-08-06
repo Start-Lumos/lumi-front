@@ -2,10 +2,10 @@ import React from "react";
 
 //Componentes
 import {ProfileContainer, ProfileBG, ProfileSectionBG} from "./Style.Profile";
-import { CardUser } from "../../Components/CardUser/CardUser";
 
 //Icones
 import { RiUser3Fill } from "react-icons/ri";
+import Card from "../../Components/Card/Card";
 
 function Perfil(){
 
@@ -15,7 +15,7 @@ function Perfil(){
                 <RiUser3Fill/>
             </ProfileBG>
             <ProfileSectionBG>
-                <CardUser/>
+                <Card/>
             </ProfileSectionBG>
         </ProfileContainer>      
     )

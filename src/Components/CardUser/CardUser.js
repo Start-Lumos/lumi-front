@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import Card from "../Card/Card";
 //CSS
 import styles from "./CardUser.module.css";
 
@@ -62,6 +62,7 @@ export const CardUser = () => {
   }
 
   return (
+    <>
     <Form>
       {isModalChangePass ? (
         <ChangePassword closeModalCP={closeModalCP} />
@@ -203,10 +204,12 @@ export const CardUser = () => {
 
 
 
-
+        
 
       </RightColumn>
       
     </Form>
+    <Card/>
+    </>
   );
 };
