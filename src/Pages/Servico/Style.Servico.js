@@ -31,13 +31,22 @@ export const Container = styled.div`
 export const Sobre = styled.div`
   width: 100%;
   height: 25%;
-  border: 1px solid red;
   margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 2%;
   flex-direction: row;
+  @media screen and (max-width: 600px){
+    height: 50%;
+    flex-direction: column;
+    h2{
+        margin-top: 0.2rem;
+    }
+  }
+  @media screen and (max-width: 550px){
+    height: 40%;
+  }
 `;
 
 export const ProfilePicture = styled.img`
@@ -50,22 +59,39 @@ export const ProfilePicture = styled.img`
 export const Data = styled.aside`
   width: 70%;
   height: 90%;
-  border: 1px solid blue;
   display: flex;
   align-items: center;
   flex-direction: row;
+  @media screen and (max-width: 750px){
+    flex-direction: column;
+    aside {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    p{
+        margin-bottom: 0.2rem;
+    }
+  }
+  @media screen and (max-width: 600px){
+    height: 50%;
+    flex-direction: column;
+  }
   h2 {
     color: ${({ theme }) => theme.gray};
     font-weight: 500;
     font-size: 1.2rem;
     transition: all 0.5s ease;
-    height: 15%;
     margin-bottom: 0.2rem;
+    @media screen and (max-width: 520px){
+        font-size: 0.9rem;
+    }
   }
   aside {
-    width: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     p{
-        font-size: 0.9rem;
+        font-size: 75%;
     }
   }
   span {
@@ -74,19 +100,25 @@ export const Data = styled.aside`
     font-weight: 450;
     font-size: 0.9rem;
     margin-top: 0.2rem;
+    @media screen and (max-width: 520px){
+        font-size: 0.7rem;
+    }
   }
 `;
 
 export const Description = styled.div`
   display: flex;
-  border: 1px solid black;
   width: 90%;
   height: 15%;
   margin-bottom: 2%;
+  border: 1px solid green;
   p {
     font-size: 0.8rem;
     text-align: justify;
     text-indent: 2rem;
+  }
+  @media screen and (max-width: 550px){
+    height: 15%;
   }
 `;
 
@@ -100,4 +132,19 @@ export const Pictures = styled.div`
   margin-bottom: 5%;
   background: #564aff;
   transition: all 0.5s ease;
+  @media screen and (max-width: 960px){
+    width: 80%;
+  }
+  @media screen and (max-width: 800px){
+    width: 90%;
+  }
+  @media screen and (max-width: 550px){
+    height: 35%;
+  }
+  @media screen and (max-width: 450px){
+    height: 30%;
+  }
+  @media screen and (max-width: 370px){
+    height: 20%;
+  }
 `;
