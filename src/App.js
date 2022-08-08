@@ -9,6 +9,7 @@ import "./Styles/main.css";
 import Home from "./Pages/home/Home";
 import Perfil from "./Pages/Perfil/Perfil";
 import Equipe from "./Pages/Equipe/Equipe";
+import Servico from "./Pages/Servico/Servico";
 
 //Componentes
 import Navbar from "./Components/Navbar/Navbar";
@@ -189,6 +190,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/equipe" element={<Equipe />} />
+          <Route path="/servico" element={<Servico/>} />
         </Routes>
       </Router>
     </ThemeProvider>
