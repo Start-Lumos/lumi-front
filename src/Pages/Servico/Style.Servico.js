@@ -23,7 +23,7 @@ export const Container = styled.div`
   transition: all 0.5s ease;
   margin-bottom: 5%;
 
-  @media screen and (min-width: 1500px){
+  @media screen and (min-width: 1500px) {
     width: 60rem;
   }
 `;
@@ -37,14 +37,14 @@ export const Sobre = styled.div`
   justify-content: space-around;
   margin-bottom: 2%;
   flex-direction: row;
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     height: 50%;
     flex-direction: column;
-    h2{
-        margin-top: 0.2rem;
+    h2 {
+      margin-top: 0.2rem;
     }
   }
-  @media screen and (max-width: 550px){
+  @media screen and (max-width: 550px) {
     height: 40%;
   }
 `;
@@ -62,17 +62,17 @@ export const Data = styled.aside`
   display: flex;
   align-items: center;
   flex-direction: row;
-  @media screen and (max-width: 750px){
+  @media screen and (max-width: 750px) {
     flex-direction: column;
     aside {
-        margin-bottom: 1rem;
-        text-align: center;
+      margin-bottom: 1rem;
+      text-align: center;
     }
-    p{
-        margin-bottom: 0.2rem;
+    p {
+      margin-bottom: 0.2rem;
     }
   }
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     height: 50%;
     flex-direction: column;
   }
@@ -82,16 +82,17 @@ export const Data = styled.aside`
     font-size: 1.2rem;
     transition: all 0.5s ease;
     margin-bottom: 0.2rem;
-    @media screen and (max-width: 520px){
-        font-size: 0.9rem;
+    @media screen and (max-width: 520px) {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
     }
   }
   aside {
     width: 100%;
     display: flex;
     flex-direction: column;
-    p{
-        font-size: 75%;
+    p {
+      font-size: 75%;
     }
   }
   span {
@@ -100,8 +101,8 @@ export const Data = styled.aside`
     font-weight: 450;
     font-size: 0.9rem;
     margin-top: 0.2rem;
-    @media screen and (max-width: 520px){
-        font-size: 0.7rem;
+    @media screen and (max-width: 520px) {
+      font-size: 0.7rem;
     }
   }
 `;
@@ -111,13 +112,12 @@ export const Description = styled.div`
   width: 90%;
   height: 15%;
   margin-bottom: 2%;
-  border: 1px solid green;
   p {
     font-size: 0.8rem;
     text-align: justify;
     text-indent: 2rem;
   }
-  @media screen and (max-width: 550px){
+  @media screen and (max-width: 550px) {
     height: 15%;
   }
 `;
@@ -130,21 +130,65 @@ export const Pictures = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 5%;
-  background: #564aff;
+  background: ${({ theme }) => theme.grayOp};
   transition: all 0.5s ease;
-  @media screen and (max-width: 960px){
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.2);
+
+  aside {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    div {
+      position: absolute;
+      width: 100%;
+      height: 15%;
+      display: flex;
+      align-self: center;
+      justify-content: space-between;
+
+      button {
+        width: 15%;
+        border: none;
+        background: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg {
+          font-size: 3.5rem;
+          color: ${({ theme }) => theme.purpleOP};
+          transition: all 0.5s ease;
+          opacity: 0.45;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 960px) {
     width: 80%;
   }
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 800px) {
     width: 90%;
   }
-  @media screen and (max-width: 550px){
+  @media screen and (max-width: 550px) {
     height: 35%;
   }
-  @media screen and (max-width: 450px){
+  @media screen and (max-width: 450px) {
     height: 30%;
   }
-  @media screen and (max-width: 370px){
+  @media screen and (max-width: 370px) {
     height: 20%;
   }
 `;
