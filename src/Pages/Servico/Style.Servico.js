@@ -141,37 +141,25 @@ export const Pictures = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+  }
 
-    img {
+  div {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    div {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-    }
-
-    div {
-      position: absolute;
-      width: 100%;
-      height: 15%;
-      display: flex;
-      align-self: center;
-      justify-content: space-between;
-
-      button {
-        width: 15%;
-        border: none;
-        background: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-
-        svg {
-          font-size: 3.5rem;
-          color: ${({ theme }) => theme.purpleOP};
-          transition: all 0.5s ease;
-          opacity: 0.45;
-        }
+      position: relative;
+      img {
+        width: 90%;
+        height: 90%;
+        object-fit: cover;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        transform: translate (-5%, -5%);
+        border-radius: 12px;
       }
     }
   }

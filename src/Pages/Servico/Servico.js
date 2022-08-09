@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import "@coreui/coreui/dist/css/coreui.min.css";
 import {
   Container,
   Data,
@@ -9,10 +10,8 @@ import {
   Sobre,
 } from "./Style.Servico";
 
-import {
-  BsFillArrowRightCircleFill,
-  BsFillArrowLeftCircleFill,
-} from "react-icons/bs";
+
+import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 
 const nome = "Marcos Aurelio";
 const funcao = "Fotógrafo";
@@ -21,28 +20,18 @@ const desc =
 const email = "marcosaurelio@gmail.com";
 const phone = "8191234569";
 
+const res = [
+  {
+    id: 1,
+    imagem1: 'https://www.chevrolet.com.br/content/dam/chevrolet/mercosur/brazil/portuguese/index/cars/cars-subcontent/02-images/cruze-sport6-rs-carros.jpg?imwidth=960',
+    imagem2: 'https://blog.nakata.com.br/wp-content/uploads/2020/08/post_thumbnail-1f77e8996174df4fb19587977331de22-780x450.jpg',
+    imagem3: 'https://img2.icarros.com/dbimg/imgadicionalnoticia/4/105564_1',
+    imagem4: 'https://www.infomoney.com.br/wp-content/uploads/2022/05/carros-de-luxo-e1653484670585.jpg?fit=770%2C446&quality=50&strip=all',
+  }
+
+]
+
 function Servico() {
-  const [data, setData] = useState([]);
-  const carrossel = useRef(null);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/static/teste.json")
-      .then((response) => response.json())
-      .then(setData);
-  }, []);
-
-  const handleRightClick = (e) =>{
-    e.preventDefault();
-    console.log(carrossel.current.offsetWidth);
-    carrossel.current.scrollLeft -= carrossel.carrossel.current.offsetWidth;
-  }
-
-  const handleLeftClick = (e) =>{
-    e.preventDefault();
-    console.log(carrossel.current.offsetWidth);
-    carrossel.current.scrollLeft += carrossel.carrossel.current.offsetWidth;
-  }
-
   return (
     <Main>
       <Container>
@@ -69,26 +58,38 @@ function Servico() {
         <Description>
           <p>{desc}</p>
         </Description>
-        <Pictures ref={carrossel}>
-          {data.map((item) => {
-            return (
-              <aside key={item.id}>
-                <img 
-                  src={item.imagem1}
-                  alt=""
-                />
-                <div>
-                  <button onClick={handleLeftClick}>
-                    <BsFillArrowLeftCircleFill />
-                  </button>
-                  <button onClick={handleRightClick}>
-                    <BsFillArrowRightCircleFill />
-                  </button>
-                </div>
-              </aside>
-            );
-          })}
-        </Pictures>
+        {res.map((item) => {
+          return (
+            <Pictures key={item.id}>
+              <CCarousel controls indicators>
+                <CCarouselItem>
+                  <CImage
+                    src={item.imagem1}
+                    alt="slide 1"
+                  />
+                </CCarouselItem>
+                <CCarouselItem>
+                  <CImage
+                    src={item.imagem2}
+                    alt="slide 2"
+                  />
+                </CCarouselItem>
+                <CCarouselItem>
+                  <CImage
+                    src={item.imagem3}
+                    alt="slide 3"
+                  />
+                </CCarouselItem>
+                <CCarouselItem>
+                  <CImage
+                    src={item.imagem4}
+                    alt="slide 4"
+                  />
+                </CCarouselItem>
+              </CCarousel>
+            </Pictures>
+          );
+        })}
       </Container>
     </Main>
   );
