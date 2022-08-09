@@ -22,6 +22,7 @@ export const Container = styled.div`
   color: ${({ theme }) => theme.gray};
   transition: all 0.5s ease;
   margin-bottom: 5%;
+  box-shadow: ${({ theme }) => theme.shadow};
 
   @media screen and (min-width: 1500px) {
     width: 60rem;
@@ -132,7 +133,7 @@ export const Pictures = styled.div`
   margin-bottom: 5%;
   background: ${({ theme }) => theme.grayOp};
   transition: all 0.5s ease;
-  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.2);
+  
 
   aside {
     width: 100%;

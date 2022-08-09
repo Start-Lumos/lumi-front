@@ -10,7 +10,7 @@ function Footer (){
             
             <a href="https://github.com/Start-Lumos" target="_target"><img align="center" alt="Lumos-github" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></img></a>
             
-            <span>Copyright @2022 Lumos. Designed By: <a href="https://www.linkedin.com/in/dayvsonlimasantos/">Dayvson Lima</a></span>
+            <span>Copyright @2022 Lumos. Designed By <a href="https://www.linkedin.com/in/dayvsonlimasantos/">Dayvson Lima</a></span>
         </FooterS>
     )
 }

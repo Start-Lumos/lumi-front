@@ -13,7 +13,7 @@ export const Service = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.135);
+  box-shadow: ${({ theme }) => theme.shadow};
   @media (min-width: 1600px) {
     width: 70rem;
   }

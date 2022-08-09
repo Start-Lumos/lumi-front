@@ -127,7 +127,7 @@ export const IconStyle = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.120);
+  box-shadow: ${({ theme }) => theme.shadow};
   padding: 1.2rem;
 
   >svg{
