@@ -7,6 +7,7 @@ export const Decribe = styled.section`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1rem;
   }
 
   textarea {
@@ -17,6 +18,7 @@ export const Decribe = styled.section`
     background: ${({ theme }) => theme.user_input};
     color: ${({ theme }) => theme.gray};
     padding: 0.8rem;
+    pointer-events: ${(props) => props.editData};
     :focus-visible {
       outline: none;
     }
@@ -27,5 +29,6 @@ export const Decribe = styled.section`
     color: ${({ theme }) => theme.gray};
     font-size: 0.9rem;
     text-align: center;
+    margin-bottom: 1rem;
   }
 `;

@@ -16,7 +16,7 @@ function TextCounter(props){
     }
     
     return (
-        <Decribe>
+        <Decribe editData={props.editData}>
             <label htmlFor="descricao">Descreva seu serviço</label>
             <textarea onChange={verificarQtd.bind(this)} value={text} name="descricao" id="descricao"/>
             <div>

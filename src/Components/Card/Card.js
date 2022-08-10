@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardInput from "./CardInput/CardInput";
 
 //CSS
@@ -20,11 +20,12 @@ import {
   Column,
   ProfileSectionBG,
   FormBottom,
+  InputGroup,
 } from "./Style.CardUser";
 
 import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
-import { BrazilianStates } from "../BrazilianStates/BrazilianStates";
-import { BrazilianCities } from "../BrazilianCities/BrazilianCities";
+import { BrazilianStates } from "../Dropdown/BrazilianStates/BrazilianStates";
+import { BrazilianCities } from "../Dropdown/BrazilianCities/BrazilianCities";
 import { Select } from "../StyleList/Style.List";
 import TextCounter from "../TextCounter/TextCounter";
 
@@ -78,6 +79,21 @@ function Card() {
   // const [values, setData] = useState({
   //   toggleButton: toggleButtonOption,
   // });
+
+  const [recarregar, setRecarregar] = useState(0);
+
+  useEffect(() => {
+    setData({
+      userFirstName: "",
+      userLastName: "",
+      userEmail: "",
+      userPassword: "@123afbrir",
+      userCPF: "",
+      userDTNasc: "",
+      userPhone: "",
+      toggleButton: toggleButtonOption,
+    });
+  }, [recarregar]);
 
   const [data, setData] = useState({
     userFirstName: "",
@@ -186,14 +202,38 @@ function Card() {
 
   const DesactivateData = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
-    console.log(data); //Imprimindo valores no console ao enviar os dados;
+    console.log(data, formValues); //Imprimindo valores no console ao enviar os dados;
     setEditData("none");
     setEditDataOp("auto");
+  };
+
+  const CancelEditData = (e) => {
+    e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
+    setEditData("none");
+    setEditDataOp("auto");
+    setRecarregar((oldKey) => oldKey + 1);
   };
 
   const onChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
+  const [formValues, setFormValues] = useState({});
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+
+
+
+  const [local, setLocal] = useState(false);
+
+  const LocalServico = (value) =>{
+    value === "Online" ? setLocal(false) : setLocal(true);
+  }
 
   return (
     /* CSS da página: localStyles.css */
@@ -203,35 +243,71 @@ function Card() {
         {isModalChangePass ? (
           <ChangePassword closeModalCP={closeModalCP} />
         ) : null}
-        
+
+        <aside>
+          {inputs.map((input) => (
+            <CardInput
+              key={input.id}
+              {...input}
+              value={data[input.name]}
+              onChange={onChange}
+              ChangeToggleButton={ChangeToggleButton}
+              toggleButtonOption={toggleButtonOption}
+              editData={editData}
+              editDataOp={editDataOp}
+              onClick={openModalCP}
+            />
+          ))}
+        </aside>
+
+        {toggleButtonOption === "true" ? (
           <aside>
-            {inputs.map((input) => (
-              <CardInput
-                key={input.id}
-                {...input}
-                value={data[input.name]}
-                onChange={onChange}
-                ChangeToggleButton={ChangeToggleButton}
-                toggleButtonOption={toggleButtonOption}
-                editData={editData}
-                editDataOp={editDataOp}
-                onClick={openModalCP}
-              />
-            ))}
+            <InputGroup editData={editData}>
+              <label htmlFor="servico">Qual o seu serviço</label>
+              <input />
+            </InputGroup>
+
+            <TextCounter limit={150} editData={editData} />
+
+            <Label htmlFor="descricao">Forma de serviço</Label>
+
+            <Select name="modalidade" id="modalidade" required onChange={(e)=>LocalServico(e.target.value)} editData={editData}>
+              <option value="Online">
+                Online
+              </option>
+              <option value="Presencial">
+                Presencial
+              </option>
+              <option value="Híbrido">
+                Híbrido
+              </option>
+            </Select>
+
+            {local === true ? (
+              <>
+                <BrazilianStates id="state" name="state" onChange={handleInputChange} editData={editData}/>
+
+                <BrazilianCities id="city" name="city"
+                  state={formValues.state}
+                  onChange={handleInputChange}
+                  editData={editData}
+                />
+              </>
+            ) : null}
           </aside>
-
-          {toggleButtonOption === "true" ? 
-            <aside>
-              <TextCounter limit={150}/>
-            </aside> 
-          : null}
-
+        ) : null}
 
         <FormBottom>
           {editData === "none" ? (
-            <Submit onClick={ActivateData}>Editar</Submit>
+            <>
+              <Submit onClick={ActivateData}>Editar</Submit>
+              <Submit>Sair</Submit>
+            </>
           ) : (
-            <Submit>Salvar</Submit>
+            <>
+              <Submit onClick={CancelEditData}>Cancelar</Submit>
+              <Submit>Salvar</Submit>
+            </>
           )}
         </FormBottom>
       </form>

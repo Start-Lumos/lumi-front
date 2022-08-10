@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Submit = styled.button`
-  margin-bottom: 2rem;
   width: 8rem;
   border-radius: 12px;
   border: none;
@@ -142,12 +141,12 @@ export const ProfileSectionBG = styled.div`
 `;
 
 export const FormBottom = styled.div`
-  width: 100%;
+  width: 90%;
   height: 20%;
   display: flex;
-  align-items: center;
+  align-self: center;
   justify-content: space-around;
-  padding: 0 25%;
+  flex-direction: row;
   margin-top: 2rem;
 `;
 
@@ -217,4 +216,13 @@ export const InputGroup = styled.div`
       font-size: 0.65rem;
     }
   }
+`;
+
+export const Label = styled.label`
+  color: ${({ theme }) => theme.gray};
+  font-size: 0.9rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 `;
