@@ -1,26 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Decribe } from './Style.TextCounter';
 
 function TextCounter(props){
-    const [count, setCount] = useState(0);
-    const [text, setText] = useState('');
-
-    const verificarQtd = (event) => {
-        const elemento = event.target
-              
-        if(elemento.value.length <= props.limit){
-            setCount(elemento.value.length)
-            setText(elemento.value)
-        }
-
-    }
     
     return (
         <Decribe editData={props.editData}>
             <label htmlFor="descricao">Descreva seu serviço</label>
-            <textarea onChange={verificarQtd.bind(this)} value={text} name="descricao" id="descricao"/>
+            <textarea onChange={props.onChange} value={props.value} name={props.name} id={props.id} maxLength="150"/>
             <div>
-                <span>Total:</span> {count} / {props.limit}
+                <span>Total:</span> {props.count} / 150
             </div>
         </Decribe>
     )

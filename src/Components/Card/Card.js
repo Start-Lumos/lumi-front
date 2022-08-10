@@ -1,23 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CardInput from "./CardInput/CardInput";
 
-//CSS
-import styles from "./CardUser.module.css";
-
 //Componentes
 import {
-  Form,
-  LeftColumn,
-  RightColumn,
-  Row,
-  ProfileInput,
   Label,
-  Span,
-  LabelToggle,
   Submit,
-  ServicesUser,
-  DadosUser,
-  Column,
   ProfileSectionBG,
   FormBottom,
   InputGroup,
@@ -35,7 +22,6 @@ function Card() {
   const [sizeP, SetSizeP] = useState("28rem");
   const [sizeS, SetSizeS] = useState("20rem");
   const [sizeM, SetSizeM] = useState("40rem");
-  const [dadosSize, SetdadosSize] = useState("100%");
 
   function ChangeToggleButton(e) {
     if (toggleButtonOption === "true") {
@@ -47,7 +33,6 @@ function Card() {
       SetSizeP("28rem");
       SetSizeS("20rem");
       SetSizeM("40rem");
-      SetdadosSize("100%");
     } else {
       setToggleButtonOption("true");
       setData({
@@ -57,27 +42,12 @@ function Card() {
       SetSizeP("56rem");
       SetSizeS("40rem");
       SetSizeM("80rem");
-      SetdadosSize("50%");
     }
   }
-
-  // const [dadosUser, setDadosUser] = useState({
-  //   userFirstName: "João",
-  //   userLastName: "Medeiros da Silva",
-  //   userEmail: "joaomedeirossilva@gmail.com",
-  //   userPassword: "Etf#226994",
-  //   userCPF: "12345678945",
-  //   userDTNasc: "2001-10-12",
-  //   userPhone: "81984527891",
-  // });
 
   // const [dadosServ, setDadosServ] = useState({
   //   descricao: "",
   //   modalidade: "",
-  // });
-
-  // const [values, setData] = useState({
-  //   toggleButton: toggleButtonOption,
   // });
 
   const [recarregar, setRecarregar] = useState(0);
@@ -92,8 +62,11 @@ function Card() {
       userDTNasc: "",
       userPhone: "",
       toggleButton: toggleButtonOption,
+      nomeServ: "opa",
+      descricao: "",
+      modalidade: "",
     });
-  }, [recarregar]);
+  }, [recarregar, toggleButtonOption]);
 
   const [data, setData] = useState({
     userFirstName: "",
@@ -104,6 +77,9 @@ function Card() {
     userDTNasc: "",
     userPhone: "",
     toggleButton: toggleButtonOption,
+    nomeServ: "",
+    descricao: "",
+    modalidade: "",
   });
 
   const inputs = [
@@ -226,14 +202,33 @@ function Card() {
     setFormValues({ ...formValues, [name]: value });
   };
 
-
-
-
   const [local, setLocal] = useState(false);
 
-  const LocalServico = (value) =>{
+  const LocalServico = (value) => {
     value === "Online" ? setLocal(false) : setLocal(true);
-  }
+  };
+
+
+  //Referente ao Textarea de descrição do serviço, com contador de caracteres.
+
+  const [count, setCount] = useState(0);
+
+  const onChangeTextCounter = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+    const elemento = e.target;
+
+    if (elemento.value.length <= 150) {
+      setCount(elemento.value.length);
+    }
+  };
+
+  const TextCounterProps = {
+    value: data.descricao,
+    name: "descricao",
+    id: "descricao",
+    onChange: onChangeTextCounter.bind(this),
+    count: count,
+  };
 
   return (
     /* CSS da página: localStyles.css */
@@ -264,30 +259,42 @@ function Card() {
           <aside>
             <InputGroup editData={editData}>
               <label htmlFor="servico">Qual o seu serviço</label>
-              <input />
+              <input
+                value={data.nomeServ}
+                name="nomeServ"
+                id="nomeServ"
+                onChange={onChange}
+              />
             </InputGroup>
 
-            <TextCounter limit={150} editData={editData} />
+            <TextCounter editData={editData} {...TextCounterProps} />
 
             <Label htmlFor="descricao">Forma de serviço</Label>
 
-            <Select name="modalidade" id="modalidade" required onChange={(e)=>LocalServico(e.target.value)} editData={editData}>
-              <option value="Online">
-                Online
-              </option>
-              <option value="Presencial">
-                Presencial
-              </option>
-              <option value="Híbrido">
-                Híbrido
-              </option>
+            <Select
+              name="modalidade"
+              id="modalidade"
+              required
+              onChange={(e) => LocalServico(e.target.value)}
+              editData={editData}
+            >
+              <option value="Online">Online</option>
+              <option value="Presencial">Presencial</option>
+              <option value="Híbrido">Híbrido</option>
             </Select>
 
             {local === true ? (
               <>
-                <BrazilianStates id="state" name="state" onChange={handleInputChange} editData={editData}/>
+                <BrazilianStates
+                  id="state"
+                  name="state"
+                  onChange={handleInputChange}
+                  editData={editData}
+                />
 
-                <BrazilianCities id="city" name="city"
+                <BrazilianCities
+                  id="city"
+                  name="city"
                   state={formValues.state}
                   onChange={handleInputChange}
                   editData={editData}
