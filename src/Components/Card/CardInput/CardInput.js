@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputToggle } from "../../ToggleButton/ToggleButton";
 import { Toggle } from "../../Modal/Styles.Modal";
-import { InputGroup } from "../Style.CardUser";
+import { InputGroup, InputGroupSenha } from "../Style.CardUser";
 
 const CardInput = (props) => {
   const [focused, setFocused] = useState(false);
@@ -14,6 +14,8 @@ const CardInput = (props) => {
     ChangeToggleButton,
     toggleButtonOption,
     editData,
+    editDataOp,
+    onClick,
     ...inputProps
   } = props;
 
@@ -30,6 +32,7 @@ const CardInput = (props) => {
   */
 
   return (
+
     <>
       {label === "Prestar serviço ?" ? (
         <Toggle>
@@ -56,6 +59,27 @@ const CardInput = (props) => {
             </div>
           )}
         </Toggle>
+      ) : label === "Senha" ? (
+        <InputGroup editDataOp={editDataOp}>
+          {/* Exibindo o label correspondente para cada input */}
+          <label htmlFor={id}>
+            {label}
+            <span onClick={onClick}>Alterar</span>
+          </label>
+
+          <input
+            {...inputProps}
+            onChange={onChange}
+            onBlur={handleFocus}
+            style={{pointerEvents: "none"}}
+            onFocus={() =>
+              inputProps.name === "registerConf_Password" && setFocused(true)
+            }
+            focused={focused.toString()}
+          />
+
+          <span>{errorMessage}</span>
+        </InputGroup>
       ) : (
         <InputGroup editData={editData}>
           {/* Exibindo o label correspondente para cada input */}

@@ -167,6 +167,7 @@ function Card() {
 
   const [isModalChangePass, setModalChangePass] = useState(false);
   const [editData, setEditData] = useState("none");
+  const [editDataOp, setEditDataOp] = useState("auto");
 
   function openModalCP() {
     setModalChangePass(true);
@@ -179,14 +180,14 @@ function Card() {
   const ActivateData = (e) => {
     e.preventDefault();
     setEditData("auto");
+    setEditDataOp("none")
   };
 
   const DesactivateData = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
     console.log(data); //Imprimindo valores no console ao enviar os dados;
-    // e.preventDefault();
-    // setEditData("none");
-    // console.log(data);
+    setEditData("none");
+    setEditDataOp("auto")
   };
 
   const onChange = (e) => {
@@ -212,6 +213,8 @@ function Card() {
               ChangeToggleButton={ChangeToggleButton}
               toggleButtonOption={toggleButtonOption}
               editData={editData}
+              editDataOp={editDataOp}
+              onClick={openModalCP}
             />
           ))}
           </aside>

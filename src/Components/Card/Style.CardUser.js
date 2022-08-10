@@ -156,6 +156,15 @@ export const InputGroup = styled.div`
   > label {
     color: ${({ theme }) => theme.gray};
     font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    span{
+      color: ${({ theme }) => theme.purpleOP};
+      font-size: 0.7rem;
+      cursor: pointer;
+      pointer-events: ${(props) => (props.editDataOp)};
+    }
   }
   > input {
     pointer-events: ${(props) => (props.editData)};
@@ -210,3 +219,4 @@ export const InputGroup = styled.div`
     }
   }
 `;
+
