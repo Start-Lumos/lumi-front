@@ -11,6 +11,7 @@ export const lightTheme = {
   purpleVariant: "#7F75FF",
   svgVariant: "#ffffff",
   shadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.150)",
+  calendar: "light",
 };
 
 export const darkTheme = {
@@ -26,4 +27,5 @@ export const darkTheme = {
   purpleVariant: "#6057e0",
   svgVariant: "#02001F",
   shadow: "0px 5px 12px 0px rgba(0, 0, 0, 0.450)",
+  calendar: "dark",
 };

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const InputToggle = styled.input`
   background: ${({ theme }) => theme.purpleVariant};
+  pointer-events: ${(props) => (props.editData)};
   width: 3rem;
   height: 1.5rem;
   appearance: none;
