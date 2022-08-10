@@ -41,7 +41,6 @@ export const ServicesUser = styled.div`
 export const ProfileSectionBG = styled.div`
   background-color: ${({ theme }) => theme.grayOp};
   margin-top: 2rem;
-  margin-bottom: 4rem;
   box-shadow: ${({ theme }) => theme.shadow};
   transition: all 0.5s ease;
   max-width: 50vw;
@@ -118,7 +117,7 @@ export const ProfileSectionBG = styled.div`
   }
 
   @media screen and (min-width: 900px) {
-    width: 450px;
+    width: 28rem;
   }
 
   @media only screen and (max-width: 550px) {
@@ -159,15 +158,15 @@ export const InputGroup = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    span{
+    span {
       color: ${({ theme }) => theme.purpleOP};
       font-size: 0.7rem;
       cursor: pointer;
-      pointer-events: ${(props) => (props.editDataOp)};
+      pointer-events: ${(props) => props.editDataOp};
     }
   }
   > input {
-    pointer-events: ${(props) => (props.editData)};
+    pointer-events: ${(props) => props.editData};
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -219,4 +218,3 @@ export const InputGroup = styled.div`
     }
   }
 `;
-

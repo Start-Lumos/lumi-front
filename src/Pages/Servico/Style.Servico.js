@@ -21,7 +21,6 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.grayOp};
   color: ${({ theme }) => theme.gray};
   transition: all 0.5s ease;
-  margin-bottom: 5%;
   box-shadow: ${({ theme }) => theme.shadow};
 
   @media screen and (min-width: 1500px) {

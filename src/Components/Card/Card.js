@@ -26,11 +26,12 @@ import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
 import { BrazilianStates } from "../BrazilianStates/BrazilianStates";
 import { BrazilianCities } from "../BrazilianCities/BrazilianCities";
 import { Select } from "../StyleList/Style.List";
+import TextCounter from "../TextCounter/TextCounter";
 
 function Card() {
   const [toggleButtonOption, setToggleButtonOption] = useState("false");
 
-  const [sizeP, SetSizeP] = useState("30rem");
+  const [sizeP, SetSizeP] = useState("28rem");
   const [sizeS, SetSizeS] = useState("20rem");
   const [sizeM, SetSizeM] = useState("40rem");
   const [dadosSize, SetdadosSize] = useState("100%");
@@ -42,7 +43,7 @@ function Card() {
         ...data,
         [e.target.toggleButton]: (e.target.value = "false"),
       });
-      SetSizeP("30rem");
+      SetSizeP("28rem");
       SetSizeS("20rem");
       SetSizeM("40rem");
       SetdadosSize("100%");
@@ -52,7 +53,7 @@ function Card() {
         ...data,
         [e.target.toggleButton]: (e.target.value = "true"),
       });
-      SetSizeP("60rem");
+      SetSizeP("56rem");
       SetSizeS("40rem");
       SetSizeM("80rem");
       SetdadosSize("50%");
@@ -180,14 +181,14 @@ function Card() {
   const ActivateData = (e) => {
     e.preventDefault();
     setEditData("auto");
-    setEditDataOp("none")
+    setEditDataOp("none");
   };
 
   const DesactivateData = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
     console.log(data); //Imprimindo valores no console ao enviar os dados;
     setEditData("none");
-    setEditDataOp("auto")
+    setEditDataOp("auto");
   };
 
   const onChange = (e) => {
@@ -197,41 +198,44 @@ function Card() {
   return (
     /* CSS da página: localStyles.css */
 
-      <ProfileSectionBG sizeP={sizeP} sizeS={sizeS} sizeM={sizeM}>
-        <form onSubmit={DesactivateData}>
-          {isModalChangePass ? (
-            <ChangePassword closeModalCP={closeModalCP} />
-          ) : null}
-
+    <ProfileSectionBG sizeP={sizeP} sizeS={sizeS} sizeM={sizeM}>
+      <form onSubmit={DesactivateData}>
+        {isModalChangePass ? (
+          <ChangePassword closeModalCP={closeModalCP} />
+        ) : null}
+        
           <aside>
-          {inputs.map((input) => (
-            <CardInput
-              key={input.id}
-              {...input}
-              value={data[input.name]}
-              onChange={onChange}
-              ChangeToggleButton={ChangeToggleButton}
-              toggleButtonOption={toggleButtonOption}
-              editData={editData}
-              editDataOp={editDataOp}
-              onClick={openModalCP}
-            />
-          ))}
+            {inputs.map((input) => (
+              <CardInput
+                key={input.id}
+                {...input}
+                value={data[input.name]}
+                onChange={onChange}
+                ChangeToggleButton={ChangeToggleButton}
+                toggleButtonOption={toggleButtonOption}
+                editData={editData}
+                editDataOp={editDataOp}
+                onClick={openModalCP}
+              />
+            ))}
           </aside>
 
+          {toggleButtonOption === "true" ? 
+            <aside>
+              <TextCounter limit={150}/>
+            </aside> 
+          : null}
 
-          {toggleButtonOption === "true" ? <></> : null}
 
-          <FormBottom>
-            {editData === "none"?(
-              <Submit onClick={ActivateData}>Editar</Submit>
-            ) : (
-              <Submit>Salvar</Submit>
-            )}
-            
-          </FormBottom>
-        </form>
-      </ProfileSectionBG>
+        <FormBottom>
+          {editData === "none" ? (
+            <Submit onClick={ActivateData}>Editar</Submit>
+          ) : (
+            <Submit>Salvar</Submit>
+          )}
+        </FormBottom>
+      </form>
+    </ProfileSectionBG>
   );
 }
 

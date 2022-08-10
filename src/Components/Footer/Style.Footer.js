@@ -10,6 +10,7 @@ export const FooterS = styled.footer`
     opacity: 0.9;
     padding: 1.5rem;
     border-radius: 12px 12px 0 0;
+    margin-top: 4rem;
 
     h1{
         margin-bottom: 1rem;
