@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 export const Backdrop = styled.div`
   width: 100vw;
@@ -379,5 +380,20 @@ export const Toggle = styled.div`
     background: ${({ theme }) => theme.user_input};
     color: ${({ theme }) => theme.gray};
     transition: 0.5s ease;
+  }
+`;
+
+export const StyledContainer = styled(ToastContainer)`
+  &&&.Toastify__toast-container {
+  }
+  .Toastify__toast {
+    background: ${({ theme }) => theme.user_input};
+    transition: 0.5s ease;
+  }
+  .Toastify__toast-body {
+    color: ${({ theme }) => theme.gray};
+  }
+  .Toastify__progress-bar {
+    background: ${({ theme }) => theme.purpleOP};
   }
 `;

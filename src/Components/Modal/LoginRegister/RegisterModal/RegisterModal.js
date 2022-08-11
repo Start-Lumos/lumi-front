@@ -154,17 +154,17 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
 
   // Função chamada ao Submit do formulário:
 
-  const notify = () => toast("Esse CPF é inválido!");
+  const notifyRegister = () =>
+    toast("Esse CPF é inválido!", { toastId: "toastFromRG" });
 
   const handleSubmit = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
     if (CPF.validate(values.registerCPF) === false) {
-      <>{notify()}</>;
+      <>{notifyRegister()}</>;
     } else {
       console.log(values); //Imprimindo valores no console ao enviar os dados;
     }
   };
-
 
   // Função para setar os valores informados pelo usuário no seu respectivo input:
 
@@ -172,14 +172,11 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-
   return (
     /* CSS da página: localStyles.css */
 
     <ContainerReg>
-      
       <StyledContainer autoClose={2500} position="top-center" />
-
       <form onSubmit={handleSubmit}>
         <FormTop>
           <h1>Cadastre-se</h1>
