@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardInput from "./CardInput/CardInput";
+import CPF from "cpf-check";
 
 //Componentes
 import {
@@ -53,7 +54,7 @@ function Card() {
       userLastName: "Ferreira",
       userEmail: "fulano@gmail.com",
       userPassword: "@123afbrir",
-      userCPF: "12345678978",
+      userCPF: "58744012020",
       userDTNasc: "2015-05-23",
       userPhone: "81925497895",
       toggleButton: toggleButtonOption,
@@ -171,12 +172,17 @@ function Card() {
     setEditDataOp("none");
   };
 
-  const DesactivateData = (e) => {
-    e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
-    console.log(data, formValues); //Imprimindo valores no console ao enviar os dados;
-    setEditData("none");
-    setEditDataOp("auto");
-  };
+  const sendData = (e) =>{
+    e.preventDefault();
+    if (CPF.validate(data.userCPF) === false){
+      console.log("CPF invalido")
+    }else{
+      setData({ ...data, [e.target.name]: e.target.value });
+      console.log(data, formValues);
+      setEditData("none");
+      setEditDataOp("auto");
+    }
+  }
 
   const CancelEditData = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
@@ -236,7 +242,7 @@ function Card() {
     /* CSS da página: localStyles.css */
 
     <ProfileSectionBG sizeP={sizeP} sizeS={sizeS} sizeM={sizeM}>
-      <form onSubmit={DesactivateData}>
+      <form onSubmit={(e)=>sendData(e)}>
         {isModalChangePass ? (
           <ChangePassword closeModalCP={closeModalCP} />
         ) : null}
