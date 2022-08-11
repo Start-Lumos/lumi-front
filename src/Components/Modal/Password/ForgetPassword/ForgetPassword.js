@@ -50,13 +50,13 @@ function ForgetPassword({ closeModalPass, openModalCode }) {
 
   // Função chamada ao Submit do formulário:
 
-  const notifyFP = () =>
+  const notify = () =>
     toast("Esse CPF é inválido!", { toastId: "toastFromFP" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (CPF.validate(values.cpfFP) === false) {
-      <>{notifyFP()}</>;
+      <>{notify()}</>;
     } else {
       console.log(values);
     }

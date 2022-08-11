@@ -154,13 +154,13 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
 
   // Função chamada ao Submit do formulário:
 
-  const notifyRegister = () =>
+  const notify = () =>
     toast("Esse CPF é inválido!", { toastId: "toastFromRG" });
 
   const handleSubmit = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
     if (CPF.validate(values.registerCPF) === false) {
-      <>{notifyRegister()}</>;
+      <>{notify()}</>;
     } else {
       console.log(values); //Imprimindo valores no console ao enviar os dados;
     }
