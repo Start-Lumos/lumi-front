@@ -45,26 +45,21 @@ function Card() {
     }
   }
 
-  // const [dadosServ, setDadosServ] = useState({
-  //   descricao: "",
-  //   modalidade: "",
-  // });
-
   const [recarregar, setRecarregar] = useState(0);
 
   useEffect(() => {
     setData({
-      userFirstName: "",
-      userLastName: "",
-      userEmail: "",
+      userFirstName: "Danilo",
+      userLastName: "Ferreira",
+      userEmail: "fulano@gmail.com",
       userPassword: "@123afbrir",
-      userCPF: "",
-      userDTNasc: "",
-      userPhone: "",
+      userCPF: "12345678978",
+      userDTNasc: "2015-05-23",
+      userPhone: "81925497895",
       toggleButton: toggleButtonOption,
       nomeServ: "opa",
-      descricao: "",
-      modalidade: "",
+      descricao: "opa2",
+      modalidade: "Online",
     });
   }, [recarregar, toggleButtonOption]);
 
@@ -205,7 +200,14 @@ function Card() {
   const [local, setLocal] = useState(false);
 
   const LocalServico = (value) => {
-    value === "Online" ? setLocal(false) : setLocal(true);
+    if (value === "Online") {
+      setData({ ...data, modalidade : value })
+      setLocal(false)
+      setFormValues({});
+    }else{
+      setData({ ...data, modalidade : value })
+      setLocal(true)
+    }
   };
 
 
@@ -285,11 +287,14 @@ function Card() {
 
             {local === true ? (
               <>
+                
+
                 <BrazilianStates
                   id="state"
                   name="state"
                   onChange={handleInputChange}
                   editData={editData}
+                  setFormValues={setFormValues}
                 />
 
                 <BrazilianCities

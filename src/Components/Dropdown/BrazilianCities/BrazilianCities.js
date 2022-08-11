@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchCitiesForState, parseCities } from "../Helpers/ibge";
+import { fetchCitiesForState, parseCities } from "../Helpers/Ibge";
 import Dropdown from "../Dropdown";
 
 export const BrazilianCities = ({state, id, name, onChange, editData}) => {
