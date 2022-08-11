@@ -12,6 +12,7 @@ import {
 
 
 import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
+import fotoperfil from "../../Assets/userdefault.png";
 
 const nome = "Marcos Aurelio";
 const funcao = "Fotógrafo";
@@ -19,6 +20,10 @@ const desc =
   "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
 const email = "marcosaurelio@gmail.com";
 const phone = "8191234569";
+const modalidade = 'Online';
+const estado = 'PE';
+const cidade = 'Recife';
+
 
 const res = [
   {
@@ -27,6 +32,7 @@ const res = [
     imagem2: 'https://blog.nakata.com.br/wp-content/uploads/2020/08/post_thumbnail-1f77e8996174df4fb19587977331de22-780x450.jpg',
     imagem3: 'https://img2.icarros.com/dbimg/imgadicionalnoticia/4/105564_1',
     imagem4: 'https://www.infomoney.com.br/wp-content/uploads/2022/05/carros-de-luxo-e1653484670585.jpg?fit=770%2C446&quality=50&strip=all',
+
   }
 
 ]
@@ -36,14 +42,16 @@ function Servico() {
     <Main>
       <Container>
         <Sobre>
-          <ProfilePicture />
+          <ProfilePicture>
+            <img src={fotoperfil} alt="Foto Perfil" />
+          </ProfilePicture>
           <Data>
             <aside>
               <h2>{nome}</h2>
               <span>{funcao}</span>
             </aside>
             <aside>
-              <h2>Contato:</h2>
+              <h3>Contato:</h3>
               <p>
                 <span>Email: </span>
                 {email}
@@ -52,6 +60,11 @@ function Servico() {
                 <span>Telefone: </span>
                 {phone}
               </p>
+            </aside>
+            <aside>
+              <h3>Disponibilidade:</h3>
+              <p><span>Modalidade: </span>{modalidade}</p>
+              <p><span>Local: </span>{cidade}, {estado}</p>
             </aside>
           </Data>
         </Sobre>

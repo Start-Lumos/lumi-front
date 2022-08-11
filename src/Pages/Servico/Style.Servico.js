@@ -49,11 +49,18 @@ export const Sobre = styled.div`
   }
 `;
 
-export const ProfilePicture = styled.img`
+export const ProfilePicture = styled.div`
   width: 10rem;
   height: 10rem;
-  background: #564aff;
   border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 `;
 
 export const Data = styled.aside`
@@ -79,7 +86,7 @@ export const Data = styled.aside`
   h2 {
     color: ${({ theme }) => theme.gray};
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     transition: all 0.5s ease;
     margin-bottom: 0.2rem;
     @media screen and (max-width: 520px) {
@@ -87,10 +94,25 @@ export const Data = styled.aside`
       margin-top: 0.5rem;
     }
   }
+  h3{
+    color: ${({ theme }) => theme.gray};
+    font-weight: 400;
+    font-size: 1rem;
+    transition: all 0.5s ease;
+    margin-bottom: 0.5rem;
+    @media screen and (max-width: 520px) {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  }
   aside {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    display: flex;
+    align-items:center;
+    justify-content: center;
     p {
       font-size: 75%;
     }
