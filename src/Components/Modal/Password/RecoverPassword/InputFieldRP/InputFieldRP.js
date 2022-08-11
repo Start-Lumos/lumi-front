@@ -1,10 +1,10 @@
 import { useState } from "react";
+
+//Style
 import { InputGroup } from "../../../Styles.Modal";
 
-const InputFieldRP = (props) => {
+function InputFieldRP (props) {
   const [focused, setFocused] = useState(false);
-
-  // Recebendo as props
 
     const {
       label,
@@ -13,37 +13,26 @@ const InputFieldRP = (props) => {
       errorMessage,
       ...inputProps
     } = props;
-
-  //-----------------------------------------------------------------------
-
-
-  // Função que permite a exibição do Span ao clicar fora do campo selecionado
-    
-  const handleFocus = (e) => {
-      setFocused(true);
-    };
-
-  //------------------------------------------------------------------------    
   
-  return (
+  //Exibir Span ao preencher campo erroneamente
+  const showMessage = (e) => {setFocused(true)};
 
-    /* Css: inputFields.css */
+  return (
 
     <InputGroup>
       <label htmlFor={id}>{label}</label>
       <input
-        
-        /* Explicação de cada elemento, pode ser lida no componente InputFieldReg.js */
 
         {...inputProps}
         onChange={onChange}
-        onBlur={handleFocus}
+        onBlur={showMessage}
         focused={focused.toString()}
 
         /*
           Faz com que o campo de confirmação de senha, já informe o span assim que clicar.
           (Evita que esse span só seja exibido ao clicar em enviar)
         */ 
+
         onFocus={() =>
           inputProps.name === "confirmPasswordRecover" && setFocused(true)
         }

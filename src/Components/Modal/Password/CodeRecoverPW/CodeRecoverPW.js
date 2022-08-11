@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+
+//Botão Fechar
 import { CgClose } from "react-icons/cg";
+
+//Componentes
 import {
   Backdrop,
   Container,
@@ -13,50 +17,35 @@ function CodeRecoverPW({
   closeModalCode,
   openModalRecover,
 }) {
-  //Verificação dos campos do formulário:
 
-  const [values, setValues] = useState({
-    codeRecover: "",
-  });
-
-  // -----------------------------------------------------------------------
-
-  //Configurando os atributos de cada Input, a partir do seu id:
+  const [values, setValues] = useState({userCode: ""});
 
   const inputs = [
     {
-      id: "codeRecover",
+      id: "userCode",
       type: "text",
-      name: "codeRecover",
+      name: "userCode",
       placeholder: "Informe o código enviado em seu e-mail",
       label: "Código",
       required: true,
     },
   ];
-  // -----------------------------------------------------------------------
 
-  // Função chamada ao Submit do formulário:
-
-  const handleSubmit = (e) => {
+  const sendData = (e) => {
     e.preventDefault();
     console.log(values);
   };
 
-  // -----------------------------------------------------------------------
-
-  // Função para setar os valores informados pelo usuário no seu respectivo input:
-
-  const onChange = (e) => {
+  const changeInputValue = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
-  // -----------------------------------------------------------------------
 
   return (
   
     <Backdrop>
       <Container>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={sendData}>
+          
           <FormTop>
             <h1>Recuperar a senha</h1>
             <CloseButton onClick={closeModalCode}>
@@ -69,12 +58,14 @@ function CodeRecoverPW({
               key={input.id}
               {...input}
               value={values[input.name]}
-              onChange={onChange}
+              onChange={changeInputValue}
             />
           ))}
 
           <p onClick={openModalRecover}>Clicar</p>
+          
           <Submit>Enviar</Submit>
+
         </form>
       </Container>
     </Backdrop>

@@ -1,5 +1,6 @@
 import React from "react";
 
+//Componentes
 import { Container, MenuItems, Icon } from "./Style.NavbarMobile";
 
 //Icones dos botões
@@ -13,7 +14,7 @@ import { ToggleModeMobile } from "../ToggleMode/ToggleMode";
 //Importando Link
 import { Link } from "react-router-dom";
 
-function MenuMobile({
+function NavbarMobile({
   closeModalMenuMobile,
   menuMobileIsVisible,
   themebutton,
@@ -21,12 +22,13 @@ function MenuMobile({
   openModalSign,
 }) {
 
-  const Size = { fontSize: "2rem" };
+  const size = { fontSize: "2rem" };
 
-  function AbrirLogin(){
+  const abrirLogin = () => {
     closeModalMenuMobile();
     openModalSign();
   }
+
   return (
 
     <Container menuMobileIsVisible={menuMobileIsVisible}>
@@ -34,31 +36,34 @@ function MenuMobile({
       <CgClose size={45} onClick={closeModalMenuMobile}/>
       
       <MenuItems>
-        <Link to="/" onClick={closeModalMenuMobile}>
-          <Icon>
-            <RiHome6Fill style={Size} />
-            <span>Inicio</span>
+        
+          <Link to="/" onClick={closeModalMenuMobile}>
+            <Icon>
+              <RiHome6Fill style={size} />
+              <span>Inicio</span>
+            </Icon>
+          </Link>
+
+          <Icon onClick={abrirLogin}>
+            <RiUser3Fill style={size} />
+            <span>Login</span>
           </Icon>
-        </Link>
 
-        <Icon onClick={AbrirLogin}>
-          <RiUser3Fill style={Size} />
-          <span>Login</span>
-        </Icon>
-
-        <Icon>
-          <ToggleModeMobile theme={themebutton} toggleTheme={themeToggler} />
-        </Icon>
-
-        <Link to="/equipe" onClick={closeModalMenuMobile}>
           <Icon>
-            <TiGroup style={Size} />
-            <span>Desenvolvedores</span>
+            <ToggleModeMobile theme={themebutton} toggleTheme={themeToggler} />
           </Icon>
-        </Link>
+
+          <Link to="/equipe" onClick={closeModalMenuMobile}>
+            <Icon>
+              <TiGroup style={size} />
+              <span>Desenvolvedores</span>
+            </Icon>
+          </Link>
+          
       </MenuItems>
+
     </Container>
   );
 }
 
-export default MenuMobile;
+export default NavbarMobile;

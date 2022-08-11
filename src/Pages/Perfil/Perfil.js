@@ -5,7 +5,7 @@ import { ProfileContainer, ProfileBG } from "./Style.Profile";
 
 //Icones
 import { RiUser3Fill } from "react-icons/ri";
-import Card from "../../Components/Card/Card";
+import CardUser from "../../Components/CardUser/CardUser";
 
 function Perfil() {
   return (
@@ -13,7 +13,7 @@ function Perfil() {
       <ProfileBG>
         <RiUser3Fill />
       </ProfileBG>
-      <Card />
+      <CardUser />
     </ProfileContainer>
   );
 }

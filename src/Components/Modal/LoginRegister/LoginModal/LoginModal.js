@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { CgClose } from "react-icons/cg";
-import InputFieldLog from "./InputFieldLog/InputFieldLog";
+
+//Link
 import { Link } from "react-router-dom";
+
+//Botão Fechar
+import { CgClose } from "react-icons/cg";
+
+//Componentes
+import InputFieldLog from "./InputFieldLog/InputFieldLog";
+
+//Style
 import {
   Container,
   FormTop,
@@ -12,29 +20,26 @@ import {
 } from "../../Styles.Modal";
 
 function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
-  //Verificação dos campos do formulário:
 
   const [values, setValues] = useState({
-    loginEmail: "",
-    loginPassword: "",
+    userEmail: "",
+    userPassword: "",
   });
-
-  //Configurando os atributos de cada Input, a partir do seu id:
 
   const inputs = [
     {
-      id: "loginEmail",
+      id: "userEmail",
       type: "email",
-      name: "loginEmail",
+      name: "userEmail",
       placeholder: "Informe o seu e-mail",
       errorMessage: "Esse não é um endereço de e-mail válido!",
       label: "E-mail",
       required: true,
     },
     {
-      id: "loginPassword",
+      id: "userPassword",
       type: "password",
-      name: "loginPassword",
+      name: "userPassword",
       placeholder: "Informe a sua senha",
       label: "Senha",
       required: true,
@@ -44,25 +49,19 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
     },
   ];
 
-  // Função chamada ao Submit do formulário:
-
-  const handleSubmit = (e) => {
+  const sendData = (e) => {
     e.preventDefault();
     console.log(values);
   };
 
-  // -----------------------------------------------------------------------
-
-  // Função para setar os valores informados pelo usuário no seu respectivo input:
-
-  const onChange = (e) => {
+  const changeInputValue = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
-
     <Container>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={sendData}>
+        
         <FormTop>
           <h1>Login</h1>
           <CloseButton onClick={closeModalSign}>
@@ -75,7 +74,7 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
             key={input.id}
             {...input}
             value={values[input.name]}
-            onChange={onChange}
+            onChange={changeInputValue}
           />
         ))}
 
@@ -91,6 +90,7 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
         <ChangePage onClick={setRegisterForm}>
           Cadastre-se
         </ChangePage>
+        
       </form>
     </Container>
   );

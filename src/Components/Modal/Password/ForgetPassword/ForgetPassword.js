@@ -1,5 +1,12 @@
 import React, { useState } from "react";
+
+//Icom Fechar
 import { CgClose } from "react-icons/cg";
+
+//Validação do CPF
+import CPF from "cpf-check";
+
+//Componentes
 import InputFieldFP from "./InputFieldFP/InputFieldFP";
 import {
   Backdrop,
@@ -10,35 +17,31 @@ import {
   StyledContainer,
 } from "../../Styles.Modal";
 
-import CPF from "cpf-check";
-
+//Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function ForgetPassword({ closeModalPass, openModalCode }) {
-  //Verificação dos campos do formulário:
 
   const [values, setValues] = useState({
-    emailFP: "",
-    cpfFP: "",
+    userEmail: "",
+    userCPF: "",
   });
-
-  //Configurando os atributos de cada Input, a partir do seu id:
 
   const inputs = [
     {
-      id: "emailFP",
+      id: "userEmail",
       type: "email",
-      name: "emailFP",
+      name: "userEmail",
       placeholder: "Informe o seu e-mail",
       errorMessage: "Esse não é um endereço de e-mail válido!",
       label: "E-mail",
       required: true,
     },
     {
-      id: "cpfFP",
+      id: "userCPF",
       type: "text",
-      name: "cpfFP",
+      name: "userCPF",
       placeholder: "Informe o seu CPF",
       errorMessage:
         "O CPF deve conter 11 caracteres, sendo informado apenas os números",
@@ -48,49 +51,49 @@ function ForgetPassword({ closeModalPass, openModalCode }) {
     },
   ];
 
-  // Função chamada ao Submit do formulário:
+  const notify = () => toast("Esse CPF é inválido!", { toastId: "toastFromFP" });
 
-  const notify = () =>
-    toast("Esse CPF é inválido!", { toastId: "toastFromFP" });
-
-  const handleSubmit = (e) => {
+  const sendData = (e) => {
     e.preventDefault();
-    if (CPF.validate(values.cpfFP) === false) {
+    if (CPF.validate(values.userCPF) === false) {
       <>{notify()}</>;
     } else {
       console.log(values);
     }
   };
 
-  // Função para setar os valores informados pelo usuário no seu respectivo input:
-
-  const onChange = (e) => {
+  const changeInputValue = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
     <Backdrop>
+      
       <StyledContainer autoClose={2500} position="top-center" />
+      
       <Container>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={sendData}>
+          
           <FormTop>
             <h1>Recuperar a senha</h1>
             <CloseButton onClick={closeModalPass}>
               <CgClose />
             </CloseButton>
           </FormTop>
+
           {inputs.map((input) => (
             <InputFieldFP
               key={input.id}
               {...input}
               value={values[input.name]}
-              onChange={onChange}
+              onChange={changeInputValue}
             />
           ))}
-          <p onClick={openModalCode} style={{ cursor: "pointer" }}>
-            Clicar
-          </p>
+
+          <p onClick={openModalCode} style={{ cursor: "pointer" }}>Clicar</p>
+
           <Submit>Enviar</Submit>
+          
         </form>
       </Container>
     </Backdrop>

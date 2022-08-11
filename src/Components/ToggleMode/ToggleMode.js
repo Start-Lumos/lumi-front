@@ -1,5 +1,9 @@
 import React from "react";
+
+//Icones
 import { MdDarkMode, MdLightMode } from "react-icons/md";
+
+//Style
 import { DarkMode, DarkModeMobile } from "./Style.ToggleMode";
 
 export const ToggleMode = ({ theme, toggleTheme }) => {

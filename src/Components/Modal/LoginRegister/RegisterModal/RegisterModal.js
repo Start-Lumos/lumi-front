@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+
+//Botão Fechar
 import { CgClose } from "react-icons/cg";
+
+//Componentes
 import InputFieldReg from "./InputFieldReg/InputFieldReg";
-import CPF from "cpf-check";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   ContainerReg,
   FormTop,
@@ -11,17 +12,18 @@ import {
   Submit,
   ChangePage,
 } from "../../Styles.Modal";
-import { StyledContainer } from "../../../Card/Style.CardUser";
+
+//Validação do CPF
+import CPF from "cpf-check";
+
+//Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+//Style
+import { StyledContainer } from "../../../CardUser/Style.CardUser";
 
 function RegisterModal({ setLoginForm, closeModalSign }) {
-  /*
-    setLoginForm: Permite alterar p/ o modal de Login;
-    closeModal: Fechar o modal;
-    inputValueColor: Alterar a cor do valor do input de acordo com o modo (light, dark);
-    bgColorG: Alterar a cor do input de acordo com o modo (light, dark);
-  */
-
-  //Toggle para verificação se o usuário será um prestador de serviço
 
   const [toggleButtonOption, setToggleButtonOption] = useState("false");
 
@@ -41,31 +43,24 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     }
   }
 
-  // -----------------------------------------------------------------------
-
-  //Verificação dos campos do formulário:
 
   const [values, setValues] = useState({
-    registerfirstName: "",
-    registerLastName: "",
-    registerEmail: "",
-    registerCPF: "",
-    registerPhone: "",
-    registerPassword: "",
-    registerConf_Password: "",
+    userFirstName: "",
+    userLastName: "",
+    userEmail: "",
+    userCPF: "",
+    userPhone: "",
+    userPassword: "",
+    userConfPassword: "",
     toggleButton: toggleButtonOption,
   });
 
-  // -----------------------------------------------------------------------
-
-  //Configurando os atributos de cada Input, a partir do seu id:
-
   const inputs = [
     {
-      //registerfirstName
-      id: "registerfirstName",
+      //userFirstName
+      id: "userFirstName",
       type: "text",
-      name: "registerfirstName",
+      name: "userFirstName",
       placeholder: "Informe o seu nome",
       errorMessage:
         "Nome deve possuir 3-16 caracteres e não pode conter caracteres especiais.",
@@ -74,10 +69,10 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
       pattern: "^[A-Za-z]{3,16}$",
     },
     {
-      //registerLastName
-      id: "registerLastName",
+      //userLastName
+      id: "userLastName",
       type: "text",
-      name: "registerLastName",
+      name: "userLastName",
       placeholder: "Informe o seu sobrenome",
       errorMessage:
         "Sobrenome deve possuir 3-45 caracteres e não pode conter caracteres especiais.",
@@ -86,20 +81,20 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
       pattern: "^[A-Za-z]{3,16}$",
     },
     {
-      //registerEmail
-      id: "registerEmail",
+      //userEmail
+      id: "userEmail",
       type: "email",
-      name: "registerEmail",
+      name: "userEmail",
       placeholder: "Informe o seu e-mail",
       errorMessage: "Esse não é um endereço de e-mail válido!",
       label: "E-mail",
       required: true,
     },
     {
-      //registerCPF
-      id: "registerCPF",
+      //userCPF
+      id: "userCPF",
       type: "text",
-      name: "registerCPF",
+      name: "userCPF",
       placeholder: "Informe o seu CPF",
       errorMessage:
         "O CPF deve conter 11 caracteres, sendo informado apenas os números",
@@ -108,10 +103,10 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
       required: true,
     },
     {
-      //registerPhone
-      id: "registerPhone",
+      //userPhone
+      id: "userPhone",
       type: "text",
-      name: "registerPhone",
+      name: "userPhone",
       placeholder: "Informe o seu telefone",
       errorMessage:
         "O telefone deve conter 11 caracteres, sendo informado apenas os números",
@@ -120,10 +115,10 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
       pattern: "^[0-9]{11}$",
     },
     {
-      //registerPassword
-      id: "registerPassword",
+      //userPassword
+      id: "userPassword",
       type: "password",
-      name: "registerPassword",
+      name: "userPassword",
       placeholder: "Informe a sua senha",
       errorMessage:
         "A senha deve conter no mínimo 8-16 caracteres, número, letras maiúsculas e/ou minúsculas e caractere especial",
@@ -133,15 +128,15 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
         "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$",
     },
     {
-      //registerConf_Password
-      id: "registerConf_Password",
+      //userConfPassword
+      id: "userConfPassword",
       type: "password",
-      name: "registerConf_Password",
+      name: "userConfPassword",
       placeholder: "Confirme a sua senha",
       errorMessage: "As senhas não são iguais!",
       label: "Confirmar senha",
       required: true,
-      pattern: values.registerPassword,
+      pattern: values.userPassword,
     },
     {
       //toggleButton
@@ -152,32 +147,29 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     },
   ];
 
-  // Função chamada ao Submit do formulário:
-
   const notify = () =>
     toast("Esse CPF é inválido!", { toastId: "toastFromRG" });
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
-    if (CPF.validate(values.registerCPF) === false) {
+  const sendData = (e) => {
+    e.preventDefault();
+    if (CPF.validate(values.userCPF) === false) {
       <>{notify()}</>;
     } else {
-      console.log(values); //Imprimindo valores no console ao enviar os dados;
+      console.log(values);
     }
   };
 
-  // Função para setar os valores informados pelo usuário no seu respectivo input:
-
-  const onChange = (e) => {
+  const changeInputValue = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   return (
-    /* CSS da página: localStyles.css */
-
     <ContainerReg>
+      
       <StyledContainer autoClose={2500} position="top-center" />
-      <form onSubmit={handleSubmit}>
+
+      <form onSubmit={sendData}>
+        
         <FormTop>
           <h1>Cadastre-se</h1>
           <CloseButton onClick={closeModalSign}>
@@ -191,7 +183,7 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
               key={input.id}
               {...input}
               value={values[input.name]}
-              onChange={onChange}
+              onChange={changeInputValue}
               ChangeToggleButton={ChangeToggleButton}
               toggleButtonOption={toggleButtonOption}
             />
@@ -201,6 +193,7 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
         <Submit>Cadastrar</Submit>
         <p>Já tem uma conta?</p>
         <ChangePage onClick={setLoginForm}>Login</ChangePage>
+        
       </form>
     </ContainerReg>
   );

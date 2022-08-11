@@ -19,7 +19,7 @@ export const parseStates = (states) => {
     .map((state) => ({ label: state.nome, value: state.sigla }))
     .sort(sortByLabelAsc);
 
-  const defaultOption = {label: 'Todo o Brasil', value: []}
+  const defaultOption = {label: 'Selecione um estado', value: []}
   return [defaultOption, ...data]
 };
 
@@ -38,6 +38,6 @@ export const parseCities = (cities) => {
     .map((city) => ({ label: city.nome, value: city.nome }))
     .sort(sortByLabelAsc)
 
-  const defaultOption = {label: 'Todos as cidades', value: []}
+  const defaultOption = {label: 'Selecione uma Cidade', value: []}
   return [defaultOption, ...data]
 }

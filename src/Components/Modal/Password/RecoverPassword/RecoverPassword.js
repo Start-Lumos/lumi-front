@@ -1,25 +1,24 @@
 import React, { useState } from "react";
+
+//Botão Fechar
 import { CgClose } from "react-icons/cg";
+
+//Componentes
 import { Backdrop, Container, FormTop, CloseButton, Submit } from "../../Styles.Modal";
 import InputFieldRP from "./InputFieldRP/InputFieldRP";
 
 function RecoverPassword({ closeModalRecover }) {
-  //Verificação dos campos do formulário:
 
   const [values, setValues] = useState({
-    passwordRecover: "",
-    confirmPasswordRecover: "",
+    userPassword: "",
+    userConfPassword: "",
   });
-
-  // -----------------------------------------------------------------------
-
-  //Configurando os atributos de cada Input, a partir do seu id:
 
   const inputs = [
     {
-      id: "passwordRecover",
+      id: "userPassword",
       type: "password",
-      name: "passwordRecover",
+      name: "userPassword",
       placeholder: "Informe uma nova senha",
       errorMessage:
         "A senha deve conter no mínimo 8-16 caracteres, número, letras maiúsculas e/ou minúsculas e caractere especial",
@@ -29,40 +28,32 @@ function RecoverPassword({ closeModalRecover }) {
         "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$",
     },
     {
-      id: "confirmPasswordRecover",
+      id: "userConfPassword",
       type: "password",
-      name: "confirmPasswordRecover",
+      name: "userConfPassword",
       placeholder: "Confirme a nova sua senha",
       errorMessage: "As senhas não são iguais!",
       label: "Confirmar nova senha",
       required: true,
-      pattern: values.passwordRecover,
+      pattern: values.userPassword,
     },
   ];
-  // -----------------------------------------------------------------------
 
-  // Função chamada ao Submit do formulário:
 
-  const handleSubmit = (e) => {
+  const sendData = (e) => {
     e.preventDefault();
     console.log(values);
   };
 
-  // -----------------------------------------------------------------------
-
-  // Função para setar os valores informados pelo usuário no seu respectivo input:
-
-  const onChange = (e) => {
+  const changeInputValue = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
-  // -----------------------------------------------------------------------
 
   return (
 
     <Backdrop>
       <Container>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={sendData}>
           <FormTop>
             <h1>Criar nova senha</h1>
             <CloseButton onClick={closeModalRecover}>
@@ -75,7 +66,7 @@ function RecoverPassword({ closeModalRecover }) {
               key={input.id}
               {...input}
               value={values[input.name]}
-              onChange={onChange}
+              onChange={changeInputValue}
             />
           ))}
 

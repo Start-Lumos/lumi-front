@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+
+//Link
+import { Link } from "react-router-dom";
 
 //Icones
 import { BiSearchAlt } from "react-icons/bi";
@@ -23,8 +25,7 @@ import {
   MenuMobileIcon,
 } from "./Style.Navbar";
 
-//Componente Menu Mobile
-import MenuMobile from "../NavbarMobile/NavbarMobile";
+import NavbarMobile from "../NavbarMobile/NavbarMobile";
 
 //Modal
 import LoginRegister from "../Modal/LoginRegister/LoginRegister";
@@ -32,81 +33,76 @@ import ForgetPassword from "../Modal/Password/ForgetPassword/ForgetPassword";
 import CodeRecoverPW from "../Modal/Password/CodeRecoverPW/CodeRecoverPW";
 import RecoverPassword from "../Modal/Password/RecoverPassword/RecoverPassword";
 
-function Header({ themeToggler, imgsrc, themebutton }) {
-  //Abertura e Fechamento do menu para versão mobile
 
-  const [menuMobileIsVisible, setMenuMobileisVisible] = useState(false);
+function Navbar({ themeToggler, imgsrc, themebutton }) {
+  
 
-  function openModalMenuMobile() {
-    setMenuMobileisVisible(true);
-  }
 
-  function closeModalMenuMobile() {
-    setMenuMobileisVisible(false);
-  }
+    //Abrir e Fechar: NavbarMobile
+    const [menuMobileIsVisible, setMenuMobileisVisible] = useState(false);
 
-  //Fechar e abrir Login / Cadastro
+    function openModalMenuMobile() {setMenuMobileisVisible(true)}
 
-  const [isModalSignOpen, setModalSignOpen] = useState(false); //Estado inicial do modal, false, pois inicia-se fechado
+    function closeModalMenuMobile() {setMenuMobileisVisible(false)}
 
-  //Função para abertura e fechamento do modal Login/Cad, Função enviada para o componente navbar
-  function openModalSign() {
-    setModalSignOpen(true);
-  }
 
-  //Função enviada para o componente modal
-  function closeModalSign() {
-    setModalSignOpen(false);
-  }
 
-  //Fechar e abrir ForgetPassword
 
-  const [IsModalPassOpen, setModalPassOpen] = useState(false);
+  
+    //Abrir e Fechar: Login / Register
+    const [isModalSignOpen, setModalSignOpen] = useState(false);
 
-  //Função para abertura e fechamento do modal ForgetPassword, Função enviada para o componente Modal.
-  function openModalPass(e) {
-    e.preventDefault();
-    setModalPassOpen(true);
-    setModalSignOpen(false);
-  }
+    function openModalSign() {setModalSignOpen(true)}
 
-  //Função enviada para o modal ForgetPassword
-  function closeModalPass() {
-    setModalPassOpen(false);
-  }
+    function closeModalSign() {setModalSignOpen(false)}
 
-  //Fechar e abrir ForgetPassword
+    
 
-  const [IsModalCodeOpen, setModalCodeOpen] = useState(false);
 
-  //Função para abertura e fechamento do modal ForgetPassword, Função enviada para o componente Modal.
-  function openModalCode(e) {
-    e.preventDefault();
-    setModalCodeOpen(true);
-    setModalPassOpen(false);
-  }
 
-  //Função enviada para o modal ForgetPassword
-  function closeModalCode() {
-    setModalCodeOpen(false);
-  }
+    //Abrir e Fechar: ForgetPassword
+    const [isModalPassOpen, setModalPassOpen] = useState(false);
 
-  //Fechar e abrir RecoverPassword
+    function openModalPass(e) {
+      e.preventDefault();
+      setModalPassOpen(true);
+      setModalSignOpen(false);
+    }
 
-  const [IsModalRecoverOpen, setModalRecoverOpen] = useState(false);
+    function closeModalPass() {setModalPassOpen(false)}
 
-  //Função para abertura e fechamento do modal RecoverPassword, Função enviada para o componente ForgetPassword.
-  function openModalRecover(e) {
-    e.preventDefault();
-    setModalRecoverOpen(true);
-    setModalCodeOpen(false);
-  }
+    
 
-  //Função enviada para o modal RecoverPassword
-  function closeModalRecover() {
-    setModalRecoverOpen(false);
-  }
 
+
+    //Abrir Fechar: CodeRecover
+    const [isModalCodeOpen, setModalCodeOpen] = useState(false);
+
+    function openModalCode(e) {
+      e.preventDefault();
+      setModalCodeOpen(true);
+      setModalPassOpen(false);
+    }
+
+    function closeModalCode() {setModalCodeOpen(false)}
+
+
+
+
+    
+    //Abrir e Fechar: RecoverPassword
+    const [isModalRecoverOpen, setModalRecoverOpen] = useState(false);
+
+    function openModalRecover(e) {
+      e.preventDefault();
+      setModalRecoverOpen(true);
+      setModalCodeOpen(false);
+    }
+
+    function closeModalRecover() {setModalRecoverOpen(false)}
+
+
+    
   return (
     <>
       {isModalSignOpen ? (
@@ -116,26 +112,26 @@ function Header({ themeToggler, imgsrc, themebutton }) {
         />
       ) : null}
 
-      {IsModalPassOpen ? (
+      {isModalPassOpen ? (
         <ForgetPassword
           closeModalPass={closeModalPass}
           openModalCode={openModalCode}
         />
       ) : null}
 
-      {IsModalCodeOpen ? (
+      {isModalCodeOpen ? (
         <CodeRecoverPW
           closeModalCode={closeModalCode}
           openModalRecover={openModalRecover}
         />
       ) : null}
 
-      {IsModalRecoverOpen ? (
+      {isModalRecoverOpen ? (
         <RecoverPassword closeModalRecover={closeModalRecover} />
       ) : null}
 
       {menuMobileIsVisible ? (
-        <MenuMobile
+        <NavbarMobile
           closeModalMenuMobile={closeModalMenuMobile}
           menuMobileIsVisible={menuMobileIsVisible}
           themebutton={themebutton}
@@ -145,6 +141,7 @@ function Header({ themeToggler, imgsrc, themebutton }) {
       ) : null}
 
       <Container>
+
         <Link to="/">
           <Logo src={imgsrc} alt="Logo - Lumi" />
         </Link>
@@ -187,9 +184,10 @@ function Header({ themeToggler, imgsrc, themebutton }) {
             <span>Login</span>
           </IconStyle>
         </NavButtons>
+        
       </Container>
     </>
   );
 }
 
-export default Header;
+export default Navbar;
