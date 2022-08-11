@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import InputFieldReg from "./InputFieldReg/InputFieldReg";
+import CPF from "cpf-check";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   ContainerReg,
   FormTop,
@@ -8,6 +11,7 @@ import {
   Submit,
   ChangePage,
 } from "../../Styles.Modal";
+import { StyledContainer } from "../../../Card/Style.CardUser";
 
 function RegisterModal({ setLoginForm, closeModalSign }) {
   /*
@@ -152,9 +156,15 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
 
   // Função chamada ao Submit do formulário:
 
+  const notify = () => toast("Esse CPF é inválido!");
+
   const handleSubmit = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
-    console.log(values); //Imprimindo valores no console ao enviar os dados;
+    if (CPF.validate(values.registerCPF) === false) {
+      <>{notify()}</>;
+    } else {
+      console.log(values); //Imprimindo valores no console ao enviar os dados;
+    }
   };
 
   // -----------------------------------------------------------------------
@@ -171,6 +181,9 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     /* CSS da página: localStyles.css */
 
     <ContainerReg>
+      
+      <StyledContainer autoClose={2500} position="top-center" />
+
       <form onSubmit={handleSubmit}>
         <FormTop>
           <h1>Cadastre-se</h1>

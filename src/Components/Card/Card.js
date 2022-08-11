@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import CardInput from "./CardInput/CardInput";
 import CPF from "cpf-check";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 //Componentes
 import {
   Label,
@@ -9,6 +12,7 @@ import {
   ProfileSectionBG,
   FormBottom,
   InputGroup,
+  StyledContainer,
 } from "./Style.CardUser";
 
 import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
@@ -172,17 +176,19 @@ function Card() {
     setEditDataOp("none");
   };
 
-  const sendData = (e) =>{
+  const notify = () => toast("Esse CPF é inválido!");
+
+  function sendData (e) {
     e.preventDefault();
-    if (CPF.validate(data.userCPF) === false){
-      console.log("CPF invalido")
-    }else{
+    if (CPF.validate(data.userCPF) === false) {
+      <>{notify()}</>
+    } else {
       setData({ ...data, [e.target.name]: e.target.value });
       console.log(data, formValues);
       setEditData("none");
       setEditDataOp("auto");
     }
-  }
+  };
 
   const CancelEditData = (e) => {
     e.preventDefault(); //Impedindo recarregamento da página ao clicar no botão;
@@ -207,15 +213,14 @@ function Card() {
 
   const LocalServico = (value) => {
     if (value === "Online") {
-      setData({ ...data, modalidade : value })
-      setLocal(false)
+      setData({ ...data, modalidade: value });
+      setLocal(false);
       setFormValues({});
-    }else{
-      setData({ ...data, modalidade : value })
-      setLocal(true)
+    } else {
+      setData({ ...data, modalidade: value });
+      setLocal(true);
     }
   };
-
 
   //Referente ao Textarea de descrição do serviço, com contador de caracteres.
 
@@ -240,96 +245,98 @@ function Card() {
 
   return (
     /* CSS da página: localStyles.css */
+    <>
+      
+      <StyledContainer autoClose = {2500} position="top-center"/>
 
-    <ProfileSectionBG sizeP={sizeP} sizeS={sizeS} sizeM={sizeM}>
-      <form onSubmit={(e)=>sendData(e)}>
-        {isModalChangePass ? (
-          <ChangePassword closeModalCP={closeModalCP} />
-        ) : null}
+      <ProfileSectionBG sizeP={sizeP} sizeS={sizeS} sizeM={sizeM}>
+        <form onSubmit={(e) => sendData(e)}>
+          {isModalChangePass ? (
+            <ChangePassword closeModalCP={closeModalCP} />
+          ) : null}
 
-        <aside>
-          {inputs.map((input) => (
-            <CardInput
-              key={input.id}
-              {...input}
-              value={data[input.name]}
-              onChange={onChange}
-              ChangeToggleButton={ChangeToggleButton}
-              toggleButtonOption={toggleButtonOption}
-              editData={editData}
-              editDataOp={editDataOp}
-              onClick={openModalCP}
-            />
-          ))}
-        </aside>
-
-        {toggleButtonOption === "true" ? (
           <aside>
-            <InputGroup editData={editData}>
-              <label htmlFor="servico">Qual o seu serviço</label>
-              <input
-                value={data.nomeServ}
-                name="nomeServ"
-                id="nomeServ"
+            {inputs.map((input) => (
+              <CardInput
+                key={input.id}
+                {...input}
+                value={data[input.name]}
                 onChange={onChange}
+                ChangeToggleButton={ChangeToggleButton}
+                toggleButtonOption={toggleButtonOption}
+                editData={editData}
+                editDataOp={editDataOp}
+                onClick={openModalCP}
               />
-            </InputGroup>
-
-            <TextCounter editData={editData} {...TextCounterProps} />
-
-            <Label htmlFor="descricao">Forma de serviço</Label>
-
-            <Select
-              name="modalidade"
-              id="modalidade"
-              required
-              onChange={(e) => LocalServico(e.target.value)}
-              editData={editData}
-            >
-              <option value="Online">Online</option>
-              <option value="Presencial">Presencial</option>
-              <option value="Híbrido">Híbrido</option>
-            </Select>
-
-            {local === true ? (
-              <>
-                
-
-                <BrazilianStates
-                  id="state"
-                  name="state"
-                  onChange={handleInputChange}
-                  editData={editData}
-                  setFormValues={setFormValues}
-                />
-
-                <BrazilianCities
-                  id="city"
-                  name="city"
-                  state={formValues.state}
-                  onChange={handleInputChange}
-                  editData={editData}
-                />
-              </>
-            ) : null}
+            ))}
           </aside>
-        ) : null}
 
-        <FormBottom>
-          {editData === "none" ? (
-            <>
-              <Submit onClick={ActivateData}>Editar</Submit>
-              <Submit>Sair</Submit>
-            </>
-          ) : (
-            <>
-              <Submit onClick={CancelEditData}>Cancelar</Submit>
-              <Submit>Salvar</Submit>
-            </>
-          )}
-        </FormBottom>
-      </form>
-    </ProfileSectionBG>
+          {toggleButtonOption === "true" ? (
+            <aside>
+              <InputGroup editData={editData}>
+                <label htmlFor="servico">Qual o seu serviço</label>
+                <input
+                  value={data.nomeServ}
+                  name="nomeServ"
+                  id="nomeServ"
+                  onChange={onChange}
+                />
+              </InputGroup>
+
+              <TextCounter editData={editData} {...TextCounterProps} />
+
+              <Label htmlFor="descricao">Forma de serviço</Label>
+
+              <Select
+                name="modalidade"
+                id="modalidade"
+                required
+                onChange={(e) => LocalServico(e.target.value)}
+                editData={editData}
+              >
+                <option value="Online">Online</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Híbrido">Híbrido</option>
+              </Select>
+
+              {local === true ? (
+                <>
+                  <BrazilianStates
+                    id="state"
+                    name="state"
+                    onChange={handleInputChange}
+                    editData={editData}
+                    setFormValues={setFormValues}
+                  />
+
+                  <BrazilianCities
+                    id="city"
+                    name="city"
+                    state={formValues.state}
+                    onChange={handleInputChange}
+                    editData={editData}
+                  />
+                </>
+              ) : null}
+            </aside>
+          ) : null}
+
+          <FormBottom>
+            {editData === "none" ? (
+              <>
+                <Submit onClick={ActivateData}>Editar</Submit>
+                <Submit>Sair</Submit>
+              </>
+            ) : (
+              <>
+                <Submit onClick={CancelEditData}>Cancelar</Submit>
+                <Submit>Salvar</Submit>
+              </>
+            )}
+          </FormBottom>
+        </form>
+      </ProfileSectionBG>
+    </>
   );
 }
 

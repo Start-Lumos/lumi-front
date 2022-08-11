@@ -1,4 +1,20 @@
 import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
+
+export const StyledContainer = styled(ToastContainer)`
+  &&&.Toastify__toast-container {
+  }
+  .Toastify__toast {
+    background: ${({ theme }) => theme.user_input};
+    transition: 0.5s ease;
+  }
+  .Toastify__toast-body {
+    color: ${({ theme }) => theme.gray};
+  }
+  .Toastify__progress-bar {
+    background: ${({ theme }) => theme.purpleOP};
+  }
+`;
 
 export const Submit = styled.button`
   width: 8rem;
