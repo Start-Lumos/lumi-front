@@ -1,7 +1,7 @@
 import React from "react";
 
 //Componentes
-import { ProfileContainer, ProfileBG, ProfileSectionBG } from "./Style.Profile";
+import { ProfileContainer, ProfileBG } from "./Style.Profile";
 
 //Icones
 import { RiUser3Fill } from "react-icons/ri";

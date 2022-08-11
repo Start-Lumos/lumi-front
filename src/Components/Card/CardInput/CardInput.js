@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputToggle } from "../../ToggleButton/ToggleButton";
 import { Toggle } from "../../Modal/Styles.Modal";
-import { InputGroup, InputGroupSenha } from "../Style.CardUser";
+import { InputGroup } from "../Style.CardUser";
 
 const CardInput = (props) => {
   const [focused, setFocused] = useState(false);
@@ -86,7 +86,6 @@ const CardInput = (props) => {
           <label htmlFor={id}>{label}</label>
 
           <input
-            //Recebe todas as demais props
             {...inputProps}
             //Chama a função que seta os valores informados pelo usuário no seu respectivo input, função essa em (RegisterModal)
             onChange={onChange}

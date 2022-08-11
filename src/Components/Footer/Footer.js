@@ -1,7 +1,6 @@
 import React from "react";
 import { FooterS } from "./Style.Footer";
 
-
 function Footer (){
     return(
         <FooterS>

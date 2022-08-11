@@ -18,11 +18,6 @@ function LoginRegister({ closeModalSign, openModalPass }) {
       setIsLogin(false);
     }
 
-    
-    
-
-  // --------------------------------------------------------------------
-
 
   return (
     <Backdrop>

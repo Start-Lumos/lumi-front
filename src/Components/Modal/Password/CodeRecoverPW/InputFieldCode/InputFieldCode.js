@@ -12,8 +12,6 @@ const InputFieldCode = (props) => {
       bgColorG,
       ...inputProps
     } = props;
-
-  //-----------------------------------------------------------------------
  
   
   return (

@@ -19,8 +19,6 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
     loginPassword: "",
   });
 
-  // -----------------------------------------------------------------------
-
   //Configurando os atributos de cada Input, a partir do seu id:
 
   const inputs = [
@@ -46,8 +44,6 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
     },
   ];
 
-  // -----------------------------------------------------------------------
-
   // Função chamada ao Submit do formulário:
 
   const handleSubmit = (e) => {
@@ -62,8 +58,6 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
-  // -----------------------------------------------------------------------
 
   return (
 

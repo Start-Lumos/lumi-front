@@ -14,8 +14,6 @@ const InputFieldCP = (props) => {
       ...inputProps
     } = props;
 
-  //-----------------------------------------------------------------------
-
 
   // Função que permite a exibição do Span ao clicar fora do campo selecionado
     

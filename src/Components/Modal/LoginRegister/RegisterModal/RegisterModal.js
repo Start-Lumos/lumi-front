@@ -152,8 +152,6 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     },
   ];
 
-  // -----------------------------------------------------------------------
-
   // Função chamada ao Submit do formulário:
 
   const notify = () => toast("Esse CPF é inválido!");
@@ -167,7 +165,6 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     }
   };
 
-  // -----------------------------------------------------------------------
 
   // Função para setar os valores informados pelo usuário no seu respectivo input:
 
@@ -175,7 +172,6 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  // -----------------------------------------------------------------------
 
   return (
     /* CSS da página: localStyles.css */

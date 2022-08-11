@@ -14,16 +14,12 @@ const FormLoginInput = (props) => {
       ...inputProps
     } = props;
 
-  //-----------------------------------------------------------------------
-
 
   // Função que permite a exibição do Span ao clicar fora do campo selecionado
     
   const handleFocus = (e) => {
       setFocused(true);
-    };
-
-  //------------------------------------------------------------------------    
+    }; 
   
   return (
 
