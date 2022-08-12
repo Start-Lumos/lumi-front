@@ -15,7 +15,7 @@ import Servico from "./Pages/Servico/Servico";
 import Navbar from "./Components/Navbar/Navbar";
 
 //Temas e Cores
-import { lightTheme, darkTheme } from "./Themes/Themes.js";
+import { lightTheme, darkTheme } from "./ThemesC/Themes.js";
 import { GlobalStyles } from "./GlobalStyles";
 
 //Logos
