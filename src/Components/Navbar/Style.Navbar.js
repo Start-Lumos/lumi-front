@@ -121,7 +121,7 @@ export const IconStyle = styled.div`
   transition: all 0.5s ease;
   width: 5em;
   height: 2em;
-  margin-left: 1rem;
+  margin-right: 1rem;
   border-radius: 12px;
   display: flex;
   justify-content: center;

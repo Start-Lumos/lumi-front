@@ -325,7 +325,7 @@ function CardUser() {
                     </Select>
 
                 </DivInput>
-
+                
                 <TextCounter editData={editData} {...textArea} />
                 
                 {selecionarLocal === true ? (

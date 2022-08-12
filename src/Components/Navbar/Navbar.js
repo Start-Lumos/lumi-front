@@ -101,7 +101,7 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
 
     function closeModalRecover() {setModalRecoverOpen(false)}
 
-
+    const [isUserLogado, setisUserLogado] = useState(true);
     
   return (
     <>
@@ -179,10 +179,20 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
             </IconStyle>
           </Link>
 
-          <IconStyle onClick={openModalSign}>
-            <RiUser3Fill />
-            <span>Login</span>
-          </IconStyle>
+          {isUserLogado === true ? (
+            <Link to="/perfil">
+              <IconStyle >
+                <RiUser3Fill />
+                <span>Perfil</span>
+              </IconStyle>
+            </Link>
+          ) : (        
+            <IconStyle onClick={openModalSign}>
+              <RiUser3Fill />
+              <span>Login</span>
+            </IconStyle>
+          )}
+
         </NavButtons>
         
       </Container>
