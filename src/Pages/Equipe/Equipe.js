@@ -124,12 +124,12 @@ function Equipe() {
           <AboutTeam>
             <p>
               Me chamo Vitoria Regina e tenho 22 anos, sou estagiaria de suporte de T.I
-              trilhando o caminho da programação, curso ADS (analise e desenvolvimento de sistemas).
-              Cheguei nessa área a pouco tempo procurando uma algo melhor e já me sinto em casa.
+              trilhando o caminho da programação, curso ADS (análise e desenvolvimento de sistemas).
+              Cheguei nessa área a pouco tempo procurando algo melhor e já me sinto em casa.
               Fico feliz que encontrei uma área que me acolhe, me da visão de crescimento e me interessa,
               já passei por algumas aréas como o RH (Recursos Humanos) mas não me encontrei muito.
               Através do programa START me interessei na área da programação e consegui ter uma visão mais 
-              ampla da programação em si, além de conhecer pessoas incriveis e ter diversas oportunidades.
+              ampla da programação em si, além de conhecer pessoas incríveis e ter diversas oportunidades.
               Espero que gostem do que criamos aqui.
             </p>
             <Links>
