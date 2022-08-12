@@ -15,18 +15,17 @@ import Servico from "./Pages/Servico/Servico";
 import Navbar from "./Components/Navbar/Navbar";
 
 //Temas e Cores
-import { lightTheme, darkTheme } from "./themes/Themes.js";
+import { lightTheme, darkTheme } from "./Themes/Themes.js";
 import { GlobalStyles } from "./GlobalStyles";
 
 //Logos
 import logolight from "./Assets/logo/icon_lumi.svg";
 import logodark from "./Assets/logo/icon_lumi_dark.svg";
 
+
 function App() {
-  /* Temas e Cores: */
 
   //Definindo o tema padrão da página:
-
   const [theme, setTheme] = useState("light");
 
   //Salvando o tema da página ao recarregar:
@@ -40,8 +39,8 @@ function App() {
     localTheme ? setTheme(localTheme) : setMode("npmdark");
   }, []);
 
-  //Definindo a logo padrão da página:
 
+  //Definindo a logo padrão da página:
   const [logo, setLogo] = useState(logolight);
 
   //Salvando o tema da *logo* ao recarregar:
@@ -54,6 +53,7 @@ function App() {
     const localLogo = window.localStorage.getItem(logolight);
     localLogo ? setLogo(localLogo) : setModeLogo(logodark);
   }, []);
+
 
   //*Função de alteração entre temas (light/dark), chamada no botão darkmode:
 
@@ -72,9 +72,9 @@ function App() {
       <GlobalStyles />
       <Router>
         <Navbar
-          themeToggler={themeToggler} //Função(themeToggler)
-          imgsrc={logo} //logo
-          themebutton={theme} //tema do botão (sol ou lua)
+          themeToggler={themeToggler}
+          imgsrc={logo}
+          themebutton={theme}
         />
 
         <Routes>

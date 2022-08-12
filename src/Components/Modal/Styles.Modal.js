@@ -139,10 +139,13 @@ export const ContainerReg = styled.div`
       @media screen and (min-width: 801px) {
         overflow-y: scroll;
         flex-wrap: nowrap;
-        max-height: 25rem;
+        max-height: 20rem;
         padding-right: 1.2rem;
         margin-left: 1.2rem;
         overflow-x: hidden;
+      }
+      @media screen and (min-width: 1450px) {
+        max-height: 25rem;
       }
       @media screen and (min-height: 680px) and (max-height: 700px) {
         overflow-y: scroll;

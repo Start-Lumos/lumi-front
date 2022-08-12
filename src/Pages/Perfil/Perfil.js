@@ -4,7 +4,6 @@ import React from "react";
 import { ProfileContainer, ProfileBG, Delete } from "./Style.Profile";
 
 //Icones
-import { RiUser3Fill } from "react-icons/ri";
 import CardUser from "../../Components/CardUser/CardUser";
 
 //Imagem
