@@ -102,28 +102,28 @@ Se você deseja visualizar a organização do projeto em nosso Trello, você pod
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/Start-Lumos#dayvson-lima" target="_blank">
+      <a href="https://github.com/dayvsonlsantos">
         <img alt="" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102249811?s=400&u=2843e9ff654eb5587f9e6ad6b873fed0b1c0df77&v=4" width="100px;" alt=""/>
         <br />
         <sub><b>Dayvson Lima</b></sub>
    </td>
    
    <td align="center">
-      <a href="https://github.com/Start-Lumos#jonas-rafael" target="_blank">
+      <a href="https://github.com/JonassMarquess">
         <img alt="" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/99907704?v=4" width="100px;" alt=""/>
         <br />
         <sub><b>Jonas Rafael</b></sub>
    </td>
    
    <td align="center">
-      <a href="https://github.com/Start-Lumos#vitor-gabriel" target="_blank">
+      <a href="https://github.com/Vitorgabri3l">
         <img alt="" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102758602?v=4" width="100px;" alt=""/>
         <br />
         <sub><b>Vitor Gabriel</b></sub>
    </td>
    
    <td align="center">
-      <a href="https://github.com/Start-Lumos#vitoria-regina" target="_blank">
+      <a href="https://github.com/vitorxst">
         <img alt="" style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/108552657?v=4" width="100px;" alt=""/>
         <br />
         <sub><b>Vitoria Regina</b></sub>
