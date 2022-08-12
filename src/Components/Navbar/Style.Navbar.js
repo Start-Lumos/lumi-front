@@ -19,15 +19,14 @@ export const Container = styled.header`
 
 export const Logo = styled.img`
   display: flex;
-  widght: 20%;
-  height: 100%;
+  width: 8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
   align-self: center;
   justifiy-content: center;
   flex-direction: row;
-  @media (max-width: 800px) {
-    width: 90%;
-    margin: auto;
-  }
+
+  
 `;
 
 export const Center = styled.section`

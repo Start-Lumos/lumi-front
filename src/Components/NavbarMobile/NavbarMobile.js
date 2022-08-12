@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 
 //Componentes
 import { Container, MenuItems, Icon } from "./Style.NavbarMobile";
@@ -29,6 +29,9 @@ function NavbarMobile({
     openModalSign();
   }
 
+  //Logado
+  const [isUserLogado, setisUserLogado] = useState(true);
+
   return (
 
     <Container menuMobileIsVisible={menuMobileIsVisible}>
@@ -44,10 +47,19 @@ function NavbarMobile({
             </Icon>
           </Link>
 
-          <Icon onClick={abrirLogin}>
-            <RiUser3Fill style={size} />
-            <span>Login</span>
-          </Icon>
+          {isUserLogado === true ? (
+            <Link to="/perfil">
+              <Icon onClick={closeModalMenuMobile}>
+                <RiUser3Fill style={size} />
+                <span>Perfil</span>
+              </Icon>
+            </Link>
+          ) : (        
+            <Icon onClick={abrirLogin}>
+              <RiUser3Fill style={size} />
+              <span>Login</span>
+            </Icon>
+          )}
 
           <Icon>
             <ToggleModeMobile theme={themebutton} toggleTheme={themeToggler} />
