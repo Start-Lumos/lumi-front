@@ -102,7 +102,7 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
     function closeModalRecover() {setModalRecoverOpen(false)}
 
     //Logado
-    const [isUserLogado, setisUserLogado] = useState(true);
+    const [isUserLogado, setisUserLogado] = useState(false);
     
   return (
     <>
