@@ -11,7 +11,6 @@
  <a href="#-Modelo-de-Desenvolvimento">Modelo de Desenvolvimento</a> • 
  <a href="#-Tecnologias">Tecnologias</a> • 
  <a href="#-Design">Design</a> • 
- <a href="#-Contribuidores">Contribuidores</a> • 
  <a href="#-Autores">Autores</a> • 
  <a href="#-Licença">Licença</a>
 </p>
@@ -58,7 +57,7 @@ Projeto desenvolvido durante o **Start** oferecido pela Rede Cidadã.
 Se você deseja visualizar a organização do projeto em nosso Trello, você pode [clicar aqui](https://user-images.githubusercontent.com/102249811/184338147-3db0ada2-2a95-4e45-9667-cfbac0ce2a52.png) para baixar o documento. 
 
 
-## ![link](https://user-images.githubusercontent.com/102249811/184334676-ed902c74-e1fc-44a8-828b-4c3eb1490767.png) Tecnologias Principais
+## ![link](https://user-images.githubusercontent.com/102249811/184334676-ed902c74-e1fc-44a8-828b-4c3eb1490767.png) Tecnologias
 
 #### **Website**  ([React](https://reactjs.org/)
 -   **[Axios](https://github.com/axios/axios)**
