@@ -15,6 +15,7 @@ import {
   FormBottom,
   InputGroup,
   StyledContainer,
+  DivInput,
 } from "./Style.CardUser";
 import CardInput from "./CardInput/CardInput";
 import { BrazilianStates } from "../Dropdown/BrazilianStates/BrazilianStates";
@@ -29,10 +30,6 @@ function CardUser() {
   
   const [toggleButtonOption, setToggleButtonOption] = useState("false");
 
-  const [sizeP, SetSizeP] = useState("28rem");
-  const [sizeS, SetSizeS] = useState("20rem");
-  const [sizeM, SetSizeM] = useState("40rem");
-
   function changeToggleButton(e) {
     if (toggleButtonOption === "true") {
       setToggleButtonOption("false");
@@ -40,18 +37,12 @@ function CardUser() {
         ...data,
         [e.target.toggleButton]: (e.target.value = "false"),
       });
-      SetSizeP("28rem");
-      SetSizeS("20rem");
-      SetSizeM("40rem");
     } else {
       setToggleButtonOption("true");
       setData({
         ...data,
         [e.target.toggleButton]: (e.target.value = "true"),
       });
-      SetSizeP("56rem");
-      SetSizeS("40rem");
-      SetSizeM("80rem");
     }
   }
 
@@ -93,25 +84,6 @@ function CardUser() {
       pattern: "^[A-Za-z]{3,16}$",
     },
     {
-      id: "userEmail",
-      name: "userEmail",
-      type: "email",
-      errorMessage: "Esse não é um endereço de e-mail válido!",
-      label: "E-mail",
-      required: true,
-    },
-    {
-      id: "userPassword",
-      name: "userPassword",
-      type: "password",
-      errorMessage:
-        "A senha deve conter no mínimo 8-16 caracteres, número, letras maiúsculas e/ou minúsculas e caractere especial",
-      label: "Senha",
-      required: true,
-      pattern:
-        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$",
-    },
-    {
       id: "userCPF",
       name: "userCPF",
       type: "text",
@@ -138,6 +110,25 @@ function CardUser() {
       label: "Telefone",
       required: true,
       pattern: "^[0-9]{11}$",
+    },   
+    {
+      id: "userEmail",
+      name: "userEmail",
+      type: "email",
+      errorMessage: "Esse não é um endereço de e-mail válido!",
+      label: "E-mail",
+      required: true,
+    },
+    {
+      id: "userPassword",
+      name: "userPassword",
+      type: "password",
+      errorMessage:
+        "A senha deve conter no mínimo 8-16 caracteres, número, letras maiúsculas e/ou minúsculas e caractere especial",
+      label: "Senha",
+      required: true,
+      pattern:
+        "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$",
     },
     {
       id: "toggleButton",
@@ -200,6 +191,7 @@ function CardUser() {
           e.preventDefault();
           setEditData("none");
           setEditDataOp("auto");
+          setCount(e.target.value.length);
           setRecarregar((oldKey) => oldKey + 1);
         };
 
@@ -279,7 +271,7 @@ function CardUser() {
     <>
       <StyledContainer autoClose = {2500} position="top-center"/>
 
-      <ProfileSectionBG sizeP={sizeP} sizeS={sizeS} sizeM={sizeM}>
+      <ProfileSectionBG>
         
         <form onSubmit={(e) => sendData(e)}>
           
@@ -301,39 +293,41 @@ function CardUser() {
                 onClick={openModalCP}
               />
             ))}
-          </aside>
 
-          
-          {toggleButtonOption === "true" ? (
-              <aside>
-                <InputGroup editData={editData}>
-                  <label htmlFor="servico">Qual o seu serviço</label>
-                  <input
-                    value={data.userServico}
-                    name="userServico"
-                    id="userServico"
-                    onChange={changeInputValue}
-                    required
-                  />
-                </InputGroup>
+            {toggleButtonOption === "true" ? (
+              <>  
+
+                <DivInput>
+                  <InputGroup editData={editData}>
+                    <label htmlFor="servico">Qual o seu serviço</label>
+                    <input
+                      value={data.userServico}
+                      name="userServico"
+                      id="userServico"
+                      onChange={changeInputValue}
+                      required
+                    />
+                  </InputGroup>
+
+                  <Label htmlFor="userServDescricao">Forma de serviço</Label>
+
+                    <Select
+                      name="userServModalidade"
+                      id="userServModalidade"
+                      required
+                      onChange={(e) => LocalServico(e.target.value)}
+                      editData={editData}
+                    >
+                      <option value="">Escolher Modalidade</option>
+                      <option value="Online">Online</option>
+                      <option value="Presencial">Presencial</option>
+                      <option value="Híbrido">Híbrido</option>
+                    </Select>
+
+                </DivInput>
 
                 <TextCounter editData={editData} {...textArea} />
-
-                <Label htmlFor="userServDescricao">Forma de serviço</Label>
-
-                  <Select
-                    name="userServModalidade"
-                    id="userServModalidade"
-                    required
-                    onChange={(e) => LocalServico(e.target.value)}
-                    editData={editData}
-                  >
-                    <option value="">Escolher Modalidade</option>
-                    <option value="Online">Online</option>
-                    <option value="Presencial">Presencial</option>
-                    <option value="Híbrido">Híbrido</option>
-                  </Select>
-
+                
                 {selecionarLocal === true ? (
                   <>
                     <BrazilianStates
@@ -354,9 +348,9 @@ function CardUser() {
                   </>
                 ) : null}
                 
-              </aside>
-          ) : null}
-
+              </>
+            ) : null}
+          </aside>
 
           <FormBottom>
             
@@ -375,6 +369,7 @@ function CardUser() {
           </FormBottom>
           
         </form>
+        
       </ProfileSectionBG>
     </>
   );

@@ -12,6 +12,7 @@ export const Decribe = styled.section`
 
   textarea {
     border: none;
+    font-size: 0.9rem;
     border-radius: 12px;
     width: 100%;
     height: 7rem;

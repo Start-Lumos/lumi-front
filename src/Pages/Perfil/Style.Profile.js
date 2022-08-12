@@ -13,7 +13,6 @@ export const ProfileBG = styled.div`
   margin-top: 2rem;
   width: 15rem;
   height: 15rem;
-  background: ${({ theme }) => theme.grayOp};
   border-radius: 100%;
   cursor: pointer;
   display: flex;
@@ -21,4 +20,29 @@ export const ProfileBG = styled.div`
   justify-content: center;
   transition: all 0.5s ease;
   box-shadow: ${({ theme }) => theme.shadow};
+  img{
+    width: 100%;
+  }
 `;
+
+export const Delete = styled.button`
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 2.5rem;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: none;
+  transition: all 0.5s ease;
+  background: ${({ theme }) => theme.grayOp};
+  box-shadow: ${({ theme }) => theme.shadow};
+  &:hover{
+    background: red;
+    color: white;
+    transition: all 0.5s ease;
+  }
+`

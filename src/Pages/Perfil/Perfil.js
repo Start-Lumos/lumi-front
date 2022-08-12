@@ -1,20 +1,28 @@
 import React from "react";
 
 //Componentes
-import { ProfileContainer, ProfileBG } from "./Style.Profile";
+import { ProfileContainer, ProfileBG, Delete } from "./Style.Profile";
 
 //Icones
 import { RiUser3Fill } from "react-icons/ri";
 import CardUser from "../../Components/CardUser/CardUser";
 
+//Imagem
+import profilePicture from "../../Assets/userdefault.png"
+
+const deleteAccount = (e) =>{e.preventDefault()}
+
+
 function Perfil() {
   return (
     <ProfileContainer>
       <ProfileBG>
-        <RiUser3Fill />
+        <img src={profilePicture} alt="Foto Perfil" />
       </ProfileBG>
       <CardUser />
+      <Delete onClick={deleteAccount}>Deletar a conta</Delete>
     </ProfileContainer>
+    
   );
 }
 
