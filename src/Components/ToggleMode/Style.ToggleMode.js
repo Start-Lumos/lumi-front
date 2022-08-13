@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DarkMode = styled.div`
-  display: flex;
+  display: none;
   width: 5%;
   align-items: center;
   justify-content: center;

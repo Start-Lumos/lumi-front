@@ -42,6 +42,9 @@ export const Center = styled.section`
     width: 100%;
     justify-content: center;
   }
+  @media (max-width: 500px) {
+    justify-content: space-around;
+  }
 `;
 
 export const Search = styled.div`

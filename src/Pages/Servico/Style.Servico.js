@@ -44,9 +44,7 @@ export const Sobre = styled.div`
       margin-top: 0.2rem;
     }
   }
-  @media screen and (max-width: 550px) {
-    height: 40%;
-  }
+  
 `;
 
 export const ProfilePicture = styled.div`
@@ -69,8 +67,9 @@ export const Data = styled.aside`
   display: flex;
   align-items: center;
   flex-direction: row;
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 820px) {
     flex-direction: column;
+    
     aside {
       margin-bottom: 1rem;
       text-align: center;
@@ -80,7 +79,7 @@ export const Data = styled.aside`
     }
   }
   @media screen and (max-width: 600px) {
-    height: 50%;
+    
     flex-direction: column;
   }
   h2 {
@@ -89,10 +88,6 @@ export const Data = styled.aside`
     font-size: 1.1rem;
     transition: all 0.5s ease;
     margin-bottom: 0.2rem;
-    @media screen and (max-width: 520px) {
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
   }
   h3{
     color: ${({ theme }) => theme.gray};
@@ -100,10 +95,6 @@ export const Data = styled.aside`
     font-size: 1rem;
     transition: all 0.5s ease;
     margin-bottom: 0.5rem;
-    @media screen and (max-width: 520px) {
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
   }
   aside {
     width: 100%;
@@ -127,13 +118,30 @@ export const Data = styled.aside`
       font-size: 0.7rem;
     }
   }
+
+  @media screen and (max-width: 900px){
+    h2{
+      font-size: 1rem;
+    }
+    h3{
+      font-size: 0.9rem;
+    }
+    p{
+      font-size: 72%;
+    }
+    span{
+      font-size: 0.65rem;
+    }
+  }
 `;
 
 export const Description = styled.div`
   display: flex;
   width: 90%;
   height: 15%;
+  margin-top: 2%;
   margin-bottom: 2%;
+
   p {
     font-size: 0.8rem;
     text-align: justify;
