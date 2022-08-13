@@ -367,6 +367,11 @@ export const Toggle = styled.div`
     text-align: center;
     color: #ffffff;
   }
+  .labelPerfil{
+    color: ${({ theme }) => theme.gray};
+    font-size: 0.9rem;
+    transition: 0.5s ease;
+  }
 
   div {
     display: flex;

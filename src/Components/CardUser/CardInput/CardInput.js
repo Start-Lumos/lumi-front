@@ -5,7 +5,7 @@ import { InputToggle } from "../../ToggleButton/ToggleButton";
 
 //Style
 import { Toggle } from "../../Modal/Styles.Modal";
-import { InputGroup } from "../Style.CardUser";
+import { InputGroup, Label } from "../Style.CardUser";
 
 function CardInput (props) {
   
@@ -31,6 +31,7 @@ function CardInput (props) {
     <>
       {label === "Prestar serviço ?" ? (
           <Toggle>
+              <label className="labelPerfil">Fornecer serviço ?</label>
               {toggleButtonOption === "true" ? (
                   <div>
                     <InputToggle
