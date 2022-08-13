@@ -26,6 +26,9 @@ import TextCounter from "../TextCounter/TextCounter";
 //Modal
 import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
 
+//Serviços
+import servicos from "../ServicosList/servicos.json";
+
 function CardUser() {
   
   const [toggleButtonOption, setToggleButtonOption] = useState("false");
@@ -60,6 +63,7 @@ function CardUser() {
     userServico: "",
     userServDescricao: "",
     userServModalidade: "",
+    userServico: "",
   });
 
   const inputs = [
@@ -252,7 +256,6 @@ function CardUser() {
 
 
 
-
   //Modal para alterar senha
   const [isModalChangePass, setModalChangePass] = useState(false);
   
@@ -300,13 +303,22 @@ function CardUser() {
                 <DivInput>
                   <InputGroup editData={editData}>
                     <label htmlFor="servico">Qual o seu serviço</label>
-                    <input
-                      value={data.userServico}
+
+                    <Select 
                       name="userServico"
                       id="userServico"
-                      onChange={changeInputValue}
                       required
-                    />
+                      onChange={changeInputValue}
+                      editData={editData}
+                    >
+                        <option key="Selecionar" value="">Selecionar serviço</option>
+
+                        {servicos && servicos.map(({id, nome}) => (
+                          <option key={id} value={nome}>{nome}</option>
+                        ))}
+
+                    </Select>
+
                   </InputGroup>
 
                   <Label htmlFor="userServDescricao">Forma de serviço</Label>
@@ -369,7 +381,7 @@ function CardUser() {
           </FormBottom>
           
         </form>
-        
+
       </ProfileSectionBG>
     </>
   );
