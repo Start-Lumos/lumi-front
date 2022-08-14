@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 //UseContext
 import { UserContext } from "../../App";
@@ -30,6 +30,14 @@ function Perfil() {
     toast(texto, { toastId: "toastFromDelete" });
 
   let navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
+        navigate("/");
+    }
+  }, [navigate]);
+
 
   const deleteAccount = (e) =>{
     e.preventDefault();
