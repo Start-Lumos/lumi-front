@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+//UseContext
+import { UserContext } from "../../App";
 
 //Link
 import { Link } from "react-router-dom";
@@ -102,16 +105,7 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
     function closeModalRecover() {setModalRecoverOpen(false)}
 
     //Logado
-    const [isUserLogado, setIsUserLogado] = useState(localStorage.getItem("token"));
-
-    // useEffect(() => {
-    //   console.log(localStorage.getItem("token"))
-    //   if(localStorage.getItem("token")){
-    //     setisUserLogado(true)
-    //   }else{
-    //     setisUserLogado(false)
-    //   }
-    // }, [])
+    const {isUserLogado, setIsUserLogado} = useContext(UserContext);
 
   return (
     <>

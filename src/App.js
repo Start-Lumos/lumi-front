@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
@@ -21,6 +22,9 @@ import { GlobalStyles } from "./GlobalStyles";
 //Logos
 import logolight from "./Assets/logo/icon_lumi.svg";
 import logodark from "./Assets/logo/icon_lumi_dark.svg";
+
+//UserContext
+export const UserContext = React.createContext({});
 
 
 function App() {
@@ -67,9 +71,18 @@ function App() {
     }
   }
 
+
+  //Para o userContext
+  const [isUserLogado, setIsUserLogado] = useState(localStorage.getItem("token"));
+
+  useEffect(() => {
+    localStorage.getItem('token') && setIsUserLogado(localStorage.getItem('token'));
+  },[])
+
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
+      <UserContext.Provider value={{ isUserLogado, setIsUserLogado }}>
       <Router>
         <Navbar
           themeToggler={themeToggler}
@@ -84,6 +97,7 @@ function App() {
           <Route path="/servico" element={<Servico />} />
         </Routes>
       </Router>
+      </UserContext.Provider>
     </ThemeProvider>
   );
 }
