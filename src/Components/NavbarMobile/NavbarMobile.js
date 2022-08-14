@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React from "react";
 
 //Componentes
 import { Container, MenuItems, Icon } from "./Style.NavbarMobile";

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchStates, parseStates } from "../Helpers/IbgeData";
 import Dropdown from "../Dropdown";
 
-export const BrazilianStates = ({id, name, onChange, editData}) => {
+export const BrazilianStates = ({id, name, onChange, editData, estado}) => {
   const [states, setStates] = useState([]);
 
   useEffect(() => {
@@ -13,7 +13,8 @@ export const BrazilianStates = ({id, name, onChange, editData}) => {
     id: id,
     name: name,
     data: states,
-    onChange: onChange
+    onChange: onChange,
+    estado: estado
   }
 
   return (<Dropdown {...dropdownOptions} editData={editData}/>)

@@ -169,11 +169,12 @@ function CardUser() {
             <>{notify()}</>
           } else {
             setData({ ...data, [e.target.name]: e.target.value });
-            //setData({...data, userCity: formValues.city, userState: formValues.state, })
             console.log(data);
-            //let dados = data.c
             setEditData("none");
             setEditDataOp("auto");
+            axiosInstance.put("/api/user-data", data).then((res) =>{
+              console.log(res);
+            })
           }
         };
 
@@ -188,12 +189,11 @@ function CardUser() {
       const [selecionarLocal, setSelecionarLocal] = useState(false);
 
       const LocalServico = (value) => {
-        if (value === "Online" || value === "") {
-          setData({ ...data, userServModalidade: value });
+        setData({ ...data, userServModalidade: value });
+        if (value === "Online") {
           setSelecionarLocal(false);
-          setData({ ...data, userState: "", userCity: "" });
+          setData({ ...data, userState: "", userCity: "", userServModalidade: "Online" });
         } else {
-          setData({ ...data, userServModalidade: value });
           setSelecionarLocal(true);
         }
       };
@@ -249,7 +249,8 @@ function CardUser() {
       console.log({...res.data.user})
       setData({...res.data.user})
       setToggleButtonOption(res.data.user.toggleButton)
-      console.log(res.data.user.toggleButton)
+      res.data.user.userState !== "" ? setSelecionarLocal(true) : setSelecionarLocal(false);
+      setCount(res.data.user.userServDescricao.length);
     })
   }, [recarregar])
 
@@ -303,6 +304,7 @@ function CardUser() {
                       required
                       onChange={changeInputValue}
                       editData={editData}
+                      value={data.userServico}
                     >
                         <option key="Selecionar" value="">Selecionar serviço</option>
 
@@ -322,6 +324,7 @@ function CardUser() {
                       required
                       onChange={(e) => LocalServico(e.target.value)}
                       editData={editData}
+                      value={data.userServModalidade}
                     >
                       <option value="">Escolher Modalidade</option>
                       <option value="Online">Online</option>
@@ -340,6 +343,7 @@ function CardUser() {
                       name="userState"
                       onChange={changeInputValue}
                       editData={editData}
+                      estado={data.userState}
                     />
 
                     <BrazilianCities
@@ -348,6 +352,7 @@ function CardUser() {
                       state={data.userState}
                       onChange={changeInputValue}
                       editData={editData}
+                      estado={data.userCity}
                     />
                   </>
                 ) : null}
