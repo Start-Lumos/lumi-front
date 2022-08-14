@@ -71,11 +71,11 @@ function ChangePassword({ closeModalCP }) {
 
   return (
     <Backdrop>
-      <Container>
+      <Container className="changePassword">
         <form onSubmit={sendData}>
           
-          <FormTop>
-            <h1>Mudar a senha</h1>
+          <FormTop className="organizarDiv">
+            <h1 className="changePass">Mudar a senha</h1>
             <CloseButton onClick={closeModalCP}>
               <CgClose />
             </CloseButton>

@@ -25,7 +25,7 @@ export const ProfileBG = styled.div`
   }
 `;
 
-export const Delete = styled.button`
+export const Deletebtn = styled.button`
   color: red;
   font-size: 0.9rem;
   font-weight: 400;

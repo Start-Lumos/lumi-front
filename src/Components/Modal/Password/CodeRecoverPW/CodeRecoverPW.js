@@ -43,11 +43,11 @@ function CodeRecoverPW({
   return (
   
     <Backdrop>
-      <Container>
+      <Container className="codeRecover">
         <form onSubmit={sendData}>
           
           <FormTop>
-            <h1>Recuperar a senha</h1>
+            <h1 className="codePassH1">Recuperar a senha</h1>
             <CloseButton onClick={closeModalCode}>
               <CgClose />
             </CloseButton>

@@ -23,8 +23,9 @@ function Home(){
                 return(<p>{servidor}</p>)
             })} */}
             {servidores.map((servidor) => (  
-                
-                <CardLine nome={servidor.userFirstName} servico={servidor.userServico} descricao={servidor.userServDescricao}/>  
+                <div key={servidor.userCPF}>
+                    <CardLine dados={servidor}/>  
+                </div>
             ))}
         </Main>
     )

@@ -19,7 +19,7 @@ function InputFieldCP (props) {
   
   return (
 
-    <InputGroup>
+    <InputGroup className="organizarDiv">
       <label htmlFor={id}>{label}</label>
       
       <input

@@ -12,6 +12,63 @@ export const Backdrop = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 5;
+  
+  .logout{
+    max-width: 50vw;
+    min-height: 30vh;
+    
+    div.logoutbtn{
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: row;
+      
+      @media only screen and (max-width: 600px){
+        flex-direction: column;
+        margin-top: 2rem;
+        button{
+          margin-top: 0;
+        }
+      }
+
+      button{
+        @media only screen and (min-width: 551px) and (max-width: 850px) {
+          width: 7rem;
+          padding: 0.5rem 3rem;
+          font-size: 0.7rem;
+        }
+        @media only screen and (max-width: 550px) {
+          width: 10rem;
+          padding: 0.5rem 3rem;
+          font-size: 0.65rem;
+        }
+      }
+    } 
+  }
+  .codeRecover{
+    max-width: 50vw;
+    min-height: 35vh;
+  }
+
+  .recoverPassword{
+    max-width: 50vw;
+    min-height: 40vh;
+  }
+
+  .forgetPassword{
+    max-width: 50vw;
+    min-height: 45vh;
+  }
+
+  .changePassword{
+    form{
+      min-height: 60vh;
+      .organizarDiv{
+        width: 100%;
+      }
+    }
+  }
 `;
 
 export const Container = styled.div`
@@ -30,7 +87,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    
+
     h1{
       font-size: 1.4rem;
       text-align: center;
@@ -44,6 +101,7 @@ export const Container = styled.div`
       h1{
         font-size: 1rem;
       }
+      
     }
     @media screen and (max-height: 700px) {
       max-height: 25rem;
@@ -74,7 +132,21 @@ export const Container = styled.div`
       font-size: 0.65rem;
     }
     form h1{
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+    }
+    .loginH1{
+      font-size: 1.2rem;
+    }
+    .recoverPassH1, .codePassH1, .forgetPassH1, .changePass, .loghoutH1{
+      font-size: 1.1rem;
+      @media screen and (max-width: 345px){
+        width: 60%;
+        font-size: 0.9rem;
+      }
+      @media screen and (max-width: 262px){
+        width: 70%;
+        font-size: 0.9rem;
+      }
     }
   }
 
@@ -237,8 +309,8 @@ export const CloseButton = styled.div`
 `;
 
 export const Submit = styled.button`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   width: 9rem;
   border-radius: 12px;
   border: none;
@@ -257,7 +329,7 @@ export const Submit = styled.button`
     background-color: #ffffff;
     transition: 0.5s ease;
   }
-  @media only screen and (min-width: 550px) and (max-width: 800px) {
+  @media only screen and (min-width: 551px) and (max-width: 800px) {
     width: 7rem;
     padding: 0.5rem 3rem;
     font-size: 0.7rem;
@@ -349,7 +421,6 @@ export const ChangePage = styled.button`
   justify-content: center;
   align-self: center;
   border: none;
-  margin-top: 1rem;
   border-radius: 12px;
   background: none;
   color: #ffffff;

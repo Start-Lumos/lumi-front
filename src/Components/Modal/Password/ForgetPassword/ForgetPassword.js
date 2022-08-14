@@ -71,11 +71,11 @@ function ForgetPassword({ closeModalPass, openModalCode }) {
       
       <StyledContainer autoClose={2500} position="top-center" />
       
-      <Container>
+      <Container className="forgetPassword">
         <form onSubmit={sendData}>
           
           <FormTop>
-            <h1>Recuperar a senha</h1>
+            <h1 className="forgetPassH1">Recuperar a senha</h1>
             <CloseButton onClick={closeModalPass}>
               <CgClose />
             </CloseButton>

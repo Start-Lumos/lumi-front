@@ -25,25 +25,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 function RegisterModal({ setLoginForm, closeModalSign }) {
 
-  const [toggleButtonOption, setToggleButtonOption] = useState("false");
-
-  function ChangeToggleButton(e) {
-    if (toggleButtonOption === "true") {
-      setToggleButtonOption("false");
-      setValues({
-        ...values,
-        [e.target.toggleButton]: (e.target.value = "false"),
-      });
-    } else {
-      setToggleButtonOption("true");
-      setValues({
-        ...values,
-        [e.target.toggleButton]: (e.target.value = "true"),
-      });
-    }
-  }
-
-
   const [values, setValues] = useState({
     userFirstName: "",
     userLastName: "",
@@ -52,7 +33,6 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     userPhone: "",
     userPassword: "",
     userConfPassword: "",
-    toggleButton: toggleButtonOption,
   });
 
   const inputs = [
@@ -66,7 +46,7 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
         "Nome deve possuir 3-16 caracteres e não pode conter caracteres especiais.",
       label: "Nome",
       required: true,
-      pattern: "^[A-Za-z]{3,16}$",
+      pattern: "^[A-Za-z ]{3,16}$",
     },
     {
       //userLastName
@@ -78,7 +58,7 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
         "Sobrenome deve possuir 3-45 caracteres e não pode conter caracteres especiais.",
       label: "Sobrenome",
       required: true,
-      pattern: "^[A-Za-z]{3,16}$",
+      pattern: "^[A-Za-z ]{3,16}$",
     },
     {
       //userEmail
@@ -137,14 +117,7 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
       label: "Confirmar senha",
       required: true,
       pattern: values.userPassword,
-    },
-    {
-      //toggleButton
-      id: "toggleButton",
-      name: "toggleButton",
-      type: "checkbox",
-      label: "Prestar serviço ?",
-    },
+    }
   ];
 
   const notify = (texto) =>
@@ -186,8 +159,6 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
               {...input}
               value={values[input.name]}
               onChange={changeInputValue}
-              ChangeToggleButton={ChangeToggleButton}
-              toggleButtonOption={toggleButtonOption}
             />
           ))}
         </aside>

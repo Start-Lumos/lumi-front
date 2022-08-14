@@ -3,9 +3,6 @@ import React, { useState } from "react";
 //Axios
 import { axiosInstance } from "../../../../service/axios";
 
-//Link
-import { Link } from "react-router-dom";
-
 //Botão Fechar
 import { CgClose } from "react-icons/cg";
 
@@ -82,7 +79,7 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserL
       <form onSubmit={sendData}>
 
         <FormTop>
-          <h1>Login</h1>
+          <h1 className="loginH1">Login</h1>
           <CloseButton onClick={closeModalSign}>
             <CgClose />
           </CloseButton>
@@ -98,10 +95,6 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserL
         ))}
 
         <Esqueciasenha onClick={openModalPass}>Esqueci a senha</Esqueciasenha>
-        
-        <Link to="/perfil">
-          <p>Clicar</p>
-        </Link>
 
         <Submit>Login</Submit>
         <p>Ainda não tem uma conta?</p>

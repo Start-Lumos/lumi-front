@@ -52,10 +52,10 @@ function RecoverPassword({ closeModalRecover }) {
   return (
 
     <Backdrop>
-      <Container>
+      <Container className="recoverPassword">
         <form onSubmit={sendData}>
           <FormTop>
-            <h1>Criar nova senha</h1>
+            <h1 className="recoverPassH1">Criar nova senha</h1>
             <CloseButton onClick={closeModalRecover}>
               <CgClose />
             </CloseButton>

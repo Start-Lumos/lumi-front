@@ -25,13 +25,13 @@ import TextCounter from "../TextCounter/TextCounter";
 
 //Modal
 import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
+import Logout from "../Modal/Logout";
 
 //Serviços
 import servicos from "../ServicosList/servicos.json";
 
 //Axios
 import { axiosInstance } from "../../service/axios";
-
 
 function CardUser() {
   
@@ -80,7 +80,7 @@ function CardUser() {
         "Nome deve possuir 3-16 caracteres e não pode conter caracteres especiais.",
       label: "Nome",
       required: true,
-      pattern: "^[A-Za-z]{3,16}$",
+      pattern: "^[A-Za-z ]{3,16}$",
     },
     {
       id: "userLastName",
@@ -90,7 +90,7 @@ function CardUser() {
         "Sobrenome deve possuir 3-45 caracteres e não pode conter caracteres especiais.",
       label: "Sobrenome",
       required: true,
-      pattern: "^[A-Za-z]{3,16}$",
+      pattern: "^[A-Za-z ]{3,16}$",
     },
     {
       id: "userCPF",
@@ -264,8 +264,27 @@ function CardUser() {
   };
 
 
+
+    //Abrir Fechar: CodeRecover
+    const [isSairOpen, setSairOpen] = useState(false);
+
+    function openModalSair(e) {
+      e.preventDefault();
+      setSairOpen(true);
+    }
+  
+    function closeModalSair() {setSairOpen(false)}
+
+
   return (
     <>
+
+      {isSairOpen ? (
+        <Logout
+          closeModalSair={closeModalSair}
+        />
+      ) : null}
+
       <StyledContainer autoClose = {2500} position="top-center"/>
 
       <ProfileSectionBG>
@@ -366,7 +385,7 @@ function CardUser() {
             {editData === "none" ? (
               <>
                 <Submit onClick={activateData}>Editar</Submit>
-                <Submit>Sair</Submit>
+                <Submit onClick={openModalSair}>Sair</Submit>
               </>
             ) : (
               <>
