@@ -71,7 +71,7 @@ function InputFieldReg (props) {
         */ 
 
         onFocus={() =>
-          inputProps.name === "registerConf_Password" && setFocused(true)
+          inputProps.name === "userConfPassword" && setFocused(true)
         }
 
         focused={focused.toString()}

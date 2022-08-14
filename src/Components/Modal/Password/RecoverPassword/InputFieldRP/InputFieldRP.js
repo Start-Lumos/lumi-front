@@ -34,7 +34,7 @@ function InputFieldRP (props) {
         */ 
 
         onFocus={() =>
-          inputProps.name === "confirmPasswordRecover" && setFocused(true)
+          inputProps.name === "userConfPassword" && setFocused(true)
         }
       />
       <span>{errorMessage}</span>

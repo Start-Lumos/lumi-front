@@ -10,6 +10,7 @@ export const StyledContainer = styled(ToastContainer)`
   }
   .Toastify__toast-body {
     color: ${({ theme }) => theme.gray};
+    text-align: center;
   }
   .Toastify__progress-bar {
     background: ${({ theme }) => theme.purpleOP};

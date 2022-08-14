@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+//Axios
+import { axiosInstance } from "../../../../service/axios";
+
 //Link
 import { Link } from "react-router-dom";
 
@@ -19,7 +22,11 @@ import {
   ChangePage,
 } from "../../Styles.Modal";
 
-function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
+//Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserLogado }) {
 
   const [values, setValues] = useState({
     userEmail: "",
@@ -49,9 +56,21 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
     },
   ];
 
+  const notify = (texto) =>
+    toast(texto, { toastId: "toastFromRG" });
+
   const sendData = (e) => {
     e.preventDefault();
-    console.log(values);
+    axiosInstance.post("/auth/login", values).then((res)=>{
+      if(res.status === 202){
+        closeModalSign();
+        console.log("Logado com sucesso!")
+        setIsUserLogado(true);
+        localStorage.setItem("token", res.data.token)
+      }else{
+        <>{notify("Usuário não cadastrado")}</>
+      }
+    })
   };
 
   const changeInputValue = (e) => {
@@ -61,7 +80,7 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass }) {
   return (
     <Container>
       <form onSubmit={sendData}>
-        
+
         <FormTop>
           <h1>Login</h1>
           <CloseButton onClick={closeModalSign}>

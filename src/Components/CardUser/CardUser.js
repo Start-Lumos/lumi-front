@@ -29,6 +29,10 @@ import ChangePassword from "../Modal/Password/ChangePassword/ChangePassword";
 //Serviços
 import servicos from "../ServicosList/servicos.json";
 
+//Axios
+import { axiosInstance } from "../../service/axios";
+
+
 function CardUser() {
   
   const [toggleButtonOption, setToggleButtonOption] = useState("false");
@@ -63,7 +67,8 @@ function CardUser() {
     userServico: "",
     userServDescricao: "",
     userServModalidade: "",
-    userServico: "",
+    userCity: "",
+    userState: "",
   });
 
   const inputs = [
@@ -146,21 +151,21 @@ function CardUser() {
   //Recarregar dados ao cancelar edição de dados
   const [recarregar, setRecarregar] = useState(0);
 
-  useEffect(() => {
-    setData({
-      userFirstName: "Danilo",
-      userLastName: "Ferreira",
-      userEmail: "fulano@gmail.com",
-      userPassword: "@123afbrir",
-      userCPF: "58744012020",
-      userDTNasc: "2015-05-23",
-      userPhone: "81925497895",
-      toggleButton: toggleButtonOption,
-      userServico: "",
-      userServDescricao: "",
-      userServModalidade: "",
-    });
-  }, [recarregar, toggleButtonOption]);
+  // useEffect(() => {
+  //   setData({
+  //     userFirstName: "Danilo",
+  //     userLastName: "Ferreira",
+  //     userEmail: "fulano@gmail.com",
+  //     userPassword: "@123afbrir",
+  //     userCPF: "58744012020",
+  //     userDTNasc: "2015-05-23",
+  //     userPhone: "81925497895",
+  //     toggleButton: toggleButtonOption,
+  //     userServico: "",
+  //     userServDescricao: "",
+  //     userServModalidade: "",
+  //   });
+  // }, [recarregar, toggleButtonOption]);
 
 
   //*Manipulação de dados
@@ -184,7 +189,9 @@ function CardUser() {
             <>{notify()}</>
           } else {
             setData({ ...data, [e.target.name]: e.target.value });
-            console.log(data, formValues);
+            //setData({...data, userCity: formValues.city, userState: formValues.state, })
+            console.log(data);
+            //let dados = data.c
             setEditData("none");
             setEditDataOp("auto");
           }
@@ -203,16 +210,6 @@ function CardUser() {
 
 
 
-  //Cidade e Estados
-      const [formValues, setFormValues] = useState({});
-
-      const definirLocalidade = (e) => {
-        e.preventDefault();
-        const { value, name } = e.target;
-        setFormValues({ ...formValues, [name]: value });
-      };
-
-
 
   //Modalidade === Online ? : Esconder Localidade : Exibir Localidade 
       const [selecionarLocal, setSelecionarLocal] = useState(false);
@@ -221,7 +218,7 @@ function CardUser() {
         if (value === "Online" || value === "") {
           setData({ ...data, userServModalidade: value });
           setSelecionarLocal(false);
-          setFormValues({});
+          setData({ ...data, userState: "", userCity: "" });
         } else {
           setData({ ...data, userServModalidade: value });
           setSelecionarLocal(true);
@@ -268,6 +265,16 @@ function CardUser() {
   const changeInputValue = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
+
+  //Axios
+  useEffect(() => {
+    axiosInstance.get("/auth/check").then((res) =>{
+      console.log({...res.data.user})
+      setData({...res.data.user})
+      setToggleButtonOption(res.data.user.toggleButton)
+    })
+  }, [])
 
 
   return (
@@ -343,18 +350,17 @@ function CardUser() {
                 {selecionarLocal === true ? (
                   <>
                     <BrazilianStates
-                      id="state"
-                      name="state"
-                      onChange={definirLocalidade}
+                      id="userState"
+                      name="userState"
+                      onChange={changeInputValue}
                       editData={editData}
-                      setFormValues={setFormValues}
                     />
 
                     <BrazilianCities
-                      id="city"
-                      name="city"
-                      state={formValues.state}
-                      onChange={definirLocalidade}
+                      id="userCity"
+                      name="userCity"
+                      state={data.userState}
+                      onChange={changeInputValue}
                       editData={editData}
                     />
                   </>

@@ -62,7 +62,7 @@ function CardInput (props) {
                 <span onClick={onClick}>Alterar</span>
               </label>
 
-              <input
+              {/* <input
                 {...inputProps}
                 onChange={onChange}
                 onBlur={showMessage}
@@ -71,7 +71,7 @@ function CardInput (props) {
                   inputProps.name === "registerConf_Password" && setFocused(true)
                 }
                 focused={focused.toString()}
-              />
+              /> */}
 
               <span>{errorMessage}</span>
           </InputGroup>

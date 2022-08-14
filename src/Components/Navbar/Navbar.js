@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //Link
 import { Link } from "react-router-dom";
@@ -102,14 +102,24 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
     function closeModalRecover() {setModalRecoverOpen(false)}
 
     //Logado
-    const [isUserLogado, setisUserLogado] = useState(false);
-    
+    const [isUserLogado, setIsUserLogado] = useState(localStorage.getItem("token"));
+
+    // useEffect(() => {
+    //   console.log(localStorage.getItem("token"))
+    //   if(localStorage.getItem("token")){
+    //     setisUserLogado(true)
+    //   }else{
+    //     setisUserLogado(false)
+    //   }
+    // }, [])
+
   return (
     <>
       {isModalSignOpen ? (
         <LoginRegister
           closeModalSign={closeModalSign}
           openModalPass={openModalPass}
+          setIsUserLogado={setIsUserLogado}
         />
       ) : null}
 
@@ -138,6 +148,7 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
           themebutton={themebutton}
           themeToggler={themeToggler}
           openModalSign={openModalSign}
+          isUserLogado={isUserLogado}
         />
       ) : null}
 
@@ -180,7 +191,7 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
             </IconStyle>
           </Link>
 
-          {isUserLogado === true ? (
+          {isUserLogado ? (
             <Link to="/perfil">
               <IconStyle >
                 <RiUser3Fill />

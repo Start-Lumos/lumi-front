@@ -20,6 +20,7 @@ function NavbarMobile({
   themebutton,
   themeToggler,
   openModalSign,
+  isUserLogado,
 }) {
 
   const size = { fontSize: "2rem" };
@@ -28,9 +29,6 @@ function NavbarMobile({
     closeModalMenuMobile();
     openModalSign();
   }
-
-  //Logado
-  const [isUserLogado, setisUserLogado] = useState(false);
 
   return (
 
@@ -47,7 +45,7 @@ function NavbarMobile({
             </Icon>
           </Link>
 
-          {isUserLogado === true ? (
+          {isUserLogado ?(
             <Link to="/perfil">
               <Icon onClick={closeModalMenuMobile}>
                 <RiUser3Fill style={size} />

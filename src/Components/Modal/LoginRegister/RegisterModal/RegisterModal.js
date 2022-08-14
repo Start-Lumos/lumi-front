@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+//Axios
+import { axiosInstance } from "../../../../service/axios";
+
 //Botão Fechar
 import { CgClose } from "react-icons/cg";
 
@@ -19,9 +22,6 @@ import CPF from "cpf-check";
 //Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-//Style
-import { StyledContainer } from "../../../CardUser/Style.CardUser";
 
 function RegisterModal({ setLoginForm, closeModalSign }) {
 
@@ -147,15 +147,19 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
     },
   ];
 
-  const notify = () =>
-    toast("Esse CPF é inválido!", { toastId: "toastFromRG" });
+  const notify = (texto) =>
+    toast(texto, { toastId: "toastFromRG" });
 
   const sendData = (e) => {
     e.preventDefault();
     if (CPF.validate(values.userCPF) === false) {
-      <>{notify()}</>;
+      <>{notify("Esse CPF é inválido!")}</>;
     } else {
-      console.log(values);
+      axiosInstance.post("/api/user", values).then((res)=>{
+        if(res.status === 201){
+          setLoginForm("Cadastrado com sucesso");
+        }
+      })
     }
   };
 
@@ -165,8 +169,6 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
 
   return (
     <ContainerReg>
-      
-      <StyledContainer autoClose={2500} position="top-center" />
 
       <form onSubmit={sendData}>
         
