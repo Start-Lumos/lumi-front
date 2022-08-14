@@ -35,6 +35,7 @@ import LoginRegister from "../Modal/LoginRegister/LoginRegister";
 import ForgetPassword from "../Modal/Password/ForgetPassword/ForgetPassword";
 import CodeRecoverPW from "../Modal/Password/CodeRecoverPW/CodeRecoverPW";
 import RecoverPassword from "../Modal/Password/RecoverPassword/RecoverPassword";
+import { StyledContainer } from "../Modal/Styles.Modal";
 
 
 function Navbar({ themeToggler, imgsrc, themebutton }) {
@@ -107,8 +108,13 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
     //Logado
     const {isUserLogado, setIsUserLogado} = useContext(UserContext);
 
+
+
   return (
     <>
+
+      <StyledContainer autoClose={2500} position="top-center" />
+
       {isModalSignOpen ? (
         <LoginRegister
           closeModalSign={closeModalSign}

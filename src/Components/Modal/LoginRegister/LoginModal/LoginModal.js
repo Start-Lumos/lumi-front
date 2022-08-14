@@ -22,6 +22,7 @@ import {
 //Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserLogado }) {
 
@@ -56,6 +57,9 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserL
   const notify = (texto) =>
     toast(texto, { toastId: "toastFromRG" });
 
+
+  let navigate = useNavigate();
+
   const sendData = (e) => {
     e.preventDefault();
     axiosInstance.post("/auth/login", values).then((res)=>{
@@ -64,6 +68,8 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserL
         console.log("Logado com sucesso!")
         setIsUserLogado(true);
         localStorage.setItem("token", res.data.token)
+        notify("Logado com sucesso")
+        navigate("/");
       }else{
         <>{notify("Usuário não cadastrado")}</>
       }

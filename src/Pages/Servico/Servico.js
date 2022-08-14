@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import {
   Container,
@@ -13,6 +13,7 @@ import {
 
 import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 import fotoperfil from "../../Assets/userdefault.png";
+import { useNavigate } from "react-router-dom";
 
 const nome = "Marcos Aurelio";
 const funcao = "Fotógrafo";
@@ -37,7 +38,20 @@ const res = [
 
 ]
 
+
 function Servico() {
+
+
+  let navigate = useNavigate();
+
+
+  useEffect(() => {
+    if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
+        navigate("/");
+    }
+  }, [navigate]);
+
+
   return (
     <Main>
       <Container>

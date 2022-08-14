@@ -11,6 +11,7 @@ import Home from "./Pages/home/Home";
 import Perfil from "./Pages/Perfil/Perfil";
 import Equipe from "./Pages/Equipe/Equipe";
 import Servico from "./Pages/Servico/Servico";
+import NotFound from "./Pages/NotFound/NotFound";
 
 //Componentes
 import Navbar from "./Components/Navbar/Navbar";
@@ -95,6 +96,8 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/equipe" element={<Equipe />} />
           <Route path="/servico" element={<Servico />} />
+          <Route path="/*" element={<NotFound />} />
+          <Route path="/404" element={<NotFound />} />
         </Routes>
       </Router>
       </UserContext.Provider>

@@ -10,7 +10,6 @@ import LoginModal from "./LoginModal/LoginModal";
 
 //Style
 import { Backdrop } from "../Styles.Modal";
-import { StyledContainer } from "../../CardUser/Style.CardUser";
 
 
 function LoginRegister({ closeModalSign, openModalPass, setIsUserLogado }) {
@@ -34,7 +33,6 @@ function LoginRegister({ closeModalSign, openModalPass, setIsUserLogado }) {
 
   return (
     <Backdrop>  
-      <StyledContainer autoClose={2500} position="top-center" />
       {isLogin ? (
         <LoginModal
           setRegisterForm={setRegisterForm}

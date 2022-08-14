@@ -25,6 +25,7 @@ function Delete({ closeModalDelete }) {
     const notify = (texto) =>
     toast(texto, { toastId: "toastFromDelete" });
 
+    let navigate = useNavigate();
 
     const deleteAccount = (e) =>{
         e.preventDefault();
@@ -40,9 +41,7 @@ function Delete({ closeModalDelete }) {
         }
         
         })
-    }
-    
-      let navigate = useNavigate();
+    } 
 
   return (
 
