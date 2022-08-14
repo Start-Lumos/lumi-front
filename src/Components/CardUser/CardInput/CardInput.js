@@ -5,7 +5,7 @@ import { InputToggle } from "../../ToggleButton/ToggleButton";
 
 //Style
 import { Toggle } from "../../Modal/Styles.Modal";
-import { InputGroup, Label } from "../Style.CardUser";
+import { InputGroup } from "../Style.CardUser";
 
 function CardInput (props) {
   
@@ -45,13 +45,13 @@ function CardInput (props) {
                   </div>
               ) : (
                   <div>
+                    <span>Não</span>
                     <InputToggle
                       {...inputProps}
                       onChange={onChange}
                       onClick={ChangeToggleButton}
                       editData={editData}
-                    />
-                    <span>Não</span>
+                    />               
                   </div>
               )}
           </Toggle>

@@ -372,6 +372,9 @@ export const Toggle = styled.div`
     font-size: 0.9rem;
     transition: 0.5s ease;
   }
+  span{
+    order: 2;
+  }
 
   div {
     display: flex;

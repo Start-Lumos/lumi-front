@@ -148,26 +148,6 @@ function CardUser() {
   ];
 
 
-  //Recarregar dados ao cancelar edição de dados
-  const [recarregar, setRecarregar] = useState(0);
-
-  // useEffect(() => {
-  //   setData({
-  //     userFirstName: "Danilo",
-  //     userLastName: "Ferreira",
-  //     userEmail: "fulano@gmail.com",
-  //     userPassword: "@123afbrir",
-  //     userCPF: "58744012020",
-  //     userDTNasc: "2015-05-23",
-  //     userPhone: "81925497895",
-  //     toggleButton: toggleButtonOption,
-  //     userServico: "",
-  //     userServDescricao: "",
-  //     userServModalidade: "",
-  //   });
-  // }, [recarregar, toggleButtonOption]);
-
-
   //*Manipulação de dados
     const [editData, setEditData] = useState("none");
     const [editDataOp, setEditDataOp] = useState("auto"); //*usado em alterar senha
@@ -197,14 +177,7 @@ function CardUser() {
           }
         };
 
-        //Cancelar edição de dados
-        const CancelEditData = (e) => {
-          e.preventDefault();
-          setEditData("none");
-          setEditDataOp("auto");
-          setCount(e.target.value.length);
-          setRecarregar((oldKey) => oldKey + 1);
-        };
+        
 
   //* -----------------------------------
 
@@ -267,14 +240,27 @@ function CardUser() {
   };
 
 
+  //Recarregar dados ao cancelar edição de dados
+  const [recarregar, setRecarregar] = useState(0);
+
   //Axios
   useEffect(() => {
     axiosInstance.get("/auth/check").then((res) =>{
       console.log({...res.data.user})
       setData({...res.data.user})
       setToggleButtonOption(res.data.user.toggleButton)
+      console.log(res.data.user.toggleButton)
     })
-  }, [])
+  }, [recarregar])
+
+  //Cancelar edição de dados
+  const CancelEditData = (e) => {
+    e.preventDefault();
+    setEditData("none");
+    setEditDataOp("auto");
+    setCount(e.target.value.length);
+    setRecarregar((oldKey) => oldKey + 1);  
+  };
 
 
   return (
