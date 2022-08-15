@@ -33,7 +33,7 @@ import servicos from "../ServicosList/servicos.json";
 //Axios
 import { axiosInstance } from "../../service/axios";
 
-function CardUser() {
+function CardUser({setReady}) {
   
   const [toggleButtonOption, setToggleButtonOption] = useState("false");
 
@@ -160,13 +160,13 @@ function CardUser() {
         };
 
             //Notify
-            const notify = () => toast("Esse CPF é inválido!");
+            const notify = (texto) => toast(texto);
 
         //Enviar dados e Desativar a edição
         const sendData = (e) => {
           e.preventDefault();
           if (CPF.validate(data.userCPF) === false) {
-            <>{notify()}</>
+            <>{notify("Esse CPF é inválido!")}</>
           } else {
             setData({ ...data, [e.target.name]: e.target.value });
             console.log(data);
@@ -246,13 +246,14 @@ function CardUser() {
   //Axios
   useEffect(() => {
     axiosInstance.get("/auth/check").then((res) =>{
+      setReady(true);
       console.log({...res.data.user})
       setData({...res.data.user})
       setToggleButtonOption(res.data.user.toggleButton)
       res.data.user.userState !== "" ? setSelecionarLocal(true) : setSelecionarLocal(false);
       setCount(res.data.user.userServDescricao.length);
     })
-  }, [recarregar])
+  }, [recarregar, setReady])
 
   //Cancelar edição de dados
   const CancelEditData = (e) => {

@@ -4,20 +4,25 @@ import {Main} from "./Style.Home";
 
 //Axios
 import { axiosInstance } from "../../service/axios";
+import { Loading, LoadingContainer } from "../../Components/Loader";
 
 
 function Home(){
 
+    const [ready, setReady] = useState(false);
     const [servidores, setServidores] = useState([]);
 
     useEffect(() => {
         axiosInstance.get("/user/list").then((res) => {
             setServidores(res.data.user);
+            setReady(true)
             console.log(res.data.user)
         })
     }, [])
 
     return(
+        <>
+        {ready ?
         <Main style={{flexDirection: "column"}}>
             {/* {servidores.map(servidor => {
                 return(<p>{servidor}</p>)
@@ -28,6 +33,8 @@ function Home(){
                 </div>
             ))}
         </Main>
+         : <LoadingContainer><Loading/></LoadingContainer>}
+        </>
     )
 }
 

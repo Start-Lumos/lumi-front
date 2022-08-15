@@ -59,7 +59,7 @@ function NavbarMobile({
             </Icon>
           )}
 
-          <Icon style={{display: "none"}}>
+          <Icon style={{display: "flex"}}>
             <ToggleModeMobile theme={themebutton} toggleTheme={themeToggler} />
           </Icon>
 

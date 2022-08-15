@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { StyledContainer } from "../../Components/CardUser/Style.CardUser";
 import Delete from "../../Components/Modal/Delete";
+import { Loading, LoadingContainer } from "../../Components/Loader";
 
 
 function Perfil() {
@@ -40,6 +41,8 @@ function openModalDelete(e) {
 
 function closeModalDelete() {setDeleteOpen(false)}
 
+const [ready, setReady] = useState(false);
+
   return (
     <>
     {isDeleteOpen ? (
@@ -48,15 +51,18 @@ function closeModalDelete() {setDeleteOpen(false)}
         />
       ) : null}
     
-    <ProfileContainer>
-      <StyledContainer autoClose = {2500} position="top-center"/>
-      <ProfileBG>
-        <img src={profilePicture} alt="Foto Perfil" />
-      </ProfileBG>
-      <CardUser />
-      <Deletebtn onClick={openModalDelete}>Deletar a conta</Deletebtn>
-    </ProfileContainer>
+    { ready ?
+      <ProfileContainer>
+        <StyledContainer autoClose = {2500} position="top-center"/>
+        <ProfileBG>
+          <img src={profilePicture} alt="Foto Perfil" />
+        </ProfileBG>
+        <CardUser setReady={setReady}/>
+        <Deletebtn onClick={openModalDelete}>Deletar a conta</Deletebtn>
+      </ProfileContainer>
+    : <><LoadingContainer><Loading/></LoadingContainer><CardUser setReady={setReady}/></>}
     </>
+ 
     
   );
 }

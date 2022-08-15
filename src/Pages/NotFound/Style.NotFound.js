@@ -10,7 +10,7 @@ export const ErroPage = styled.div`
     h1{
         font-size: 10rem;
         text-align: center;
-        color: ${({ theme }) => theme.purpleVariant};
+        color: ${({ theme }) => theme.purpleOP};
         transition: 0.5s ease;
     }
     p{
@@ -43,7 +43,7 @@ export const ErroPage = styled.div`
         width: 9rem;
         border-radius: 12px;
         border: none;
-        background-color: ${({ theme }) => theme.purpleVariant};
+        background-color: ${({ theme }) => theme.purpleOP};
         transition: 0.5s ease;
         color: #e8f1f2;
         padding: 1rem;

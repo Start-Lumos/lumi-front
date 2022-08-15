@@ -12,7 +12,14 @@ import { UserContext } from "../../App";
 //useNavigate
 import { useNavigate } from "react-router-dom";
 
+//Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Logout({ closeModalSair }) {
+
+    //Notify
+    const notify = (texto) => toast(texto);
 
     const sair = (e) => {
         e.preventDefault();
@@ -20,6 +27,7 @@ function Logout({ closeModalSair }) {
         localStorage.removeItem("token");
         setIsUserLogado(false);
         navigate("/");
+        <>{notify("Você saiu")}</>
       }
     
     
