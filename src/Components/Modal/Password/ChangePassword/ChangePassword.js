@@ -13,19 +13,26 @@ import {
   Submit,
 } from "../../Styles.Modal";
 
+//Axios
+import { axiosInstance } from "../../../../service/axios";
+
+//Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function ChangePassword({ closeModalCP }) {
-  const [values, setValues] = useState({
-    userPassword: "",
+  const [mudarSenha, setmudarSenha] = useState({
+    userOldPassword: "",
     userNewPassword: "",
     userConfNewPassword: "",
   });
 
   const inputs = [
     {
-      id: "userPassword",
+      id: "userOldPassword",
       className: "input",
       type: "password",
-      name: "userPassword",
+      name: "userOldPassword",
       placeholder: "Informe sua senha antiga",
       errorMessage:
         "A senha deve conter no mínimo 8-16 caracteres, número, letras maiúsculas e/ou minúsculas e caractere especial",
@@ -56,17 +63,34 @@ function ChangePassword({ closeModalCP }) {
       errorMessage: "As senhas não são iguais!",
       label: "Confirmar nova senha",
       required: true,
-      pattern: values.userNewPassword,
+      pattern: mudarSenha.userNewPassword,
     },
   ];
 
-  const sendData = (e) => {
+
+  //Toastify
+  const notify = (texto) =>
+    toast(texto, { toastId: "toastFromCP" });
+
+  function sendData(e) {
     e.preventDefault();
-    console.log(values);
+    axiosInstance.post("/api/user/mudar-senhar", {
+      userNewPassword: mudarSenha.userNewPassword,
+      userOldPassword: mudarSenha.userOldPassword
+    }).then((res) => {
+      if(res.status === 202){
+        <>{notify("Senha alterada com Sucesso")}</>;
+      }
+      //Senha incorreta
+      if(res.status === 203) {
+        <>{notify("Senha incorreta")}</>;
+      }
+    })
+    
   };
 
   const changeInputValue = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+    setmudarSenha({ ...mudarSenha, [e.target.name]: e.target.value });
   };
 
   return (
@@ -85,7 +109,7 @@ function ChangePassword({ closeModalCP }) {
             <InputFieldCP
               key={input.id}
               {...input}
-              value={values[input.name]}
+              value={mudarSenha[input.name]}
               onChange={changeInputValue}
             />
           ))}

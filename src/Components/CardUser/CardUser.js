@@ -32,6 +32,7 @@ import servicos from "../ServicosList/servicos.json";
 
 //Axios
 import { axiosInstance } from "../../service/axios";
+import { calculaIdade } from "../Validate";
 
 function CardUser({setReady}) {
   
@@ -167,15 +168,19 @@ function CardUser({setReady}) {
           e.preventDefault();
           if (CPF.validate(data.userCPF) === false) {
             <>{notify("Esse CPF é inválido!")}</>
-          } else {
-            setData({ ...data, [e.target.name]: e.target.value });
-            console.log(data);
-            setEditData("none");
-            setEditDataOp("auto");
-            axiosInstance.put("/api/user-data", data).then((res) =>{
-              console.log(res);
-            })
-          }
+          } else{
+            if (calculaIdade(data.userDTNasc) < 18) {
+              <>{notify("Idade não correspondente")}</>;
+            }else {
+              setData({ ...data, [e.target.name]: e.target.value });
+              console.log(data);
+              setEditData("none");
+              setEditDataOp("auto");
+              axiosInstance.put("/api/user-data", data).then((res) =>{
+                console.log(res);
+              })
+            }
+          } 
         };
 
         
@@ -286,15 +291,11 @@ function CardUser({setReady}) {
         />
       ) : null}
 
-      <StyledContainer autoClose = {2500} position="top-center"/>
+      
 
       <ProfileSectionBG>
         
         <form onSubmit={(e) => sendData(e)}>
-          
-          {isModalChangePass ? (
-            <ChangePassword closeModalCP={closeModalCP} />
-          ) : null}
 
           <aside>
             {inputs.map((input) => (
@@ -398,6 +399,10 @@ function CardUser({setReady}) {
           </FormBottom>
           
         </form>
+
+        {isModalChangePass ? (
+            <ChangePassword closeModalCP={closeModalCP} />
+          ) : null}
 
       </ProfileSectionBG>
     </>

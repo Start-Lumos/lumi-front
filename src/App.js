@@ -23,13 +23,13 @@ import { GlobalStyles } from "./GlobalStyles";
 //Logos
 import logolight from "./Assets/logo/icon_lumi.svg";
 import logodark from "./Assets/logo/icon_lumi_dark.svg";
+import Termos from "./Pages/Termos/Termos";
+import Politica from "./Pages/Termos/Politica";
 
 //UserContext
 export const UserContext = React.createContext({});
 
-
 function App() {
-
   //Definindo o tema padrão da página:
   const [theme, setTheme] = useState("light");
 
@@ -43,7 +43,6 @@ function App() {
     const localTheme = window.localStorage.getItem("theme");
     localTheme ? setTheme(localTheme) : setMode("npmdark");
   }, []);
-
 
   //Definindo a logo padrão da página:
   const [logo, setLogo] = useState(logolight);
@@ -59,7 +58,6 @@ function App() {
     localLogo ? setLogo(localLogo) : setModeLogo(logodark);
   }, []);
 
-
   //*Função de alteração entre temas (light/dark), chamada no botão darkmode:
 
   function themeToggler() {
@@ -72,34 +70,38 @@ function App() {
     }
   }
 
-
   //Para o userContext
-  const [isUserLogado, setIsUserLogado] = useState(localStorage.getItem("token"));
+  const [isUserLogado, setIsUserLogado] = useState(
+    localStorage.getItem("token")
+  );
 
   useEffect(() => {
-    localStorage.getItem('token') && setIsUserLogado(localStorage.getItem('token'));
-  },[])
+    localStorage.getItem("token") &&
+      setIsUserLogado(localStorage.getItem("token"));
+  }, []);
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <UserContext.Provider value={{ isUserLogado, setIsUserLogado }}>
-      <Router>
-        <Navbar
-          themeToggler={themeToggler}
-          imgsrc={logo}
-          themebutton={theme}
-        />
+        <Router>
+          <Navbar
+            themeToggler={themeToggler}
+            imgsrc={logo}
+            themebutton={theme}
+          />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/perfil" element={<Perfil />} />
-          <Route path="/equipe" element={<Equipe />} />
-          <Route path="/servico" element={<Servico />} />
-          <Route path="/*" element={<NotFound />} />
-          <Route path="/404" element={<NotFound />} />
-        </Routes>
-      </Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/equipe" element={<Equipe />} />
+            <Route path="/servico" element={<Servico />} />
+            <Route path="/*" element={<NotFound />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="/termos-de-uso" element={<Termos />} />
+            <Route path="/politicas-de-privacidade" element={<Politica />} />
+          </Routes>
+        </Router>
       </UserContext.Provider>
     </ThemeProvider>
   );

@@ -57,10 +57,9 @@ function CardInput (props) {
           </Toggle>
       ) : label === "Senha" ? (
           <InputGroup editDataOp={editDataOp}>
-              <label htmlFor={id}>
-                {label}
-                <span onClick={onClick}>Alterar</span>
-              </label>
+              <div className="alterarSenhaDiv">
+                <span onClick={onClick}>Alterar Senha</span>
+              </div>
 
               {/* <input
                 {...inputProps}
@@ -72,8 +71,6 @@ function CardInput (props) {
                 }
                 focused={focused.toString()}
               /> */}
-
-              <span>{errorMessage}</span>
           </InputGroup>
       ) : (
         <InputGroup editData={editData}>

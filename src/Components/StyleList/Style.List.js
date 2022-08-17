@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Select = styled.select`
   border: none;
   width: 100%;
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 0.7rem;
   border-radius: 12px;
   background: ${({ theme }) => theme.user_input};

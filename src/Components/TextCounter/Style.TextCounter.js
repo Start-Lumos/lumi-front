@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Decribe = styled.section`
   label {
     color: ${({ theme }) => theme.gray};
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@ export const Decribe = styled.section`
 
   textarea {
     border: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-radius: 12px;
     width: 100%;
     height: 7rem;

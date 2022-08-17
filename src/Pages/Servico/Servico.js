@@ -10,29 +10,28 @@ import {
   Sobre,
 } from "./Style.Servico";
 
-
 import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
-import fotoperfil from "../../Assets/userdefault.png";
+//import fotoperfil from "../../Assets/userdefault.png";
 import { useNavigate } from "react-router-dom";
 
 const nome = "Marcos Aurelio";
 const funcao = "Fotógrafo";
-const desc =
-  "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
+const desc ="Ensaios fotográficos | Mini-wedding | Pré-wedding | Festas infantis | Ensaios infantis. 2horas de Cobertura completa com click ilimitados e fotos, sendo elas editadas em alta resolução. Obs.: Não cobrimos taxa de deslocamento.";
 const email = "marcosaurelio@gmail.com";
 const phone = "8191234569";
-const modalidade = 'Online';
+const modalidade = 'Presencial';
 const estado = 'PE';
 const cidade = 'Recife';
+const perfilteste = "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80";
 
 
 const res = [
   {
     id: 1,
-    imagem1: 'https://www.chevrolet.com.br/content/dam/chevrolet/mercosur/brazil/portuguese/index/cars/cars-subcontent/02-images/cruze-sport6-rs-carros.jpg?imwidth=960',
-    imagem2: 'https://blog.nakata.com.br/wp-content/uploads/2020/08/post_thumbnail-1f77e8996174df4fb19587977331de22-780x450.jpg',
-    imagem3: 'https://img2.icarros.com/dbimg/imgadicionalnoticia/4/105564_1',
-    imagem4: 'https://www.infomoney.com.br/wp-content/uploads/2022/05/carros-de-luxo-e1653484670585.jpg?fit=770%2C446&quality=50&strip=all',
+    imagem1: 'https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1115&q=80',
+    imagem2: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80',
+    imagem3: 'https://images.unsplash.com/photo-1504022462188-88f023db97bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    imagem4: 'https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1143&q=80',
 
   }
 
@@ -40,6 +39,11 @@ const res = [
 
 
 function Servico() {
+
+  // const { id } = useParams();
+  // console.log(id)
+  
+  // const [dados, setDados] = useState([]);
 
 
   let navigate = useNavigate();
@@ -57,7 +61,7 @@ function Servico() {
       <Container>
         <Sobre>
           <ProfilePicture>
-            <img src={fotoperfil} alt="Foto Perfil" />
+            <img style={{borderRadius: '50%'}} src={perfilteste} alt="Foto Perfil" />
           </ProfilePicture>
           <Data>
             <aside>
@@ -67,7 +71,7 @@ function Servico() {
             <aside>
               <h3>Contato:</h3>
               <p>
-                <span>Email: </span>
+                <span>E-mail: </span>
                 {email}
               </p>
               <p>

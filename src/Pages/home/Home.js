@@ -16,7 +16,6 @@ function Home(){
         axiosInstance.get("/user/list").then((res) => {
             setServidores(res.data.user);
             setReady(true)
-            console.log(res.data.user)
         })
     }, [])
 

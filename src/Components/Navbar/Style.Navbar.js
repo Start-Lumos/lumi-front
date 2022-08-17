@@ -23,7 +23,7 @@ export const Logo = styled.img`
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   align-self: center;
-  justifiy-content: center;
+  justify-content: center;
   flex-direction: row;
 
   
@@ -62,10 +62,10 @@ export const Search = styled.div`
     width: 80%;
     margin-left: 0;
   }
-  @media (min-width: 801px) && (max-width: 1200px) {
+  @media (min-width: 801px) and (max-width: 1200px) {
     width: 100%;
   }
-`;
+`
 
 export const SearchIcon = styled.div`
   color: ${({ theme }) => theme.purpleOP};
@@ -90,11 +90,12 @@ export const InputNav = styled.input.attrs({
         background-color: ${({ theme }) => theme.grayOp};
         color: ${({ theme }) => theme.gray};
         transition: all .5s ease;
+        pointer-events: none;
         &:focus-visible {
           outline: none;
         }
         &&::placeholder {
-          color: "${({ theme }) => theme.gray};"
+          color: "${({ theme }) => theme.gray}";
           opacity: 0.7;
         }`;
 

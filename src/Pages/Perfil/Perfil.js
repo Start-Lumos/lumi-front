@@ -53,7 +53,6 @@ const [ready, setReady] = useState(false);
     
     { ready ?
       <ProfileContainer>
-        <StyledContainer autoClose = {2500} position="top-center"/>
         <ProfileBG>
           <img src={profilePicture} alt="Foto Perfil" />
         </ProfileBG>

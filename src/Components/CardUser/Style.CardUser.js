@@ -205,6 +205,9 @@ export const DivInput = styled.div`
   div{
     width: 100%;
   }
+  label{
+    font-size: 1.1rem;
+  }
 
 `
 
@@ -251,16 +254,30 @@ export const Submit = styled.button`
 export const InputGroup = styled.div`
   > label {
     color: ${({ theme }) => theme.gray};
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0;
+  }
+  .alterarSenhaDiv{
+    width: 100%;
+    align-items: center;
+    display: flex; 
+    justify-content: center;
+    margin-top: 0.8rem;
+
     span {
+      width: 50%;
       color: ${({ theme }) => theme.purpleOP};
-      font-size: 0.7rem;
+      font-size: 1rem;
       cursor: pointer;
       pointer-events: ${(props) => props.editDataOp};
+      text-align: center;
+      @media screen and (max-width: 800px){
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
+      }
     }
   }
   > input {
@@ -276,7 +293,7 @@ export const InputGroup = styled.div`
     border: none;
     border-radius: 12px;
     padding: 0.7rem;
-    font-size: 0.9em;
+    font-size: 1em;
     text-align: center;
     :focus-visible {
       outline: none;

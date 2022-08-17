@@ -27,11 +27,11 @@ export const ProfileBG = styled.div`
 
 export const Deletebtn = styled.button`
   color: red;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   font-weight: 400;
   cursor: pointer;
   margin-top: 2.5rem;
-  padding: 0.7rem 1.5rem;
+  padding: 1rem 1.5rem;
   display: flex;
   align-self: center;
   justify-content: center;

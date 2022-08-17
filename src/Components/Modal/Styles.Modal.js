@@ -181,6 +181,15 @@ export const ContainerReg = styled.div`
     flex-direction: column;
     width: 100%;
 
+    aside{
+    
+      .dtNasc{
+        flex-direction: row;
+        text-align: center;
+      }
+      color-scheme: ${({ theme }) => theme.calendar};
+    }
+
     @media screen and (max-width: 800px) {
       overflow-y: scroll;
       flex-wrap: nowrap;
@@ -440,7 +449,7 @@ export const Toggle = styled.div`
   }
   .labelPerfil{
     color: ${({ theme }) => theme.gray};
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     transition: 0.5s ease;
   }
   span{
@@ -480,3 +489,43 @@ export const StyledContainer = styled(ToastContainer)`
     background: ${({ theme }) => theme.purpleOP};
   }
 `;
+
+export const AceitarTermos = styled.div`
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  margin-top: 1rem;
+  text-align: center;
+  width: 90%;
+  label{
+    color: #ffffff;
+    font-size: 0.9rem;
+    a{
+      font-size: 0.9rem;
+    }
+  }
+  @media screen and (max-width: 890px) {
+    label{
+      font-size: 0.8rem;
+      a{
+        font-size: 0.8rem;
+      }
+    }   
+  }
+  @media screen and (max-width: 800px) {
+    label{
+      width: 80%;
+      a{
+        font-size: 0.7rem;
+      }
+    }   
+  }
+  @media screen and (max-width: 600px) {
+    label{
+      font-size: 0.7rem;
+      a{
+        font-size: 0.7rem;
+      }
+    }   
+  }
+`

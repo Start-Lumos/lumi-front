@@ -14,6 +14,7 @@ import {
   CloseButton,
   Submit,
   ChangePage,
+  AceitarTermos,
 } from "../../Styles.Modal";
 
 //Validação do CPF
@@ -22,14 +23,16 @@ import CPF from "cpf-check";
 //Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { calculaIdade } from "../../../Validate";
+import { Link } from "react-router-dom";
 
 function RegisterModal({ setLoginForm, closeModalSign }) {
-
   const [values, setValues] = useState({
     userFirstName: "",
     userLastName: "",
     userEmail: "",
     userCPF: "",
+    userDTNasc: "",
     userPhone: "",
     userPassword: "",
     userConfPassword: "",
@@ -83,6 +86,15 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
       required: true,
     },
     {
+      id: "userDTNasc",
+      name: "userDTNasc",
+      type: "date",
+      errorMessage: "Informe sua data de nascimento",
+      label: "Data de Nascimento",
+      required: true,
+      className: "dtNasc",
+    },
+    {
       //userPhone
       id: "userPhone",
       type: "text",
@@ -117,24 +129,27 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
       label: "Confirmar senha",
       required: true,
       pattern: values.userPassword,
-    }
+    },
   ];
 
-  const notify = (texto) =>
-    toast(texto, { toastId: "toastFromRG" });
+  const notify = (texto) => toast(texto, { toastId: "toastFromRG" });
 
-  const sendData = (e) => {
+  async function sendData(e) {
     e.preventDefault();
     if (CPF.validate(values.userCPF) === false) {
       <>{notify("Esse CPF é inválido!")}</>;
     } else {
-      axiosInstance.post("/api/user", values).then((res)=>{
-        if(res.status === 201){
-          setLoginForm("Cadastrado com sucesso");
-        }
-      })
+      if (calculaIdade(values.userDTNasc) < 18) {
+        <>{notify("Você ainda é menor de idade")}</>;
+      } else {
+        axiosInstance.post("/api/user", values).then((res) => {
+          if (res.status === 201) {
+            setLoginForm("Cadastrado com sucesso");
+          }
+        });
+      }
     }
-  };
+  }
 
   const changeInputValue = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -142,9 +157,7 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
 
   return (
     <ContainerReg>
-
       <form onSubmit={sendData}>
-        
         <FormTop>
           <h1>Cadastre-se</h1>
           <CloseButton onClick={closeModalSign}>
@@ -163,10 +176,23 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
           ))}
         </aside>
 
+        <AceitarTermos>
+          <input
+            type="checkbox"
+            name="checkbox"
+            value="Termos de Uso"
+            className="checkbox"
+            required
+          />
+          <label>
+            Compreendo e aceito os
+            <Link to="/termos-de-uso"> Termos de uso</Link>.
+          </label>
+        </AceitarTermos>
+
         <Submit>Cadastrar</Submit>
         <p>Já tem uma conta?</p>
         <ChangePage onClick={setLoginForm}>Login</ChangePage>
-        
       </form>
     </ContainerReg>
   );

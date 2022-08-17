@@ -49,6 +49,24 @@ export const FooterS = styled.footer`
         }
     }
 
+    div{
+        display: flex;
+        align-self: center;
+        justify-content: space-around;
+
+        @media screen and (max-width: 400px) {
+            flex-direction: column;
+        }
+        
+        a.termos{
+            text-align: center;
+            padding: 0.1rem 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }  
+    }
+
+    
     span{
         font-weight: 250;
         text-align: center;

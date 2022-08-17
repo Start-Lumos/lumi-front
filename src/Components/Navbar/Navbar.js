@@ -37,6 +37,9 @@ import CodeRecoverPW from "../Modal/Password/CodeRecoverPW/CodeRecoverPW";
 import RecoverPassword from "../Modal/Password/RecoverPassword/RecoverPassword";
 import { StyledContainer } from "../Modal/Styles.Modal";
 
+//Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Navbar({ themeToggler, imgsrc, themebutton }) {
   
@@ -109,6 +112,12 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
     const {isUserLogado, setIsUserLogado} = useContext(UserContext);
 
 
+    const notify = (texto) =>
+    toast(texto, { toastId: "toastFromNav" });
+
+    function desenvolvimento (){
+      notify("Em Desenvolvimento")
+    }
 
   return (
     <>
@@ -161,7 +170,7 @@ function Navbar({ themeToggler, imgsrc, themebutton }) {
         <Center>
           <ToggleMode theme={themebutton} toggleTheme={themeToggler} />
 
-          <Search>
+          <Search onClick={desenvolvimento}>
             <SearchIcon>
               <BiSearchAlt />
             </SearchIcon>
