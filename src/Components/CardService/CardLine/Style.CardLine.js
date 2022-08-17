@@ -88,6 +88,7 @@ export const Description = styled.p`
   justify-content: center;
   flex-direction: row;
   width: 50%;
+  padding: 0 1rem;
   height: 100%;
   font-size: 0.8rem;
   text-align: justify;

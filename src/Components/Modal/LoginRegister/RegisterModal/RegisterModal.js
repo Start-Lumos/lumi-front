@@ -61,7 +61,7 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
         "Sobrenome deve possuir 3-45 caracteres e não pode conter caracteres especiais.",
       label: "Sobrenome",
       required: true,
-      pattern: "^[A-Za-z ]{3,16}$",
+      pattern: "^[A-Za-z ]{3,45}$",
     },
     {
       //userEmail
