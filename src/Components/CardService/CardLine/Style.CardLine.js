@@ -12,6 +12,7 @@ export const Service = styled.div`
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
   box-shadow: ${({ theme }) => theme.shadow};
   @media (min-width: 1600px) {
