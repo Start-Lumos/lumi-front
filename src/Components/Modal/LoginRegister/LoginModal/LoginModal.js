@@ -17,7 +17,6 @@ import {
   Submit,
   Esqueciasenha,
   ChangePage,
-  AceitarTermos,
 } from "../../Styles.Modal";
 
 //Toastify

@@ -24,7 +24,6 @@ import CPF from "cpf-check";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { calculaIdade } from "../../../Validate";
-import { Link } from "react-router-dom";
 
 function RegisterModal({ setLoginForm, closeModalSign }) {
   const [values, setValues] = useState({
