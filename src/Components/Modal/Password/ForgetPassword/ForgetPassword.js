@@ -14,6 +14,7 @@ import {
   FormTop,
   CloseButton,
   StyledContainer,
+  Submit,
 } from "../../Styles.Modal";
 
 //Toastify
@@ -89,9 +90,7 @@ function ForgetPassword({ closeModalPass, openModalCode }) {
             />
           ))}
 
-          {/* <Submit>Enviar</Submit> */}
-
-          <span className="devenvolver">Em Desenvolvimento</span>
+          <Submit className="botaoFP">Enviar</Submit>
           
         </form>
       </Container>
