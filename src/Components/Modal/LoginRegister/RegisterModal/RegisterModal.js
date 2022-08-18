@@ -185,8 +185,8 @@ function RegisterModal({ setLoginForm, closeModalSign }) {
             required
           />
           <label>
-            Compreendo e aceito os
-            <Link to="/termos-de-uso"> Termos de uso</Link>.
+          Compreendo e aceito os <a href="/termos-de-uso">Termos de uso</a>
+
           </label>
         </AceitarTermos>
 

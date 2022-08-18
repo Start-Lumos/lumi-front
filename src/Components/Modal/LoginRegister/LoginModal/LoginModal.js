@@ -103,20 +103,6 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserL
 
         <Esqueciasenha onClick={openModalPass}>Esqueci a senha</Esqueciasenha>
 
-        <AceitarTermos>
-          <input
-            type="checkbox"
-            name="checkbox"
-            value="Termos de Uso"
-            className="checkbox"
-            required
-          />
-          <label>
-            Compreendo e aceito os
-            <Link to="/termos-de-uso"> Termos de uso</Link>.
-          </label>
-        </AceitarTermos>
-
         <Submit>Login</Submit>
         <p>Ainda não tem uma conta?</p>
         

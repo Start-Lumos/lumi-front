@@ -502,6 +502,7 @@ export const AceitarTermos = styled.div`
     font-size: 0.9rem;
     a{
       font-size: 0.9rem;
+      text-decoration: underline;
     }
   }
   @media screen and (max-width: 890px) {
