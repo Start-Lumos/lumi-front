@@ -90,9 +90,9 @@ function ForgetPassword({ closeModalPass, openModalCode }) {
             />
           ))}
 
-          <p onClick={openModalCode} style={{ cursor: "pointer" }}>Clicar</p>
+          {/* <Submit>Enviar</Submit> */}
 
-          <Submit>Enviar</Submit>
+          <span className="devenvolver">Em Desenvolvimento</span>
           
         </form>
       </Container>

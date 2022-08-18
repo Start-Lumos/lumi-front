@@ -83,6 +83,14 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  .devenvolver{
+    color: #ffffff;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
   form {
     display: flex;
     flex-direction: column;

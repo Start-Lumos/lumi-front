@@ -23,7 +23,7 @@ import {
 //Toastify
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserLogado }) {
 
@@ -65,11 +65,11 @@ function LoginModal({ setRegisterForm, closeModalSign, openModalPass, setIsUserL
     e.preventDefault();
     axiosInstance.post("/auth/login", values).then((res)=>{
       if(res.status === 202){
+        let userName = res.data.user.userFirstName;
         closeModalSign();
-        console.log("Logado com sucesso!")
         setIsUserLogado(true);
         localStorage.setItem("token", res.data.token)
-        notify("Logado com sucesso")
+        notify("Olá, " + userName)
         navigate("/");
       }else{
         <>{notify("Usuário não cadastrado")}</>
