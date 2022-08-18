@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 
 
 import "react-toastify/dist/ReactToastify.css";
-import { StyledContainer } from "../../Components/CardUser/Style.CardUser";
 import Delete from "../../Components/Modal/Delete";
 import { Loading, LoadingContainer } from "../../Components/Loader";
 

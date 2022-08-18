@@ -30,45 +30,50 @@ import Politica from "./Pages/Termos/Politica";
 export const UserContext = React.createContext({});
 
 function App() {
+  
   //Definindo o tema padrão da página:
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light');
+  const [logo, setLogo] = useState(logolight);
+  const setMode = mode =>{
+    window.localStorage.setItem('theme', mode)
+    setTheme(mode)
+  }
 
-  //Salvando o tema da página ao recarregar:
-  const setMode = (mode) => {
-    window.localStorage.setItem("theme", mode);
-    setTheme(mode);
-  };
+  const setModeLogo = modelogo =>{
+    window.localStorage.setItem(logolight, modelogo);
+    setLogo(modelogo);
+  }
+
+  //Mudar tema e logo
+
+  const toggleTheme = () =>{
+    if(theme === 'light'){
+      setMode('dark')
+      setModeLogo(logodark)
+    }else{
+      setMode('light')
+      setModeLogo(logolight)
+    }
+  }
+
+  //Definindo o tema padrão da página:
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme");
-    localTheme ? setTheme(localTheme) : setMode("npmdark");
+    const localTheme = window.localStorage.getItem('theme');
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localTheme ? 
+    setMode('dark') :
+    localTheme ?
+      setTheme(localTheme) :
+      setMode('light');
   }, []);
 
   //Definindo a logo padrão da página:
-  const [logo, setLogo] = useState(logolight);
-
-  //Salvando o tema da *logo* ao recarregar:
-  const setModeLogo = (modelogo) => {
-    window.localStorage.setItem(logolight, modelogo);
-    setLogo(modelogo);
-  };
 
   useEffect(() => {
     const localLogo = window.localStorage.getItem(logolight);
     localLogo ? setLogo(localLogo) : setModeLogo(logodark);
   }, []);
 
-  //*Função de alteração entre temas (light/dark), chamada no botão darkmode:
-
-  function themeToggler() {
-    if (theme === "light") {
-      setMode("npmdark"); //Alterando tema para a versão dark;
-      setModeLogo(logodark); //Alterando logo para a versão dark;
-    } else {
-      setMode("light"); //Alterando tema para a versão light;
-      setModeLogo(logolight); //Alterando logo para a versão light;
-    }
-  }
 
   //Para o userContext
   const [isUserLogado, setIsUserLogado] = useState(
@@ -86,7 +91,7 @@ function App() {
       <UserContext.Provider value={{ isUserLogado, setIsUserLogado }}>
         <Router>
           <Navbar
-            themeToggler={themeToggler}
+            themeToggler={toggleTheme}
             imgsrc={logo}
             themebutton={theme}
           />
