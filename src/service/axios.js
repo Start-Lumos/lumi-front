@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-    baseURL: process.env.baseURL || "http://localhost:8080",
+    baseURL: process.env.REACT_APP_LUMI || "http://localhost:8080",
     timeout: 5000,
     headers: { 'Content-Type': 'application/json' }
 });
